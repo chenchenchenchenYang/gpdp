@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yh.mfox.gpdp.mapper.ZhdjMapper">
+    <select id="queryDljgAll" resultType="java.util.Map">
+        select * from "GP_SZZF_S"."DLJG" ;
+    </select>
+    <select id="queryDjfcByType" resultType="java.util.Map" parameterType="java.lang.String">
+        select MS,PIC from "GP_SZZF_S"."DJFC" where type = #{type};
+    </select>
+    <select id="queryDyxl" resultType="java.util.Map">
+        select XLLX,ZB from "GP_SZZF_S"."DYXLJG";
+    </select>
+
+    <select id="queryDyxb" resultType="java.util.Map">
+        select XB,ZB,IFNULL(RS,0) RS from "GP_SZZF_S"."DYXBJG";
+    </select>
+    <select id="queryDyhy" resultType="java.util.Map">
+        select HY,ZB from "GP_SZZF_S"."DYHYJG";
+    </select>
+    <select id="queryDyjbqk" resultType="java.util.Map">
+        select "MS","SL"
+        from "GP_SZZF_S"."DYYDZZJBQK";
+    </select>
+    <select id="queryDyfc" resultType="java.util.Map">
+        select "PIC","PIC_MS"
+        from "GP_SZZF_S"."DYFC";
+    </select>
+    <select id="queryDdmf" resultType="java.util.Map">
+        select "DDMF_PIC","DDMF_PIC_MS"
+        from "GP_SZZF_S"."DDMF";
+    </select>
+
+    <select id="queryDynljg" resultType="java.util.Map">
+        select "DL","ZB"
+        from "GP_SZZF_S"."DYNLJG";
+    </select>
+    <select id="queryFzdyqk" resultType="java.util.Map">
+        select "NF","XZDYS"
+        from "GP_SZZF_S"."FZDYQK";
+    </select>
+    <select id="queryZzxfb" resultType="java.util.Map">
+        select "XH","DZB","ZB"
+        from "GP_SZZF_S"."ZZXFB";
+    </select>
+    <select id="queryRmgjc" resultType="java.util.Map">
+        select "PH","RMHTPH","DW","SS_XJ"
+        from "GP_SZZF_S"."RMGJC";
+    </select>
+    <select id="queryShyk" resultType="java.util.Map">
+        select "MC","SL"
+        from "GP_SZZF_S"."SHYKTJQK";
+    </select>
+    <select id="queryZyzhd" resultType="java.util.Map">
+        select "XH","DZB","DYS","CJHDMC","HDXQ"
+        from "GP_SZZF_S"."DYZYZHD";
+    </select>
+</mapper>
