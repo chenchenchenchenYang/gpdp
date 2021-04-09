@@ -1,0 +1,15 @@
+server:
+  port: 9090
+spring:
+  application:
+    name: gp
+  datasource:
+    driver-class-name: dm.jdbc.driver.DmDriver
+    url: jdbc:dm://10.58.0.46:5236
+    username: gpqzk_cx
+    password: UFi*uS7_sG8itf9
+mybatis:
+  mapper-locations: classpath*:mybatis/mapper/*.xml
+logging:
+  level:
+    com.yh.mfox.gpdp.mapper: debug
