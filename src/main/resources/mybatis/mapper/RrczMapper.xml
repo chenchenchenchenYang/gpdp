@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yh.mfox.gpdp.mapper.RrczMapper">
+    <select id="queryResidenceAddr" resultType="java.util.Map">
+        select 'gprs' as name ,count(*) as num from "GP_SZZF_M"."RRCZJNSH" where HJDZ_SSXXC_WSTXSSX like '%高平市%'
+        union all
+        select 'zrs' as name ,count(*) as num  from "GP_SZZF_M"."RRCZJNSH";
+    </select>
+    <select id="queryResidence" resultType="java.util.Map">
+        select WNBS,count(WNBS) as num  from "GP_SZZF_M"."RRCZJNSH" group by WNBS;
+    </select>
+    <select id="queryCount" resultType="java.util.Map">
+        select 'total' as name, count(distinct SFZH) as num  from "GP_SZZF_M"."RRCZJNSH"
+            union all
+        select 'czrs' as name, count(*) from "GP_SZZF_M"."RRCZJNSH" where ZYJNXX_YW ='有'
+            union all
+        select 'raise' as name, count(*) from "GP_SZZF_M"."RRCZJNSH"  where ZYJNXX_YW ='有'
+        and ZYJNXX_HZSJ is not null and year(to_date(ZYJNXX_HZSJ)) = year(CURDATE())
+    </select>
+    <select id="queryProfessNum" resultType="java.util.Map">
+        select ZYJSZCXX_ZCMC as name,count(*) as num  from "GP_SZZF_M"."RRCZJNSH" where  ZYJSZCXX_ZCMC is not null and ZYJSZCXX_YW = '有' group by ZYJSZCXX_ZCMC;
+    </select>
+    <select id="queryProfessRate" resultType="java.util.Map">
+        select ZYJSZCXX_CJ as name,count(*) as num  from "GP_SZZF_M"."RRCZJNSH" where  ZYJSZCXX_ZCMC is not null and ZYJSZCXX_YW = '有' group by ZYJSZCXX_CJ;
+    </select>
+
+    <select id="queryVocationNum" resultType="java.util.Map">
+        select ZYJNXX_ZSLB as name,count(*) as num  from "GP_SZZF_M"."RRCZJNSH" where  ZYJSZCXX_ZCMC is not null and ZYJSZCXX_YW = '有' group by ZYJNXX_ZSLB;
+    </select>
+
+    <select id="queryVocationRate" resultType="java.util.Map">
+        select ZYJSZCXX_CJ as name,count(*) as num  from "GP_SZZF_M"."RRCZJNSH" where  ZYJSZCXX_ZCMC is not null and ZYJSZCXX_YW = '有' group by ZYJSZCXX_CJ;
+    </select>
+
+    <select id="queryCzIn" resultType="java.util.Map">
+        select 'czrs' as name, count(*) from "GP_SZZF_M"."RRCZJNSH" where ZYJNXX_YW ='有'
+            union all
+        select 'not_czrs' as name, count(*) from "GP_SZZF_M"."RRCZJNSH" where ZYJNXX_YW ='无'
+    </select>
+
+    <select id="queryCzBd" resultType="java.util.Map">
+        select 'gprs' as name ,count(*) as num from "GP_SZZF_M"."RRCZJNSH" where HJDZ_SSXXC_WSTXSSX like '%高平市%'
+        union all
+        select 'zrs' as name ,count(*) as num  from "GP_SZZF_M"."RRCZJNSH";
+    </select>
+
+    <select id="queryCzEdu" resultType="java.util.Map">
+        select ZYJSZCXX_CJ as name,count(*) as num  from "GP_SZZF_M"."RRCZJNSH" where  ZYJSZCXX_ZCMC is not null and ZYJSZCXX_YW = '有' group by ZYJSZCXX_CJ;
+    </select>
+
+</mapper>
