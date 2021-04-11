@@ -33,9 +33,9 @@
     </select>
 
     <select id="queryCzIn" resultType="java.util.Map">
-        select 'czrs' as name, count(*) from "GP_SZZF_M"."RRCZJNSH" where ZYJNXX_YW ='有'
+        select 'czrs' as name, count(*) as num from "GP_SZZF_M"."RRCZJNSH" where ZYJNXX_YW ='有'
             union all
-        select 'not_czrs' as name, count(*) from "GP_SZZF_M"."RRCZJNSH" where ZYJNXX_YW ='无'
+        select 'not_czrs' as name, count(*) as num from "GP_SZZF_M"."RRCZJNSH" where ZYJNXX_YW ='无'
     </select>
 
     <select id="queryCzBd" resultType="java.util.Map">
@@ -45,7 +45,8 @@
     </select>
 
     <select id="queryCzEdu" resultType="java.util.Map">
-        select ZYJSZCXX_CJ as name,count(*) as num  from "GP_SZZF_M"."RRCZJNSH" where  ZYJSZCXX_ZCMC is not null and ZYJSZCXX_YW = '有' group by ZYJSZCXX_CJ;
+        select WHCD as name ,count(*) as num
+        from "GP_SZZF_M"."RRCZJNSH" group by WHCD;
     </select>
 
 </mapper>

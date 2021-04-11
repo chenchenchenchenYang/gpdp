@@ -37,10 +37,10 @@ public class RrczServiceImpl implements RrczService {
         BigDecimal bj = new BigDecimal(zrs);
         gprsMap.put("NAME", "本地市居民");
         gprsMap.put("NUM",
-                ((bi.divide(bj,4,BigDecimal.ROUND_HALF_UP)).multiply(new BigDecimal(100))).setScale(2));
+                ((bi.divide(bj, 4, BigDecimal.ROUND_HALF_UP)).multiply(new BigDecimal(100))).setScale(2));
         extMap.put("NAME", "外地是居民");
         extMap.put("NUM", zrs - gprs > 0 ?
-                ((new BigDecimal(String.valueOf(bj.subtract(new BigDecimal(gprs)))).divide(bi,4,BigDecimal.ROUND_HALF_UP)).multiply(new BigDecimal(100))).setScale(2) : 0);
+                ((new BigDecimal(String.valueOf(bj.subtract(new BigDecimal(gprs)))).divide(bi, 4, BigDecimal.ROUND_HALF_UP)).multiply(new BigDecimal(100))).setScale(2) : 0);
         res.add(gprsMap);
         res.add(extMap);
         return res;
@@ -79,12 +79,12 @@ public class RrczServiceImpl implements RrczService {
     }
 
     @Override
-    public  Map<String, Object> getProfess() {
+    public Map<String, Object> getProfess() {
         List<Map<String, Object>> rs = rrczMapper.queryProfessNum();
         List<Map<String, Object>> rank = rrczMapper.queryProfessRate();
         Map<String, Object> res = new HashMap<>();
-        res.put("rs",rs);
-        res.put("rank",rank);
+        res.put("rs", rs);
+        res.put("rank", rank);
         return res;
     }
 
@@ -93,16 +93,39 @@ public class RrczServiceImpl implements RrczService {
         List<Map<String, Object>> rs = rrczMapper.queryVocationNum();
         List<Map<String, Object>> rank = rrczMapper.queryVocationRate();
         Map<String, Object> res = new HashMap<>();
-        res.put("rs",rs);
-        res.put("rank",rank);
+        res.put("rs", rs);
+        res.put("rank", rank);
         return res;
     }
 
     @Override
     public Map<String, Object> getCz() {
+        Map<String, Object> res = new HashMap<>();
         List<Map<String, Object>> in = rrczMapper.queryCzIn();
         List<Map<String, Object>> bd = rrczMapper.queryCzBd();
+        long gprs = 0;
+        long zrs = 0;
+        for (Map<String, Object> map : bd) {
+            if ("gprs".equals(map.get("NAME"))) {
+                gprs = (long) map.get("NUM");
+            }
+            if ("zrs".equals(map.get("NAME"))) {
+                zrs = (long) map.get("NUM");
+            }
+        }
+        Map<String, Object> m1 = new HashMap<>();
+        Map<String, Object> m2 = new HashMap<>();
+        List<Map<String, Object>> bdn = new ArrayList<>();
+        m1.put("NAME", "gprs");
+        m1.put("NUM", gprs);
+        m2.put("NAME","not_gprs");
+        m2.put("NUM", zrs - gprs > 0 ? zrs - gprs : 0);
+        bdn.add(m1);
+        bdn.add(m2);
         List<Map<String, Object>> edu = rrczMapper.queryCzEdu();
-        return null;
+        res.put("in",in);
+        res.put("bd",bdn);
+        res.put("edu",edu);
+        return res;
     }
 }
