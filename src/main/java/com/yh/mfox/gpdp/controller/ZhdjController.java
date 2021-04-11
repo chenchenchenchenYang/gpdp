@@ -19,7 +19,7 @@ import java.util.Map;
 @RequestMapping("/zhdj")
 public class ZhdjController {
     @Autowired
-    ZhdjService dljgService;
+    private ZhdjService dljgService;
 
     /**
      * @Author: Wangcheny
@@ -29,9 +29,9 @@ public class ZhdjController {
     @PostMapping("/dljg")
     public Map<String, Object> getDljgAll(HttpServletRequest request) {
         try {
-            return R.ok(200,"成功",dljgService.getDljgAll());
+            return R.ok(200, "成功", dljgService.getDljgAll());
         } catch (Exception e) {
-            return R.error(400,"失败");
+            return R.error(400, "失败");
         }
     }
 
@@ -43,9 +43,9 @@ public class ZhdjController {
     @PostMapping("/djfc")
     public Map<String, Object> getDjfc(HttpServletRequest request) {
         try {
-            return R.ok(200,"成功", dljgService.getDjfcByType());
+            return R.ok(200, "成功", dljgService.getDjfcByType());
         } catch (Exception e) {
-            return R.error(400,"失败");
+            return R.error(400, "失败");
         }
     }
 
@@ -57,9 +57,9 @@ public class ZhdjController {
     @PostMapping("/dyxl")
     public Map<String, Object> getDyxl(HttpServletRequest request) {
         try {
-            return R.ok(200,"成功", dljgService.getDyxl());
+            return R.ok(200, "成功", dljgService.getDyxl());
         } catch (Exception e) {
-            return R.error(400,"失败");
+            return R.error(400, "失败");
         }
     }
 
@@ -71,9 +71,9 @@ public class ZhdjController {
     @PostMapping("/dyxb")
     public Map<String, Object> getDyxb(HttpServletRequest request) {
         try {
-            return R.ok(200,"成功", dljgService.getDyxb());
+            return R.ok(200, "成功", dljgService.getDyxb());
         } catch (Exception e) {
-            return R.error(400,"失败");
+            return R.error(400, "失败");
         }
     }
 
@@ -85,9 +85,9 @@ public class ZhdjController {
     @PostMapping("/dyjbqk")
     public Map<String, Object> getDyjbqk(HttpServletRequest request) {
         try {
-            return R.ok(200,"成功", dljgService.getDyjbqk());
+            return R.ok(200, "成功", dljgService.getDyjbqk());
         } catch (Exception e) {
-            return R.error(400,"失败");
+            return R.error(400, "失败");
         }
     }
 
@@ -99,9 +99,9 @@ public class ZhdjController {
     @PostMapping("/dyfc")
     public Map<String, Object> getDyfc(HttpServletRequest request) {
         try {
-            return R.ok(200,"成功", dljgService.getDyfc());
+            return R.ok(200, "成功", dljgService.getDyfc());
         } catch (Exception e) {
-            return R.error(400,"失败");
+            return R.error(400, "失败");
         }
     }
 
@@ -113,9 +113,9 @@ public class ZhdjController {
     @PostMapping("/ddmf")
     public Map<String, Object> getDdmf(HttpServletRequest request) {
         try {
-            return R.ok(200,"成功", dljgService.getDdmf());
+            return R.ok(200, "成功", dljgService.getDdmf());
         } catch (Exception e) {
-            return R.error(400,"失败");
+            return R.error(400, "失败");
         }
     }
 
@@ -127,9 +127,9 @@ public class ZhdjController {
     @PostMapping("/dynljg")
     public Map<String, Object> getDynljg(HttpServletRequest request) {
         try {
-            return R.ok(200,"成功", dljgService.getDynljg());
+            return R.ok(200, "成功", dljgService.getDynljg());
         } catch (Exception e) {
-            return R.error(400,"失败");
+            return R.error(400, "失败");
         }
     }
 
@@ -141,9 +141,9 @@ public class ZhdjController {
     @PostMapping("/fzdyqk")
     public Map<String, Object> getFzdyqk(HttpServletRequest request) {
         try {
-            return R.ok(200,"成功", dljgService.getFzdyqk());
+            return R.ok(200, "成功", dljgService.getFzdyqk());
         } catch (Exception e) {
-            return R.error(400,"失败");
+            return R.error(400, "失败");
         }
     }
 
@@ -155,9 +155,9 @@ public class ZhdjController {
     @PostMapping("/zzxfb")
     public Map<String, Object> getZzxfb(HttpServletRequest request) {
         try {
-            return R.ok(200,"成功", dljgService.getZzxfb());
+            return R.ok(200, "成功", dljgService.getZzxfb());
         } catch (Exception e) {
-            return R.error(400,"失败");
+            return R.error(400, "失败");
         }
     }
 
@@ -169,9 +169,9 @@ public class ZhdjController {
     @PostMapping("/rmgjc")
     public Map<String, Object> getRmgjc(HttpServletRequest request) {
         try {
-            return R.ok(200,"成功", dljgService.getRmgjc());
+            return R.ok(200, "成功", dljgService.getRmgjc());
         } catch (Exception e) {
-            return R.error(400,"失败");
+            return R.error(400, "失败");
         }
     }
 
@@ -184,18 +184,18 @@ public class ZhdjController {
     @PostMapping("/shyk")
     public Map<String, Object> getShyk(HttpServletRequest request) {
         try {
-            return R.ok(200,"成功", dljgService.getShyk());
+            return R.ok(200, "成功", dljgService.getShyk());
         } catch (Exception e) {
-            return R.error(400,"失败");
+            return R.error(400, "失败");
         }
     }
 
     @PostMapping("/zyzhd")
     public Map<String, Object> getZyzhd(HttpServletRequest request) {
         try {
-            return R.ok(200,"成功", dljgService.getZyzhd());
+            return R.ok(200, "成功", dljgService.getZyzhd());
         } catch (Exception e) {
-            return R.error(400,"失败");
+            return R.error(400, "失败");
         }
     }
 
