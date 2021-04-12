@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yh.mfox.gpdp.mapper.PxqzMapper">
+    <select id="queryCount" resultType="java.util.Map">
+        select 'bc' as name , count(*) AS NUM
+        from "GP_SZZF_M"."RRCZJNSH" where PXYY_PXRQ is not null
+        union all
+        select 'rs' as name , count(*) AS NUM
+        from "GP_SZZF_M"."RRCZJNSH" where PXYY_YWPXYY = '有'
+        union all
+        select 'real_rs' as name , count(*) AS NUM
+        from "GP_SZZF_M"."RRCZJNSH" where PXYY_YWPXYY = '有' and PXYY_PXRQ is not null;
+    </select>
+    <select id="queryRyPx" resultType="java.util.Map">
+        select PXYY_PXJNGZ as name , count(*) AS NUM
+        from "GP_SZZF_M"."RRCZJNSH" where PXYY_YWPXYY = '有'
+        and PXYY_PXJNGZ is not null group by PXYY_PXJNGZ
+    </select>
+
+    <select id="queryRyPxTotal" resultType="java.util.Map">
+        select count(*) AS NUM
+        from "GP_SZZF_M"."RRCZJNSH" where PXYY_YWPXYY = '有' and PXYY_PXJNGZ is not null
+    </select>
+
+    <select id="queryRyQz" resultType="java.util.Map">
+        select QJYY_QZHY as name , count(*) AS NUM
+        from "GP_SZZF_M"."RRCZJNSH" where QJYY_YWQZYY = '有' and QJYY_QZHY is not null group by QJYY_QZHY
+    </select>
+
+    <select id="queryRyQZTotal" resultType="java.util.Map">
+        select count(*) AS NUM
+        from "GP_SZZF_M"."RRCZJNSH" where QJYY_YWQZYY = '有' and QJYY_QZHY is not null
+    </select>
+    <select id="queryXbCountBak" resultType="java.util.Map">
+        select aa.xb,count(*) as num  from (
+        select
+            CASE (SUBSTR(SFZH,17,1)%2)
+                WHEN 1 THEN '男'
+                WHEN  0 THEN '女'
+                END AS xb  from "GP_SZZF_M"."RRCZJNSH" where SFZH is not null
+        ) aa group by aa.xb
+    </select>
+
+    <select id="queryXbCount" resultType="java.util.Map">
+        select XB ,count(*) from "GP_SZZF_M"."RRCZJNSH" WHERE  XB IS NOT NULL group by XB
+    </select>
+    <select id="queryPxCount" resultType="java.util.Map">
+        select 'rs' as name , count(*) AS NUM
+        from "GP_SZZF_M"."RRCZJNSH" where PXYY_YWPXYY = '有'
+        union all
+        select 'real_rs' as name , count(*) AS NUM
+        from "GP_SZZF_M"."RRCZJNSH" where PXYY_YWPXYY = '有' and PXYY_PXRQ is not null;
+    </select>
+    <select id="queryPxEduCount" resultType="java.util.Map">
+        SELECT WHCD,PXYY_YWPXYY as yx,count(*) as num FROM "GP_SZZF_M"."RRCZJNSH"  group by WHCD,PXYY_YWPXYY order by WHCD desc;
+    </select>
+    <select id="queryPxAgeCount" resultType="java.util.Map">
+        select
+        '20岁及以下' as name,PXYY_YWPXYY as yx, count(*) as num
+        from "GP_SZZF_M"."RRCZJNSH" where SFZH is not null and year(now()) - CAST(SUBSTR(SFZH,7,4) AS Integer) &lt;= 20 group by PXYY_YWPXYY
+        union all
+        select
+        '20-25岁' as name,PXYY_YWPXYY as yx, count(*) as num
+        from "GP_SZZF_M"."RRCZJNSH" where SFZH is not null
+        and  year(now()) - CAST(SUBSTR(SFZH,7,4) AS Integer) &gt; 20 and (year(now()) - CAST(SUBSTR(SFZH,7,4) AS Integer) &lt;= 25)
+        group by PXYY_YWPXYY
+        union all
+        select
+        '25-30岁' as name,PXYY_YWPXYY as yx, count(*) as num
+        from "GP_SZZF_M"."RRCZJNSH" where SFZH is not null
+        and year(now()) - CAST(SUBSTR(SFZH,7,4) AS Integer) &gt; 25 and ( year(now()) - CAST(SUBSTR(SFZH,7,4) AS Integer) &lt;= 30)
+        group by PXYY_YWPXYY
+        union all
+        select
+        '30-40岁' as name,PXYY_YWPXYY as yx, count(*) as num
+        from "GP_SZZF_M"."RRCZJNSH" where SFZH is not null
+        and year(now()) - CAST(SUBSTR(SFZH,7,4) AS Integer) &gt; 30 and ( year(now()) - CAST(SUBSTR(SFZH,7,4) AS Integer) &lt;= 40)
+        group by PXYY_YWPXYY
+        union all
+        select
+        '40-50岁' as name,PXYY_YWPXYY as yx, count(*) as num
+        from "GP_SZZF_M"."RRCZJNSH" where SFZH is not null
+        and year(now()) - CAST(SUBSTR(SFZH,7,4) AS Integer) &gt; 40 and ( year(now()) - CAST(SUBSTR(SFZH,7,4) AS Integer) &lt;= 50)
+        group by PXYY_YWPXYY
+        union all
+        select
+        '50岁以上' as name,PXYY_YWPXYY as yx, count(*) as num
+        from "GP_SZZF_M"."RRCZJNSH" where SFZH is not null and year(now()) - CAST(SUBSTR(SFZH,7,4) AS Integer) &gt; 50  group by PXYY_YWPXYY
+    </select>
+
+    <select id="queryQzCount" resultType="java.util.Map">
+        select 'qz' as name, count(*) AS NUM
+        from "GP_SZZF_M"."RRCZJNSH" where QJYY_YWQZYY = '有'
+        union all
+        select 'dw' as name, count(*) AS NUM
+        from "GP_SZZF_M"."RRCZJNSH" where YWDWLDSCYY_YWYY = '有'
+    </select>
+    <select id="queryQzXz" resultType="java.util.Map">
+        select QJYY_QWXZ_YPJ as name , count(*) AS NUM
+        from "GP_SZZF_M"."RRCZJNSH" where QJYY_YWQZYY = '有' and QJYY_QWXZ_YPJ is not null group by QJYY_QWXZ_YPJ
+    </select>
+</mapper>
