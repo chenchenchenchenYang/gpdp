@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yh.mfox.gpdp.mapper.ZhtdMapper">
+    <select id="queryDtgl" resultType="java.util.Map">
+        select "JRDTS","YXZCS","YXYCS"
+        from "GP_SZZF_J"."DTSJGL";
+    </select>
+    <select id="querySceneCount" resultType="java.util.Map">
+        select "CSLX","RATIO"
+        from "GP_SZZF_J"."DTSYCSTJ";
+    </select>
+    <select id="queryDtCount" resultType="java.util.Map">
+        select JDXZMC,DTSL from "GP_SZZF_J"."GJDDXZTSLFB"
+    </select>
+    <select id="queryDtType" resultType="java.util.Map">
+        select "DTLX","RATIO"
+        from "GP_SZZF_J"."DTLXTJ";
+    </select>
+    <select id="queryWbCount" resultType="java.util.Map">
+        select "JD_XZMC" as name,"SL"
+        from "GP_SZZF_J"."GJDXZDTWBCQS";
+    </select>
+    <select id="queryDtAvg" resultType="java.util.Map">
+        select "NRX","PJZ","DW","BFB"
+        from "GP_SZZF_J"."DTGLXPJZ";
+    </select>
+    <select id="queryMonthAvg" resultType="java.util.Map">
+        select "YUE","WBSC"
+        from "GP_SZZF_J"."YPJWBSCTJ";
+    </select>
+    <select id="queryWbTotal" resultType="java.util.Map">
+        select "DWMC","WXCS","WBCS","DW"
+        from "GP_SZZF_J"."DWWB_WXGDZSTJ";
+    </select>
+</mapper>

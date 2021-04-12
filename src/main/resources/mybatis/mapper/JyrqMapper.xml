@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yh.mfox.gpdp.mapper.JyrqMapper">
+    <select id="queryInfoCount" resultType="java.util.Map">
+        select 'not' as name,COUNT(*) as num
+        from "GP_SZZF_M"."RRCZJNSH" where JSYZT = '未就业'
+        union all
+        select 'is' as name ,COUNT(*) as num
+        from "GP_SZZF_M"."RRCZJNSH" where JSYZT != '未就业'
+        union all
+        select 'all' as name ,COUNT(*) as num
+        from "GP_SZZF_M"."RRCZJNSH" where JSYZT is not null
+    </select>
+    <select id="queryTypeInfo" resultType="java.util.Map">
+        select JSYZT as name ,COUNT(*) as num
+        from "GP_SZZF_M"."RRCZJNSH" where JSYZT != '未就业'  group by JSYZT
+    </select>
+
+    <select id="querySexInfoBak" resultType="java.util.Map">
+        select aa.name ,count(*) as num from
+            (select CASE (SUBSTR(SFZH,17,1)%2)
+                        WHEN 1 THEN '男'
+                        WHEN  0 THEN '女'
+                        END as name
+             from "GP_SZZF_M"."RRCZJNSH" where JSYZT != '未就业')   aa group by aa.name
+    </select>
+    <select id="querySexInfo" resultType="java.util.Map">
+        select XB as name ,COUNT(*) as num
+        from "GP_SZZF_M"."RRCZJNSH" where JSYZT != '未就业' and XB is not null group by XB
+    </select>
+
+
+</mapper>
