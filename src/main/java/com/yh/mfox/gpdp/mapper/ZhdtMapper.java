@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 @Mapper
-public interface ZhtdMapper {
+public interface ZhdtMapper {
     List<Map<String, Object>> queryDtgl();
 
     List<Map<String, Object>> querySceneCount();

@@ -1,6 +1,6 @@
 package com.yh.mfox.gpdp.service.impl;
 
-import com.yh.mfox.gpdp.mapper.ZhtdMapper;
+import com.yh.mfox.gpdp.mapper.ZhdtMapper;
 import com.yh.mfox.gpdp.service.ZhdtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import java.util.Map;
 public class ZhdtServiceImpl implements ZhdtService {
 
     @Autowired
-    private ZhtdMapper zhtdMapper;
+    private ZhdtMapper zhtdMapper;
 
     @Override
     public Map<String, Object> getDtgl() {

@@ -62,4 +62,47 @@ public class JyrqController {
             return R.error(400,"失败");
         }
     }
+
+    /**
+     * @Author: Wangcheny
+     * @Date: 2021年04月13日 上午 10:45:02
+     * @Description: 就业是否有组织劳务输出
+     */
+    @PostMapping("/lwsc")
+    public Map<String, Object> getLwscInfo(HttpServletRequest request) {
+        try {
+            return R.ok(200,"成功",jyrqService.getLwscInfo());
+        } catch (Exception e) {
+            return R.error(400,"失败");
+        }
+    }
+
+    /**
+     * @Author: Wangcheny
+     * @Date: 2021年04月13日 上午 11:05:20
+     * @Description: 统计
+     */
+    @PostMapping("/count")
+    public Map<String, Object> getCount(HttpServletRequest request) {
+        try {
+            return R.ok(200,"成功",jyrqService.getCount());
+        } catch (Exception e) {
+            return R.error(400,"失败");
+        }
+    }
+
+
+    /**
+     * @Author: Wangcheny
+     * @Date: 2021年04月13日 下午 12:59:39
+     * @Description: 学历分析
+     */
+    @PostMapping("/edu")
+    public Map<String, Object> getEduCount(HttpServletRequest request) {
+        try {
+            return R.ok(200,"成功",jyrqService.getEduCount());
+        } catch (Exception e) {
+            return R.error(400,"失败");
+        }
+    }
 }

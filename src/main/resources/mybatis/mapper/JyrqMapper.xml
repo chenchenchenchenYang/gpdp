@@ -29,5 +29,36 @@
         from "GP_SZZF_M"."RRCZJNSH" where JSYZT != '未就业' and XB is not null group by XB
     </select>
 
+    <select id="queryLwscInfo" resultType="java.util.Map">
+        select '有组织劳务输出' as name ,COUNT(*) as num from "GP_SZZF_M"."RRCZJNSH"
+        where SFSYZZLWSC_JYRYTX_SF is not null
+          and SFSYZZLWSC_JYRYTX_SF = '是' group by SFSYZZLWSC_JYRYTX_SF
+        union all
+        select '无组织劳务输出' as name ,COUNT(*) as num from "GP_SZZF_M"."RRCZJNSH"
+        where SFSYZZLWSC_JYRYTX_SF is not null
+          and SFSYZZLWSC_JYRYTX_SF = '否'
+        group by SFSYZZLWSC_JYRYTX_SF
+    </select>
+
+    <select id="queryCount" resultType="java.util.Map">
+        select 'total' as name ,COUNT(*) as num
+        from "GP_SZZF_M"."RRCZJNSH" where WNBS = '非务农'
+        union all
+        select 'bc' as name , count(*) AS NUM
+        from "GP_SZZF_M"."RRCZJNSH" where PXYY_PXRQ is not null
+        union all
+        select 'rs' as name , count(*) AS NUM
+        from "GP_SZZF_M"."RRCZJNSH" where PXYY_YWPXYY = '有'
+        union all
+        select 'real_rs' as name , count(*) AS NUM
+        from "GP_SZZF_M"."RRCZJNSH" where PXYY_YWPXYY = '有' and PXYY_PXRQ is not null;
+    </select>
+
+    <select id="queryEduCount" resultType="java.util.Map">
+        select WHCD,JSYZT as title,COUNT(*) as num from "GP_SZZF_M"."RRCZJNSH" WHERE JSYZT = '未就业' and JSYZT is not null
+        GROUP BY WHCD,JSYZT
+        UNION ALL
+        select WHCD,'就业' as title,COUNT(*) as num from "GP_SZZF_M"."RRCZJNSH"  WHERE JSYZT != '未就业' and JSYZT is not null GROUP BY WHCD
+    </select>
 
 </mapper>

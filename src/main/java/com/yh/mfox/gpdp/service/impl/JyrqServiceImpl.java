@@ -29,4 +29,19 @@ public class JyrqServiceImpl implements JyrqService {
         if(null == sex || sex.isEmpty()) sex = jyrqMapper.querySexInfoBak();
         return sex;
     }
+
+    @Override
+    public List<Map<String, Object>> getLwscInfo() {
+        return jyrqMapper.queryLwscInfo();
+    }
+
+    @Override
+    public List<Map<String, Object>> getCount() {
+        return jyrqMapper.queryCount();
+    }
+
+    @Override
+    public List<Map<String, Object>> getEduCount() {
+        return jyrqMapper.queryEduCount();
+    }
 }

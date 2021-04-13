@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yh.mfox.gpdp.mapper.ZhtdMapper">
+<mapper namespace="com.yh.mfox.gpdp.mapper.ZhdtMapper">
     <select id="queryDtgl" resultType="java.util.Map">
         select "JRDTS","YXZCS","YXYCS"
         from "GP_SZZF_J"."DTSJGL";

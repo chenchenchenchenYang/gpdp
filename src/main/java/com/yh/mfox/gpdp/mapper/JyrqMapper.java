@@ -15,4 +15,10 @@ public interface JyrqMapper {
     List<Map<String, Object>> querySexInfo();
 
     List<Map<String, Object>> querySexInfoBak();
+
+    List<Map<String, Object>> queryLwscInfo();
+
+    List<Map<String, Object>> queryCount();
+
+    List<Map<String, Object>> queryEduCount();
 }
