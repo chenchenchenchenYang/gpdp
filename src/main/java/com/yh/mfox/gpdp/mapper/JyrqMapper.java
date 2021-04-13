@@ -27,4 +27,10 @@ public interface JyrqMapper {
     List<Map<String, Object>> queryJyType();
 
     List<Map<String, Object>> queryZzType();
+
+    List<Map<String, Object>> queryJyfx();
+
+    List<Map<String, Object>> queryXytType();
+
+    List<Map<String, Object>> queryLhType();
 }

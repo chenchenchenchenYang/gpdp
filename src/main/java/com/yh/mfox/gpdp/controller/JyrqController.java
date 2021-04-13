@@ -133,10 +133,58 @@ public class JyrqController {
         }
     }
 
+    /**
+     * @Author: Wangcheny
+     * @Date: 2021年04月13日 下午 03:58:03
+     * @Description: 自主创业类型统计
+     */
     @PostMapping("/zzType")
     public Map<String, Object> getZzType(HttpServletRequest request) {
         try {
             return R.ok(200,"成功",jyrqService.getZzType());
+        } catch (Exception e) {
+            return R.error(400,"失败");
+        }
+    }
+
+    /**
+     * @Author: Wangcheny
+     * @Date: 2021年04月13日 下午 03:59:35
+     * @Description: 就业人群分析
+     */
+
+    @PostMapping("/jyfx")
+    public Map<String, Object> getJyfx(HttpServletRequest request) {
+        try {
+            return R.ok(200,"成功",jyrqService.getJyfx());
+        } catch (Exception e) {
+            return R.error(400,"失败");
+        }
+    }
+
+    /**
+     * @Author: Wangcheny
+     * @Date: 2021年04月13日 下午 03:58:03
+     * @Description: 新业态类型统计
+     */
+    @PostMapping("/xytType")
+    public Map<String, Object> getXytType(HttpServletRequest request) {
+        try {
+            return R.ok(200,"成功",jyrqService.getXytType());
+        } catch (Exception e) {
+            return R.error(400,"失败");
+        }
+    }
+
+    /**
+     * @Author: Wangcheny
+     * @Date: 2021年04月13日 下午 03:58:03
+     * @Description: 灵活类型统计
+     */
+    @PostMapping("/lhType")
+    public Map<String, Object> getLhType(HttpServletRequest request) {
+        try {
+            return R.ok(200,"成功",jyrqService.getLhType());
         } catch (Exception e) {
             return R.error(400,"失败");
         }

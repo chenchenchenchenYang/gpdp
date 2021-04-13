@@ -167,4 +167,18 @@
             ZZCY_CYLX as title,count(*) as num
         from "GP_SZZF_M"."RRCZJNSH" where JSYZT = '自主创业' and JSYZT is not null and ZZCY_CYLX is not null group by ZZCY_CYLX
     </select>
+
+    <select id="queryJyfx" resultType="java.util.Map">
+        select JSYZT as title,count(*) as num
+        from "GP_SZZF_M"."RRCZJNSH" where JSYZT != '未就业' group by JSYZT
+    </select>
+    <select id="queryXytType" resultType="java.util.Map">
+        select
+            XYTJY_XYTJYFS as title,count(*) as num
+        from "GP_SZZF_M"."RRCZJNSH" where JSYZT = '新业态就业' and JSYZT is not null and XYTJY_XYTJYFS is not null group by XYTJY_XYTJYFS
+    </select>
+    <select id="queryLhType" resultType="java.util.Map">
+        select LHJY_LHJYFS as title,count(*) as num
+        from "GP_SZZF_M"."RRCZJNSH" where JSYZT = '灵活就业' and LHJY_LHJYFS is not null and LHJY_LHJYFS is not null group by LHJY_LHJYFS
+    </select>
 </mapper>

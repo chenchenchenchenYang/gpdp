@@ -59,4 +59,19 @@ public class JyrqServiceImpl implements JyrqService {
     public List<Map<String, Object>> getZzType() {
         return jyrqMapper.queryZzType();
     }
+
+    @Override
+    public List<Map<String, Object>> getJyfx() {
+        return jyrqMapper.queryJyfx();
+    }
+
+    @Override
+    public List<Map<String, Object>> getXytType() {
+        return jyrqMapper.queryXytType();
+    }
+
+    @Override
+    public List<Map<String, Object>> getLhType() {
+        return jyrqMapper.queryLhType();
+    }
 }

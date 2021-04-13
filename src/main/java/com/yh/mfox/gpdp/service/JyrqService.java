@@ -26,4 +26,10 @@ public interface JyrqService {
     List<Map<String, Object>> getJyType();
 
     List<Map<String, Object>> getZzType();
+
+    List<Map<String, Object>> getJyfx();
+
+    List<Map<String, Object>> getXytType();
+
+    List<Map<String, Object>> getLhType();
 }
