@@ -21,4 +21,10 @@ public interface JyrqMapper {
     List<Map<String, Object>> queryCount();
 
     List<Map<String, Object>> queryEduCount();
+
+    List<Map<String, Object>> queryAgeCount();
+
+    List<Map<String, Object>> queryJyType();
+
+    List<Map<String, Object>> queryZzType();
 }

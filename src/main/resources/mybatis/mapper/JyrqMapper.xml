@@ -60,5 +60,111 @@
         UNION ALL
         select WHCD,'就业' as title,COUNT(*) as num from "GP_SZZF_M"."RRCZJNSH"  WHERE JSYZT != '未就业' and JSYZT is not null GROUP BY WHCD
     </select>
-
+    <select id="queryAgeCount" resultType="java.util.Map">
+        select
+            '20岁及以下' as name,'未就业' as title, count(*) as num
+        from "GP_SZZF_M"."RRCZJNSH" where
+                SFZH is not null
+                and JSYZT = '未就业'
+                and JSYZT is not null
+                and year(now()) - CAST(SUBSTR(SFZH,7,4) AS Integer) &lt;= 20
+        union all
+            select
+                '20岁及以下' as name,'就业' as title, count(*) as num
+            from "GP_SZZF_M"."RRCZJNSH" where
+                SFZH is not null
+                                          and JSYZT != '未就业'
+             and JSYZT is not null
+            and year(now()) - CAST(SUBSTR(SFZH,7,4) AS Integer) &lt;= 20
+            union all
+            select
+                '20-25岁' as name,'未就业' as title, count(*) as num
+            from "GP_SZZF_M"."RRCZJNSH"
+            where SFZH is not null
+                and JSYZT = '未就业'
+                and JSYZT is not null
+                and  year(now()) - CAST(SUBSTR(SFZH,7,4) AS Integer) &gt; 20 and (year(now()) - CAST(SUBSTR(SFZH,7,4) AS Integer) &lt;= 25)
+            union all
+            select
+                '20-25岁' as name,'就业' as title, count(*) as num
+            from "GP_SZZF_M"."RRCZJNSH"
+            where SFZH is not null
+              and JSYZT != '未就业'
+            and JSYZT is not null
+            and  year(now()) - CAST(SUBSTR(SFZH,7,4) AS Integer) &gt; 20 and (year(now()) - CAST(SUBSTR(SFZH,7,4) AS Integer) &lt;= 25)
+            union all
+            select
+                '25-30岁' as name,'未就业' as title, count(*) as num
+            from "GP_SZZF_M"."RRCZJNSH"
+            where SFZH is not null
+                and JSYZT = '未就业'
+                and JSYZT is not null
+                and year(now()) - CAST(SUBSTR(SFZH,7,4) AS Integer)  &gt; 25 and ( year(now()) - CAST(SUBSTR(SFZH,7,4) AS Integer) &lt;= 30)
+            union all
+            select
+                '25-30岁' as name,'就业' as title, count(*) as num
+            from "GP_SZZF_M"."RRCZJNSH"
+            where SFZH is not null
+              and JSYZT != '未就业'
+            and JSYZT is not null
+            and year(now()) - CAST(SUBSTR(SFZH,7,4) AS Integer)  &gt; 25 and ( year(now()) - CAST(SUBSTR(SFZH,7,4) AS Integer) &lt;= 30)
+            union all
+            select
+                '30-40岁' as name,'未就业' as title, count(*) as num
+            from "GP_SZZF_M"."RRCZJNSH"
+            where SFZH is not null
+                and JSYZT = '未就业'
+                and JSYZT is not null
+                and year(now()) - CAST(SUBSTR(SFZH,7,4) AS Integer)  &gt; 30 and ( year(now()) - CAST(SUBSTR(SFZH,7,4) AS Integer) &lt;= 40)
+            union all
+            select
+                '30-40岁' as name,'就业' as title, count(*) as num
+            from "GP_SZZF_M"."RRCZJNSH"
+            where SFZH is not null
+              and JSYZT != '未就业'
+            and JSYZT is not null
+            and year(now()) - CAST(SUBSTR(SFZH,7,4) AS Integer)  &gt; 30 and ( year(now()) - CAST(SUBSTR(SFZH,7,4) AS Integer) &lt;= 40)
+            union all
+            select
+                '40-50岁' as name,'未就业' as title, count(*) as num
+            from "GP_SZZF_M"."RRCZJNSH"
+            where SFZH is not null
+                and JSYZT = '未就业'
+                and JSYZT is not null
+                and year(now()) - CAST(SUBSTR(SFZH,7,4) AS Integer) &gt; 40 and ( year(now()) - CAST(SUBSTR(SFZH,7,4) AS Integer) &lt;= 50)
+            union all
+            select
+                '40-50岁' as name,'就业' as title, count(*) as num
+            from "GP_SZZF_M"."RRCZJNSH"
+            where SFZH is not null
+              and JSYZT != '未就业'
+            and JSYZT is not null
+            and year(now()) - CAST(SUBSTR(SFZH,7,4) AS Integer) &gt; 40 and ( year(now()) - CAST(SUBSTR(SFZH,7,4) AS Integer) &lt;= 50)
+            union all
+            select
+                '50岁以上' as name,'未就业' as title, count(*) as num
+            from "GP_SZZF_M"."RRCZJNSH"
+            where SFZH is not null
+                and JSYZT = '未就业'
+                and JSYZT is not null
+                and year(now()) - CAST(SUBSTR(SFZH,7,4) AS Integer) &gt; 50
+            union all
+            select
+                '50岁以上' as name,'就业' as title, count(*) as num
+            from "GP_SZZF_M"."RRCZJNSH"
+            where SFZH is not null
+              and JSYZT != '未就业'
+            and JSYZT is not null
+            and year(now()) - CAST(SUBSTR(SFZH,7,4) AS Integer) &gt; 50
+    </select>
+    <select id="queryJyType" resultType="java.util.Map">
+        select
+            WDJY_DWLX as title,count(*) as num
+        from "GP_SZZF_M"."RRCZJNSH" where JSYZT = '稳定就业' and JSYZT is not null and WDJY_DWLX is not null group by WDJY_DWLX
+    </select>
+    <select id="queryZzType" resultType="java.util.Map">
+        select
+            ZZCY_CYLX as title,count(*) as num
+        from "GP_SZZF_M"."RRCZJNSH" where JSYZT = '自主创业' and JSYZT is not null and ZZCY_CYLX is not null group by ZZCY_CYLX
+    </select>
 </mapper>

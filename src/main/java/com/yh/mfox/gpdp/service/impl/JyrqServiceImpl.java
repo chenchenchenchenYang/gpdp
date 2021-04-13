@@ -44,4 +44,19 @@ public class JyrqServiceImpl implements JyrqService {
     public List<Map<String, Object>> getEduCount() {
         return jyrqMapper.queryEduCount();
     }
+
+    @Override
+    public List<Map<String, Object>> getAgeCount() {
+        return jyrqMapper.queryAgeCount();
+    }
+
+    @Override
+    public List<Map<String, Object>> getJyType() {
+        return jyrqMapper.queryJyType();
+    }
+
+    @Override
+    public List<Map<String, Object>> getZzType() {
+        return jyrqMapper.queryZzType();
+    }
 }

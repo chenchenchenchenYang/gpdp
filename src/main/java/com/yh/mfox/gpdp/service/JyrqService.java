@@ -20,4 +20,10 @@ public interface JyrqService {
     List<Map<String, Object>> getCount();
 
     List<Map<String, Object>> getEduCount();
+
+    List<Map<String, Object>> getAgeCount();
+
+    List<Map<String, Object>> getJyType();
+
+    List<Map<String, Object>> getZzType();
 }
