@@ -18,7 +18,8 @@
         and ZYJNXX_HZSJ is not null and year(to_date(ZYJNXX_HZSJ)) = year(CURDATE())
     </select>
     <select id="queryProfessNum" resultType="java.util.Map">
-        select ZYJSZCXX_ZCMC as name,count(*) as num  from "GP_SZZF_M"."RRCZJNSH" where  ZYJSZCXX_ZCMC is not null and ZYJSZCXX_YW = '有' group by ZYJSZCXX_ZCMC;
+        select ZYJSZCXX_ZCMC as name,count(*) as num  from "GP_SZZF_M"."RRCZJNSH"
+        where  ZYJSZCXX_ZCMC is not null and ZYJSZCXX_YW = '有' group by ZYJSZCXX_ZCMC order by count(*) desc;
     </select>
     <select id="queryProfessRate" resultType="java.util.Map">
         select ZYJSZCXX_CJ as name,count(*) as num  from "GP_SZZF_M"."RRCZJNSH" where  ZYJSZCXX_ZCMC is not null and ZYJSZCXX_YW = '有' group by ZYJSZCXX_CJ;

@@ -14,7 +14,7 @@
     <select id="queryRyPx" resultType="java.util.Map">
         select PXYY_PXJNGZ as name , count(*) AS NUM
         from "GP_SZZF_M"."RRCZJNSH" where PXYY_YWPXYY = '有'
-        and PXYY_PXJNGZ is not null group by PXYY_PXJNGZ
+        and PXYY_PXJNGZ is not null group by PXYY_PXJNGZ order by count(*) desc
     </select>
 
     <select id="queryRyPxTotal" resultType="java.util.Map">
