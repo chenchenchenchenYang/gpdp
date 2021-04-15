@@ -190,10 +190,29 @@ public class ZhdjController {
         }
     }
 
+    /**
+     * @Author: Wangcheny
+     * @Date: 2021年04月15日 上午 11:46:38
+     * @Description: 志愿者活动
+     */
     @PostMapping("/zyzhd")
     public Map<String, Object> getZyzhd(HttpServletRequest request) {
         try {
             return R.ok(200, "成功", dljgService.getZyzhd());
+        } catch (Exception e) {
+            return R.error(400, "失败");
+        }
+    }
+
+    /**
+     * @Author: Wangcheny
+     * @Date: 2021年04月15日 上午 11:48:30
+     * @Description: 党员行业
+     */
+    @PostMapping("/dyhy")
+    public Map<String, Object> getDyhy(HttpServletRequest request) {
+        try {
+            return R.ok(200, "成功", dljgService.getDyhy());
         } catch (Exception e) {
             return R.error(400, "失败");
         }
