@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yh.mfox.gpdp.mapper.TripMapper">
+    <select id="queryRsMonth" resultType="java.util.Map" parameterType="java.lang.String">
+        select JQMC,sum(JDRSWRC) as JDRSWRC,sum(LJJDRSWRC) as LJJDRSWRC from "GP_SZZF_O"."JC_QSJQJDQKYBB" where to_char(TBSJ,'yyyy-mm') = #{date} group by JQMC
+    </select>
+    <select id="queryReport" resultType="java.util.Map" parameterType="java.lang.String">
+        select 'jdrs' as name,ifnull(sum(cast(JDRSWRC as Integer)),0) as count
+        from "GP_SZZF_O"."JC_QSJQJDQKYBB" where year(TBSJ) = #{date}
+        union
+        select 'zsr' as name,ifnull(sum(cast(ZHSRWY as Integer)),0) as count
+        from "GP_SZZF_O"."JC_QSJQJDQKYBB" where year(TBSJ) = #{date}
+        union
+        select 'mpsr' as name,ifnull(sum(cast(MPSRWY_BQ as Integer)),0) as count
+        from "GP_SZZF_O"."JC_JQJDQKYBB" where year(CREATE_TIME) = #{date}
+    </select>
+    <select id="queryRank" resultType="java.util.Map">
+        select JQMC,ifnull(sum(cast(ZHSRWY as Integer)),0) as count,'万元' as unit
+        from "GP_SZZF_O"."JC_QSJQJDQKYBB" group by JQMC
+    </select>
+    <select id="queryRsqs" resultType="java.util.Map" parameterType="java.lang.String">
+        select aa.JQMC,
+               sum(case aa.mon when '1' then aa.JDRSWRC else 0 end) as one,
+               sum(case aa.mon when '2' then aa.JDRSWRC else 0 end) as two,
+               sum(case aa.mon when '3' then aa.JDRSWRC else 0 end) as three,
+               sum(case aa.mon when '4' then aa.JDRSWRC else 0 end) as four,
+               sum(case aa.mon when '5' then aa.JDRSWRC else 0 end) as five,
+               sum(case aa.mon when '6' then aa.JDRSWRC else 0 end) as six,
+               sum(case aa.mon when '7' then aa.JDRSWRC else 0 end) as seven,
+               sum(case aa.mon when '8' then aa.JDRSWRC else 0 end) as eight,
+               sum(case aa.mon when '9' then aa.JDRSWRC else 0 end) as nine,
+               sum(case aa.mon when '10' then aa.JDRSWRC else 0 end) as ten ,
+               sum(case aa.mon when '11' then aa.JDRSWRC else 0 end) as eleven,
+               sum(case aa.mon when '12' then aa.JDRSWRC else 0 end) as twelve
+        from
+            (
+                select JQMC,JDRSWRC,month(TBSJ) as mon from "GP_SZZF_O"."JC_QSJQJDQKYBB" where year(TBSJ) = #{date}
+            )aa
+        group by aa.JQMC
+    </select>
+    <select id="queryMpMonth" resultType="java.util.Map" parameterType="java.lang.String">
+        select aa.JQDMC,
+               sum(case aa.mon when '1' then aa.MPSRWY_BQ else 0 end) as one,
+               sum(case aa.mon when '2' then aa.MPSRWY_BQ else 0 end) as two,
+               sum(case aa.mon when '3' then aa.MPSRWY_BQ else 0 end) as three,
+               sum(case aa.mon when '4' then aa.MPSRWY_BQ else 0 end) as four,
+               sum(case aa.mon when '5' then aa.MPSRWY_BQ else 0 end) as five,
+               sum(case aa.mon when '6' then aa.MPSRWY_BQ else 0 end) as six,
+               sum(case aa.mon when '7' then aa.MPSRWY_BQ else 0 end) as seven,
+               sum(case aa.mon when '8' then aa.MPSRWY_BQ else 0 end) as eight,
+               sum(case aa.mon when '9' then aa.MPSRWY_BQ else 0 end) as nine,
+               sum(case aa.mon when '10' then aa.MPSRWY_BQ else 0 end) as ten ,
+               sum(case aa.mon when '11' then aa.MPSRWY_BQ else 0 end) as eleven,
+               sum(case aa.mon when '12' then aa.MPSRWY_BQ else 0 end) as twelve
+        from
+            (
+                select JQDMC,MPSRWY_BQ,month(TBSJ) as mon from "GP_SZZF_O"."JC_JQJDQKYBB" where year(TBSJ) = #{date}
+            )aa
+        group by aa.JQDMC
+    </select>
+    <select id="queryRjrsMonth" resultType="java.util.Map" parameterType="java.lang.String">
+        select
+            month(TBSJ) as month,
+            sum(RJYZB_1ZBYLJJDRJRS_WGR) as WGR,
+            sum(RJYZB_1ZBYLJJDRJRS_XG) as XG,
+            sum(RJYZB_1ZBYLJJDRJRS_AM) as AM,
+            sum(RJYZB_1ZBYLJJDRJRS_HJ_TW) as TW
+        from "GP_SZZF_O"."JC_LYTJZYZBYBB" where year(TBSJ) = #{date} group by month(TBSJ)
+    </select>
+    <select id="queryRjrsCount" resultType="java.util.Map" parameterType="java.lang.String">
+        select
+            sum(RJYZB_1ZBYLJJDRJRS_WGR) as WGR,
+            sum(RJYZB_1ZBYLJJDRJRS_XG) as XG,
+            sum(RJYZB_1ZBYLJJDRJRS_AM) as AM,
+            sum(RJYZB_1ZBYLJJDRJRS_HJ_TW) as TW
+        from "GP_SZZF_O"."JC_LYTJZYZBYBB" where year(TBSJ) = #{date}
+    </select>
+    <select id="querySfq" resultType="java.util.Map" parameterType="java.lang.String">
+        select
+            LYGYJDRSWRC,
+            LYSRWY,
+            LYTSLG,
+            LYTSBJLG,
+            LYTSBJL,
+            LXSJ,
+            LYZSSSJ,
+            LYZSCWSZ,
+            LYGWCSJ,
+            LYYYCSJ
+        from "GP_SZZF_O"."JC_NDTBBSFQ" where ND = #{date};
+    </select>
+</mapper>
