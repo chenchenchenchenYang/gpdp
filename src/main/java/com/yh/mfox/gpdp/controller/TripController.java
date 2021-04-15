@@ -131,4 +131,19 @@ public class TripController {
             return R.error(400,"失败");
         }
     }
+
+
+    /**
+     * @Author: Wangcheny
+     * @Date: 2021年04月15日 下午 07:03:17
+     * @Description: 全市景区停车场数量统计
+     */
+    @PostMapping("/cwCount")
+    public Map<String, Object> getCwCount() {
+        try {
+            return R.ok(200,"成功",tripService.getCwCount());
+        } catch (Exception e) {
+            return R.error(400,"失败");
+        }
+    }
 }

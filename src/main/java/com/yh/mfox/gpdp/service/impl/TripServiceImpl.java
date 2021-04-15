@@ -64,4 +64,9 @@ public class TripServiceImpl implements TripService {
         if(null ==maps || maps.isEmpty()) return new HashMap<>();
         return maps.get(0);
     }
+
+    @Override
+    public List<Map<String, Object>> getCwCount() {
+        return tripMapper.queryCwCount();
+    }
 }

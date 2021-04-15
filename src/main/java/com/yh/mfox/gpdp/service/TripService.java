@@ -24,4 +24,6 @@ public interface TripService {
     Map<String,Object> getRjrsCount(String date);
 
     Map<String,Object> getSfq(String date);
+
+    List<Map<String,Object>> getCwCount();
 }

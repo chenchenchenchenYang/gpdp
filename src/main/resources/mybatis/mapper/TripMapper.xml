@@ -89,4 +89,8 @@
             LYYYCSJ
         from "GP_SZZF_O"."JC_NDTBBSFQ" where ND = #{date};
     </select>
+    <select id="queryCwCount" resultType="java.util.Map" >
+        select "JQMC","SL"
+        from "GP_SZZF_O"."GTCCCWZBFX";
+    </select>
 </mapper>
