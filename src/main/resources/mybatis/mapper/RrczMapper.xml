@@ -11,11 +11,11 @@
     </select>
     <select id="queryCount" resultType="java.util.Map">
         select 'total' as name, count(distinct SFZH) as num  from "GP_SZZF_M"."RRCZJNSH"
-            union all
+        union all
         select 'czrs' as name, count(*) from "GP_SZZF_M"."RRCZJNSH" where ZYJNXX_YW ='有'
-            union all
+        union all
         select 'raise' as name, count(*) from "GP_SZZF_M"."RRCZJNSH"  where ZYJNXX_YW ='有'
-        and ZYJNXX_HZSJ is not null and year(to_date(ZYJNXX_HZSJ)) = year(CURDATE())
+        and ZYJNXX_HZSJ is not null and isnumeric(ZYJNXX_HZSJ) = 1 and year(to_date(ZYJNXX_HZSJ)) = year(CURDATE())
     </select>
     <select id="queryProfessNum" resultType="java.util.Map">
         select ZYJSZCXX_ZCMC as name,count(*) as num  from "GP_SZZF_M"."RRCZJNSH"
