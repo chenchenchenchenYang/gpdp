@@ -22,15 +22,17 @@
         where  ZYJSZCXX_ZCMC is not null and ZYJSZCXX_YW = '有' group by ZYJSZCXX_ZCMC order by count(*) desc;
     </select>
     <select id="queryProfessRate" resultType="java.util.Map">
-        select ZYJSZCXX_CJ as name,count(*) as num  from "GP_SZZF_M"."RRCZJNSH" where  ZYJSZCXX_ZCMC is not null and ZYJSZCXX_YW = '有' group by ZYJSZCXX_CJ;
+        select ZYJSZCXX_CJ as name,count(*) as num from "GP_SZZF_M"."RRCZJNSH"
+        where ZYJSZCXX_ZCMC is not null and ZYJSZCXX_YW = '有' and ZYJSZCXX_CJ is not null group by ZYJSZCXX_CJ;
     </select>
-
     <select id="queryVocationNum" resultType="java.util.Map">
-        select ZYJNXX_ZSLB as name,count(*) as num  from "GP_SZZF_M"."RRCZJNSH" where  ZYJSZCXX_ZCMC is not null and ZYJSZCXX_YW = '有' group by ZYJNXX_ZSLB;
+        select ZYJNXX_ZSLB as name,count(*) as num  from "GP_SZZF_M"."RRCZJNSH"
+        where  ZYJSZCXX_ZCMC is not null and ZYJSZCXX_YW = '有' and ZYJNXX_ZSLB is not null  group by ZYJNXX_ZSLB;
     </select>
 
     <select id="queryVocationRate" resultType="java.util.Map">
-        select ZYJSZCXX_CJ as name,count(*) as num  from "GP_SZZF_M"."RRCZJNSH" where  ZYJSZCXX_ZCMC is not null and ZYJSZCXX_YW = '有' group by ZYJSZCXX_CJ;
+        select ZYJSZCXX_CJ as name,count(*) as num  from "GP_SZZF_M"."RRCZJNSH"
+        where ZYJSZCXX_ZCMC is not null and ZYJSZCXX_YW = '有' and ZYJSZCXX_CJ is not null group by ZYJSZCXX_CJ;
     </select>
 
     <select id="queryCzIn" resultType="java.util.Map">

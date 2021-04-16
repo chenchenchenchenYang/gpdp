@@ -55,10 +55,11 @@
     </select>
 
     <select id="queryEduCount" resultType="java.util.Map">
-        select WHCD,JSYZT as title,COUNT(*) as num from "GP_SZZF_M"."RRCZJNSH" WHERE JSYZT = '未就业' and JSYZT is not null
+        select WHCD,JSYZT as title,COUNT(*) as num from "GP_SZZF_M"."RRCZJNSH" WHERE JSYZT = '未就业' and JSYZT is not null and WHCD is not null
         GROUP BY WHCD,JSYZT
         UNION ALL
-        select WHCD,'就业' as title,COUNT(*) as num from "GP_SZZF_M"."RRCZJNSH"  WHERE JSYZT != '未就业' and JSYZT is not null GROUP BY WHCD
+        select WHCD,'就业' as title,COUNT(*) as num from "GP_SZZF_M"."RRCZJNSH"  WHERE JSYZT != '未就业' and JSYZT is not null and WHCD is not null
+        GROUP BY WHCD
     </select>
     <select id="queryAgeCount" resultType="java.util.Map">
         select
