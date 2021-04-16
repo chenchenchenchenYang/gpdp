@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yh.mfox.gpdp.mapper.YlggMapper">
+    <select id="queryRsCount" resultType="java.util.Map">
+        select
+            sum(JZRC) as JZRC,
+            sum(MZRC) as MZRC
+        from "GP_SZZF_I"."GP_YZJSC"
+        <where>
+            <if test="type != '' and type == 'day'">
+                AND to_char(SJ,'yyyy-MM-dd') = #{date}
+            </if>
+            <if test="type != '' and type == 'week'">
+                AND WEEK(SJ) = WEEK(#{date})
+            </if>
+            <if test="type != '' and type == 'month'">
+                AND to_char(SJ,'yyyy-MM') = to_char(#{date},'yyyy-MM')
+            </if>
+            <if test="type != '' and type == 'year'">
+                AND to_char(SJ,'yyyy') = to_char(#{date},'yyyy')
+            </if>
+        </where>
+    </select>
+
+    <select id="queryMzCount" resultType="java.util.Map">
+        select
+        sum(MZYZB) as MZYZB
+        from "GP_SZZF_I"."GP_YZJSC"
+        <where>
+            <if test="type != '' and type == 'day'">
+                AND to_char(SJ,'yyyy-MM-dd') = #{date}
+            </if>
+            <if test="type != '' and type == 'week'">
+                AND WEEK(SJ) = WEEK(#{date})
+            </if>
+            <if test="type != '' and type == 'month'">
+                AND to_char(SJ,'yyyy-MM') = to_char(#{date},'yyyy-MM')
+            </if>
+            <if test="type != '' and type == 'year'">
+                AND to_char(SJ,'yyyy') = to_char(#{date},'yyyy')
+            </if>
+        </where>
+    </select>
+
+    <select id="queryZyCount" resultType="java.util.Map">
+        select
+        sum(ZYYZB) as ZYYZB
+        from "GP_SZZF_I"."GP_YZJSC"
+        <where>
+            <if test="type != '' and type == 'day'">
+                AND to_char(SJ,'yyyy-MM-dd') = #{date}
+            </if>
+            <if test="type != '' and type == 'week'">
+                AND WEEK(SJ) = WEEK(#{date})
+            </if>
+            <if test="type != '' and type == 'month'">
+                AND to_char(SJ,'yyyy-MM') = to_char(#{date},'yyyy-MM')
+            </if>
+            <if test="type != '' and type == 'year'">
+                AND to_char(SJ,'yyyy') = to_char(#{date},'yyyy')
+            </if>
+        </where>
+    </select>
+</mapper>
