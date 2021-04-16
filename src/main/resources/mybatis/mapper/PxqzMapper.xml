@@ -33,12 +33,12 @@
     </select>
     <select id="queryXbCountBak" resultType="java.util.Map">
         select aa.xb,count(*) as num  from (
-        select
-            CASE (SUBSTR(SFZH,17,1)%2)
-                WHEN 1 THEN '男'
-                WHEN  0 THEN '女'
-                END AS xb  from "GP_SZZF_M"."RRCZJNSH" where SFZH is not null
-        ) aa group by aa.xb
+            select
+            CASE (SUBSTR(TRIM(SFZH),17,1)%2)
+               WHEN 1 THEN '男'
+               WHEN  0 THEN '女'
+               END AS xb  from "GP_SZZF_M"."RRCZJNSH" where SFZH is not null and length(SFZH) = 18
+       ) aa group by aa.xb
     </select>
 
     <select id="queryXbCount" resultType="java.util.Map">
