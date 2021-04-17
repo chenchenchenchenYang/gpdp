@@ -61,4 +61,710 @@
             </if>
         </where>
     </select>
+    <select id="querySsjcDay" resultType="java.util.Map">
+        select
+            to_char(SJ,'yyyy-MM-dd') as SJ,
+            JCLS,
+            ZYSSLS
+        from "GP_SZZF_I"."GP_YZJSC" where
+             to_char(SJ,'yyyy-MM-dd') = ADD_DAYS(#{date},-6)
+            union all
+            select
+            to_char(SJ,'yyyy-MM-dd') as SJ,
+            JCLS,
+            ZYSSLS
+            from "GP_SZZF_I"."GP_YZJSC" where
+             to_char(SJ,'yyyy-MM-dd') = ADD_DAYS(#{date},-5)
+            union all
+            select
+            to_char(SJ,'yyyy-MM-dd') as SJ,
+            JCLS,
+            ZYSSLS
+            from "GP_SZZF_I"."GP_YZJSC" where
+             to_char(SJ,'yyyy-MM-dd') = ADD_DAYS(#{date},-4)
+            union all
+            select
+            to_char(SJ,'yyyy-MM-dd') as SJ,
+            JCLS,
+            ZYSSLS
+            from "GP_SZZF_I"."GP_YZJSC" where
+             to_char(SJ,'yyyy-MM-dd') = ADD_DAYS(#{date},-3)
+            union all
+            select
+            to_char(SJ,'yyyy-MM-dd') as SJ,
+            JCLS,
+            ZYSSLS
+            from "GP_SZZF_I"."GP_YZJSC" where
+             to_char(SJ,'yyyy-MM-dd') = ADD_DAYS(#{date},-2)
+            union all
+            select
+            to_char(SJ,'yyyy-MM-dd') as SJ,
+            JCLS,
+            ZYSSLS
+            from "GP_SZZF_I"."GP_YZJSC" where
+             to_char(SJ,'yyyy-MM-dd') = ADD_DAYS(#{date},-1)
+            union all
+            select
+            to_char(SJ,'yyyy-MM-dd') as SJ,
+            JCLS,
+            ZYSSLS
+            from "GP_SZZF_I"."GP_YZJSC" where
+             to_char(SJ,'yyyy-MM-dd') = ADD_DAYS(#{date},0)
+    </select>
+    <select id="querySsjcWeek" resultType="java.util.Map">
+        select
+            year(ADD_WEEKS(#{date},-6)) as year,
+            WEEK(ADD_WEEKS(#{date},-6)) as SJ ,
+            IFNULL(SUM(JCLS),0) as JCLS,
+            IFNULL(SUM(ZYSSLS),0) as ZYSSLS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            WEEK(SJ) = WEEK(ADD_WEEKS(#{date},-6)) GROUP BY year(ADD_WEEKS(#{date},-6))
+        union all
+        select
+            year(ADD_WEEKS(#{date},-5)) as year,
+            WEEK(ADD_WEEKS(#{date},-5)) as SJ ,
+            IFNULL(SUM(JCLS),0) as JCLS,
+            IFNULL(SUM(ZYSSLS),0) as ZYSSLS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            WEEK(SJ) =  WEEK(ADD_WEEKS(#{date},-5)) GROUP BY year(ADD_WEEKS(#{date},-5))
+        union all
+        select
+            year(ADD_WEEKS(#{date},-4)) as year,
+            WEEK(ADD_WEEKS(#{date},-4)) as SJ ,
+            IFNULL(SUM(JCLS),0) as JCLS,
+            IFNULL(SUM(ZYSSLS),0) as ZYSSLS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            WEEK(SJ) =  WEEK(ADD_WEEKS(#{date},-4)) GROUP BY year(ADD_WEEKS(#{date},-4))
+        union all
+        select
+            year(ADD_WEEKS(#{date},-3)) as year,
+            WEEK(ADD_WEEKS(#{date},-3)) as SJ ,
+            IFNULL(SUM(JCLS),0) as JCLS,
+            IFNULL(SUM(ZYSSLS),0) as ZYSSLS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            WEEK(SJ) =  WEEK(ADD_WEEKS(#{date},-3)) GROUP BY year(ADD_WEEKS(#{date},-3))
+        union all
+        select
+            year(ADD_WEEKS(#{date},-2)) as year,
+            WEEK(ADD_WEEKS(#{date},-2)) as SJ ,
+            IFNULL(SUM(JCLS),0) as ZYSSLS,
+            IFNULL(SUM(ZYSSLS),0) as ZYSSLS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            WEEK(SJ) = WEEK(ADD_WEEKS(#{date},-2)) GROUP BY year(ADD_WEEKS(#{date},-2))
+        union all
+        select
+            year(ADD_WEEKS(#{date},-1)) as year,
+            WEEK(ADD_WEEKS(#{date},-1)) as SJ ,
+            IFNULL(SUM(JCLS),0) as ZYSSLS,
+            IFNULL(SUM(ZYSSLS),0) as ZYSSLS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            WEEK(SJ) =  WEEK(ADD_WEEKS(#{date},-1)) GROUP BY year(ADD_WEEKS(#{date},-1))
+        union all
+        select
+            year(ADD_WEEKS(#{date},0)) as year,
+            WEEK(ADD_WEEKS(#{date},0)) as SJ ,
+            IFNULL(SUM(JCLS),0) as ZYSSLS,
+            IFNULL(SUM(ZYSSLS),0) as ZYSSLS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            WEEK(SJ) =  WEEK(ADD_WEEKS(#{date},0)) GROUP BY year(ADD_WEEKS(#{date},0))
+    </select>
+    <select id="querySsjcMonth" resultType="java.util.Map">
+        select
+            year(ADD_MONTHS(#{date},-6)) as year,
+            MONTH(ADD_MONTHS(#{date},-6)) as SJ ,
+            IFNULL(SUM(JCLS),0) as JCLS,
+            IFNULL(SUM(ZYSSLS),0) as ZYSSLS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            MONTH(SJ) = MONTH(ADD_MONTHS(#{date},-6)) GROUP BY MONTH(ADD_MONTHS(#{date},-6))
+        union all
+        select
+            year(ADD_MONTHS(#{date},-5)) as year,
+            MONTH(ADD_MONTHS(#{date},-5)) as SJ ,
+            IFNULL(SUM(JCLS),0) as JCLS,
+            IFNULL(SUM(ZYSSLS),0) as ZYSSLS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            MONTH(SJ) =  MONTH(ADD_MONTHS(#{date},-5)) GROUP BY MONTH(ADD_MONTHS(#{date},-5))
+        union all
+        select
+            year(ADD_MONTHS(#{date},-4)) as year,
+            MONTH(ADD_MONTHS(#{date},-4)) as SJ ,
+            IFNULL(SUM(JCLS),0) as JCLS,
+            IFNULL(SUM(ZYSSLS),0) as ZYSSLS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            MONTH(SJ) =  MONTH(ADD_MONTHS(#{date},-4)) GROUP BY MONTH(ADD_MONTHS(#{date},-4))
+        union all
+        select
+            year(ADD_MONTHS(#{date},-3)) as year,
+            MONTH(ADD_MONTHS(#{date},-3)) as SJ ,
+            IFNULL(SUM(JCLS),0) as JCLS,
+            IFNULL(SUM(ZYSSLS),0) as ZYSSLS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            MONTH(SJ) =  MONTH(ADD_MONTHS(#{date},-3)) GROUP BY MONTH(ADD_MONTHS(#{date},-3))
+        union all
+        select
+            year(ADD_MONTHS(#{date},-2)) as year,
+            MONTH(ADD_MONTHS(#{date},-2)) as SJ ,
+            IFNULL(SUM(JCLS),0) as JCLS,
+            IFNULL(SUM(ZYSSLS),0) as ZYSSLS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            MONTH(SJ) = MONTH(ADD_MONTHS(#{date},-2)) GROUP BY MONTH(ADD_MONTHS(#{date},-2))
+        union all
+        select
+            year(ADD_MONTHS(#{date},-1)) as year,
+            MONTH(ADD_MONTHS(#{date},-1)) as SJ ,
+            IFNULL(SUM(JCLS),0) as JCLS,
+            IFNULL(SUM(ZYSSLS),0) as ZYSSLS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            MONTH(SJ) =  MONTH(ADD_MONTHS(#{date},-1)) GROUP BY MONTH(ADD_MONTHS(#{date},-1))
+        union all
+        select
+            year(ADD_MONTHS(#{date},0)) as year,
+            MONTH(ADD_MONTHS(#{date},0)) as SJ ,
+            IFNULL(SUM(JCLS),0) as JCLS,
+            IFNULL(SUM(ZYSSLS),0) as ZYSSLS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            MONTH(SJ) =  MONTH(ADD_MONTHS(#{date},0)) GROUP BY MONTH(ADD_MONTHS(#{date},0))
+    </select>
+    <select id="querySsjcYear" resultType="java.util.Map">
+        select
+            (year(#{date}) - 6 ) as year,
+            IFNULL(SUM(JCLS),0) as JCLS,
+            IFNULL(SUM(ZYSSLS),0) as ZYSSLS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            year(SJ) = (year(#{date}) - 6 )  group by (year(#{date}) - 6 )
+        union all
+        select
+            (year(#{date}) - 5 ) as year,
+            IFNULL(SUM(JCLS),0) as JCLS,
+            IFNULL(SUM(ZYSSLS),0) as ZYSSLS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            year(SJ) = (year(#{date}) - 5 )  group by (year(#{date}) - 5 )
+        union all
+        select
+            (year(#{date}) - 4 ) as year,
+            IFNULL(SUM(JCLS),0) as JCLS,
+            IFNULL(SUM(ZYSSLS),0) as ZYSSLS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            year(SJ) = (year(#{date}) - 4 )  group by (year(#{date}) - 4 )
+        union all
+        select
+            (year(#{date}) - 3 ) as year,
+            IFNULL(SUM(JCLS),0) as JCLS,
+            IFNULL(SUM(ZYSSLS),0) as ZYSSLS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            year(SJ) = (year(#{date}) - 3 )  group by (year(#{date}) - 3 )
+        union all
+        select
+            (year(#{date}) - 2 ) as year,
+            IFNULL(SUM(JCLS),0) as JCLS,
+            IFNULL(SUM(ZYSSLS),0) as ZYSSLS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            year(SJ) = (year(#{date}) - 2 )  group by (year(#{date}) - 2 )
+        union all
+        select
+            (year(#{date}) - 1 ) as year,
+            IFNULL(SUM(JCLS),0) as JCLS,
+            IFNULL(SUM(ZYSSLS),0) as ZYSSLS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            year(SJ) = (year(#{date}) - 1 )  group by (year(#{date}) - 1 )
+        union all
+        select
+            (year(#{date}) - 0 ) as year,
+            IFNULL(SUM(JCLS),0) as JCLS,
+            IFNULL(SUM(ZYSSLS),0) as ZYSSLS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            year(SJ) = (year(#{date}) - 0 )  group by (year(#{date}) - 0 )
+    </select>
+
+    <select id="queryRyrsDay" resultType="java.util.Map">
+        select
+            to_char(SJ,'yyyy-MM-dd') as SJ,
+            CYRS,
+            RYLS,
+            ZYRS
+        from "GP_SZZF_I"."GP_YZJSC" where
+            to_char(SJ,'yyyy-MM-dd') = ADD_DAYS(#{date},-6)
+        union all
+        select
+            to_char(SJ,'yyyy-MM-dd') as SJ,
+            CYRS,
+            RYLS,
+            ZYRS
+        from "GP_SZZF_I"."GP_YZJSC" where
+            to_char(SJ,'yyyy-MM-dd') = ADD_DAYS(#{date},-5)
+        union all
+        select
+            to_char(SJ,'yyyy-MM-dd') as SJ,
+            CYRS,
+            RYLS,
+            ZYRS
+        from "GP_SZZF_I"."GP_YZJSC" where
+            to_char(SJ,'yyyy-MM-dd') = ADD_DAYS(#{date},-4)
+        union all
+        select
+            to_char(SJ,'yyyy-MM-dd') as SJ,
+            CYRS,
+            RYLS,
+            ZYRS
+        from "GP_SZZF_I"."GP_YZJSC" where
+            to_char(SJ,'yyyy-MM-dd') = ADD_DAYS(#{date},-3)
+        union all
+        select
+            to_char(SJ,'yyyy-MM-dd') as SJ,
+            CYRS,
+            RYLS,
+            ZYRS
+        from "GP_SZZF_I"."GP_YZJSC" where
+            to_char(SJ,'yyyy-MM-dd') = ADD_DAYS(#{date},-2)
+        union all
+        select
+            to_char(SJ,'yyyy-MM-dd') as SJ,
+            CYRS,
+            RYLS,
+            ZYRS
+        from "GP_SZZF_I"."GP_YZJSC" where
+            to_char(SJ,'yyyy-MM-dd') = ADD_DAYS(#{date},-1)
+        union all
+        select
+            to_char(SJ,'yyyy-MM-dd') as SJ,
+            CYRS,
+            RYLS,
+            ZYRS
+        from "GP_SZZF_I"."GP_YZJSC" where
+            to_char(SJ,'yyyy-MM-dd') = ADD_DAYS(#{date},0)
+    </select>
+
+    <select id="queryRyrsWeek" resultType="java.util.Map">
+        select
+            year(ADD_WEEKS(#{date},-6)) as year,
+            WEEK(ADD_WEEKS(#{date},-6)) as SJ ,
+            IFNULL(SUM(CYRS),0) as CYRS,
+            IFNULL(SUM(RYLS),0) as RYLS,
+            IFNULL(SUM(ZYRS),0) as ZYRS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            WEEK(SJ) = WEEK(ADD_WEEKS(#{date},-6)) GROUP BY year(ADD_WEEKS(#{date},-6))
+        union all
+        select
+            year(ADD_WEEKS(#{date},-5)) as year,
+            WEEK(ADD_WEEKS(#{date},-5)) as SJ ,
+            IFNULL(SUM(CYRS),0) as CYRS,
+            IFNULL(SUM(RYLS),0) as RYLS,
+            IFNULL(SUM(ZYRS),0) as ZYRS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            WEEK(SJ) =  WEEK(ADD_WEEKS(#{date},-5)) GROUP BY year(ADD_WEEKS(#{date},-5))
+        union all
+        select
+            year(ADD_WEEKS(#{date},-4)) as year,
+            WEEK(ADD_WEEKS(#{date},-4)) as SJ ,
+            IFNULL(SUM(CYRS),0) as CYRS,
+            IFNULL(SUM(RYLS),0) as RYLS,
+            IFNULL(SUM(ZYRS),0) as ZYRS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            WEEK(SJ) =  WEEK(ADD_WEEKS(#{date},-4)) GROUP BY year(ADD_WEEKS(#{date},-4))
+        union all
+        select
+            year(ADD_WEEKS(#{date},-3)) as year,
+            WEEK(ADD_WEEKS(#{date},-3)) as SJ ,
+            IFNULL(SUM(CYRS),0) as CYRS,
+            IFNULL(SUM(RYLS),0) as RYLS,
+            IFNULL(SUM(ZYRS),0) as ZYRS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            WEEK(SJ) =  WEEK(ADD_WEEKS(#{date},-3)) GROUP BY year(ADD_WEEKS(#{date},-3))
+        union all
+        select
+            year(ADD_WEEKS(#{date},-2)) as year,
+            WEEK(ADD_WEEKS(#{date},-2)) as SJ ,
+            IFNULL(SUM(CYRS),0) as CYRS,
+            IFNULL(SUM(RYLS),0) as RYLS,
+            IFNULL(SUM(ZYRS),0) as ZYRS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            WEEK(SJ) = WEEK(ADD_WEEKS(#{date},-2)) GROUP BY year(ADD_WEEKS(#{date},-2))
+        union all
+        select
+            year(ADD_WEEKS(#{date},-1)) as year,
+            WEEK(ADD_WEEKS(#{date},-1)) as SJ ,
+            IFNULL(SUM(CYRS),0) as CYRS,
+            IFNULL(SUM(RYLS),0) as RYLS,
+            IFNULL(SUM(ZYRS),0) as ZYRS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            WEEK(SJ) =  WEEK(ADD_WEEKS(#{date},-1)) GROUP BY year(ADD_WEEKS(#{date},-1))
+        union all
+        select
+            year(ADD_WEEKS(#{date},0)) as year,
+            WEEK(ADD_WEEKS(#{date},0)) as SJ ,
+            IFNULL(SUM(CYRS),0) as CYRS,
+            IFNULL(SUM(RYLS),0) as RYLS,
+            IFNULL(SUM(ZYRS),0) as ZYRS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            WEEK(SJ) =  WEEK(ADD_WEEKS(#{date},0)) GROUP BY year(ADD_WEEKS(#{date},0))
+    </select>
+
+    <select id="queryRyrsMonth" resultType="java.util.Map">
+        select
+            year(ADD_MONTHS(#{date},-6)) as year,
+            MONTH(ADD_MONTHS(#{date},-6)) as SJ ,
+            IFNULL(SUM(CYRS),0) as CYRS,
+            IFNULL(SUM(RYLS),0) as RYLS,
+            IFNULL(SUM(ZYRS),0) as ZYRS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            MONTH(SJ) = MONTH(ADD_MONTHS(#{date},-6)) GROUP BY MONTH(ADD_MONTHS(#{date},-6))
+        union all
+        select
+            year(ADD_MONTHS(#{date},-5)) as year,
+            MONTH(ADD_MONTHS(#{date},-5)) as SJ ,
+            IFNULL(SUM(CYRS),0) as CYRS,
+            IFNULL(SUM(RYLS),0) as RYLS,
+            IFNULL(SUM(ZYRS),0) as ZYRS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            MONTH(SJ) =  MONTH(ADD_MONTHS(#{date},-5)) GROUP BY MONTH(ADD_MONTHS(#{date},-5))
+        union all
+        select
+            year(ADD_MONTHS(#{date},-4)) as year,
+            MONTH(ADD_MONTHS(#{date},-4)) as SJ ,
+            IFNULL(SUM(CYRS),0) as CYRS,
+            IFNULL(SUM(RYLS),0) as RYLS,
+            IFNULL(SUM(ZYRS),0) as ZYRS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            MONTH(SJ) =  MONTH(ADD_MONTHS(#{date},-4)) GROUP BY MONTH(ADD_MONTHS(#{date},-4))
+        union all
+        select
+            year(ADD_MONTHS(#{date},-3)) as year,
+            MONTH(ADD_MONTHS(#{date},-3)) as SJ ,
+            IFNULL(SUM(CYRS),0) as CYRS,
+            IFNULL(SUM(RYLS),0) as RYLS,
+            IFNULL(SUM(ZYRS),0) as ZYRS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            MONTH(SJ) =  MONTH(ADD_MONTHS(#{date},-3)) GROUP BY MONTH(ADD_MONTHS(#{date},-3))
+        union all
+        select
+            year(ADD_MONTHS(#{date},-2)) as year,
+            MONTH(ADD_MONTHS(#{date},-2)) as SJ ,
+            IFNULL(SUM(CYRS),0) as CYRS,
+            IFNULL(SUM(RYLS),0) as RYLS,
+            IFNULL(SUM(ZYRS),0) as ZYRS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            MONTH(SJ) = MONTH(ADD_MONTHS(#{date},-2)) GROUP BY MONTH(ADD_MONTHS(#{date},-2))
+        union all
+        select
+            year(ADD_MONTHS(#{date},-1)) as year,
+            MONTH(ADD_MONTHS(#{date},-1)) as SJ ,
+            IFNULL(SUM(CYRS),0) as CYRS,
+            IFNULL(SUM(RYLS),0) as RYLS,
+            IFNULL(SUM(ZYRS),0) as ZYRS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            MONTH(SJ) =  MONTH(ADD_MONTHS(#{date},-1)) GROUP BY MONTH(ADD_MONTHS(#{date},-1))
+        union all
+        select
+            year(ADD_MONTHS(#{date},0)) as year,
+            MONTH(ADD_MONTHS(#{date},0)) as SJ ,
+            IFNULL(SUM(CYRS),0) as CYRS,
+            IFNULL(SUM(RYLS),0) as RYLS,
+            IFNULL(SUM(ZYRS),0) as ZYRS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            MONTH(SJ) =  MONTH(ADD_MONTHS(#{date},0)) GROUP BY MONTH(ADD_MONTHS(#{date},0))
+    </select>
+
+    <select id="queryRyrsYear" resultType="java.util.Map">
+        select
+            (year(#{date}) - 6 ) as year,
+            IFNULL(SUM(CYRS),0) as CYRS,
+            IFNULL(SUM(RYLS),0) as RYLS,
+            IFNULL(SUM(ZYRS),0) as ZYRS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            year(SJ) = (year(#{date}) - 6 )  group by (year(#{date}) - 6 )
+        union all
+        select
+            (year(#{date}) - 5 ) as year,
+            IFNULL(SUM(CYRS),0) as CYRS,
+            IFNULL(SUM(RYLS),0) as RYLS,
+            IFNULL(SUM(ZYRS),0) as ZYRS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            year(SJ) = (year(#{date}) - 5 )  group by (year(#{date}) - 5 )
+        union all
+        select
+            (year(#{date}) - 4 ) as year,
+            IFNULL(SUM(CYRS),0) as CYRS,
+            IFNULL(SUM(RYLS),0) as RYLS,
+            IFNULL(SUM(ZYRS),0) as ZYRS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            year(SJ) = (year(#{date}) - 4 )  group by (year(#{date}) - 4 )
+        union all
+        select
+            (year(#{date}) - 3 ) as year,
+            IFNULL(SUM(CYRS),0) as CYRS,
+            IFNULL(SUM(RYLS),0) as RYLS,
+            IFNULL(SUM(ZYRS),0) as ZYRS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            year(SJ) = (year(#{date}) - 3 )  group by (year(#{date}) - 3 )
+        union all
+        select
+            (year(#{date}) - 2 ) as year,
+            IFNULL(SUM(CYRS),0) as CYRS,
+            IFNULL(SUM(RYLS),0) as RYLS,
+            IFNULL(SUM(ZYRS),0) as ZYRS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            year(SJ) = (year(#{date}) - 2 )  group by (year(#{date}) - 2 )
+        union all
+        select
+            (year(#{date}) - 1 ) as year,
+            IFNULL(SUM(CYRS),0) as CYRS,
+            IFNULL(SUM(RYLS),0) as RYLS,
+            IFNULL(SUM(ZYRS),0) as ZYRS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            year(SJ) = (year(#{date}) - 1 )  group by (year(#{date}) - 1 )
+        union all
+        select
+            (year(#{date}) - 0 ) as year,
+            IFNULL(SUM(CYRS),0) as CYRS,
+            IFNULL(SUM(RYLS),0) as RYLS,
+            IFNULL(SUM(ZYRS),0) as ZYRS
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            year(SJ) = (year(#{date}) - 0 )  group by (year(#{date}) - 0 )
+    </select>
+
+    <select id="queryJcfDay" resultType="java.util.Map">
+        select
+            to_char(SJ,'yyyy-MM-dd') as SJ,
+            ZYCJFY,
+            MZCJFY,
+            MCRFY
+        from "GP_SZZF_I"."GP_YZJSC" where
+            to_char(SJ,'yyyy-MM-dd') = ADD_DAYS(#{date},-6)
+        union all
+        select
+            to_char(SJ,'yyyy-MM-dd') as SJ,
+            ZYCJFY,
+            MZCJFY,
+            MCRFY
+        from "GP_SZZF_I"."GP_YZJSC" where
+            to_char(SJ,'yyyy-MM-dd') = ADD_DAYS(#{date},-5)
+        union all
+        select
+            to_char(SJ,'yyyy-MM-dd') as SJ,
+            ZYCJFY,
+            MZCJFY,
+            MCRFY
+        from "GP_SZZF_I"."GP_YZJSC" where
+            to_char(SJ,'yyyy-MM-dd') = ADD_DAYS(#{date},-4)
+        union all
+        select
+            to_char(SJ,'yyyy-MM-dd') as SJ,
+            ZYCJFY,
+            MZCJFY,
+            MCRFY
+        from "GP_SZZF_I"."GP_YZJSC" where
+            to_char(SJ,'yyyy-MM-dd') = ADD_DAYS(#{date},-3)
+        union all
+        select
+            to_char(SJ,'yyyy-MM-dd') as SJ,
+            ZYCJFY,
+            MZCJFY,
+            MCRFY
+        from "GP_SZZF_I"."GP_YZJSC" where
+            to_char(SJ,'yyyy-MM-dd') = ADD_DAYS(#{date},-2)
+        union all
+        select
+            to_char(SJ,'yyyy-MM-dd') as SJ,
+            ZYCJFY,
+            MZCJFY,
+            MCRFY
+        from "GP_SZZF_I"."GP_YZJSC" where
+            to_char(SJ,'yyyy-MM-dd') = ADD_DAYS(#{date},-1)
+        union all
+        select
+            to_char(SJ,'yyyy-MM-dd') as SJ,
+            ZYCJFY,
+            MZCJFY,
+            MCRFY
+        from "GP_SZZF_I"."GP_YZJSC" where
+            to_char(SJ,'yyyy-MM-dd') = ADD_DAYS(#{date},0)
+    </select>
+
+    <select id="queryJcfWeek" resultType="java.util.Map">
+        select
+            year(ADD_WEEKS(#{date},-6)) as year,
+            WEEK(ADD_WEEKS(#{date},-6)) as SJ ,
+            IFNULL(SUM(ZYCJFY),0) as ZYCJFY,
+            IFNULL(SUM(MZCJFY),0) as MZCJFY,
+            IFNULL(SUM(MCRFY),0) as MCRFY
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            WEEK(SJ) = WEEK(ADD_WEEKS(#{date},-6)) GROUP BY year(ADD_WEEKS(#{date},-6))
+        union all
+        select
+            year(ADD_WEEKS(#{date},-5)) as year,
+            WEEK(ADD_WEEKS(#{date},-5)) as SJ ,
+            IFNULL(SUM(ZYCJFY),0) as ZYCJFY,
+            IFNULL(SUM(MZCJFY),0) as MZCJFY,
+            IFNULL(SUM(MCRFY),0) as MCRFY
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            WEEK(SJ) =  WEEK(ADD_WEEKS(#{date},-5)) GROUP BY year(ADD_WEEKS(#{date},-5))
+        union all
+        select
+            year(ADD_WEEKS(#{date},-4)) as year,
+            WEEK(ADD_WEEKS(#{date},-4)) as SJ ,
+            IFNULL(SUM(ZYCJFY),0) as ZYCJFY,
+            IFNULL(SUM(MZCJFY),0) as MZCJFY,
+            IFNULL(SUM(MCRFY),0) as MCRFY
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            WEEK(SJ) =  WEEK(ADD_WEEKS(#{date},-4)) GROUP BY year(ADD_WEEKS(#{date},-4))
+        union all
+        select
+            year(ADD_WEEKS(#{date},-3)) as year,
+            WEEK(ADD_WEEKS(#{date},-3)) as SJ ,
+            IFNULL(SUM(ZYCJFY),0) as ZYCJFY,
+            IFNULL(SUM(MZCJFY),0) as MZCJFY,
+            IFNULL(SUM(MCRFY),0) as MCRFY
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            WEEK(SJ) =  WEEK(ADD_WEEKS(#{date},-3)) GROUP BY year(ADD_WEEKS(#{date},-3))
+        union all
+        select
+            year(ADD_WEEKS(#{date},-2)) as year,
+            WEEK(ADD_WEEKS(#{date},-2)) as SJ ,
+            IFNULL(SUM(ZYCJFY),0) as ZYCJFY,
+            IFNULL(SUM(MZCJFY),0) as MZCJFY,
+            IFNULL(SUM(MCRFY),0) as MCRFY
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            WEEK(SJ) = WEEK(ADD_WEEKS(#{date},-2)) GROUP BY year(ADD_WEEKS(#{date},-2))
+        union all
+        select
+            year(ADD_WEEKS(#{date},-1)) as year,
+            WEEK(ADD_WEEKS(#{date},-1)) as SJ ,
+            IFNULL(SUM(ZYCJFY),0) as ZYCJFY,
+            IFNULL(SUM(MZCJFY),0) as MZCJFY,
+            IFNULL(SUM(MCRFY),0) as MCRFY
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            WEEK(SJ) =  WEEK(ADD_WEEKS(#{date},-1)) GROUP BY year(ADD_WEEKS(#{date},-1))
+        union all
+        select
+            year(ADD_WEEKS(#{date},0)) as year,
+            WEEK(ADD_WEEKS(#{date},0)) as SJ ,
+            IFNULL(SUM(ZYCJFY),0) as ZYCJFY,
+            IFNULL(SUM(MZCJFY),0) as MZCJFY,
+            IFNULL(SUM(MCRFY),0) as MCRFY
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            WEEK(SJ) =  WEEK(ADD_WEEKS(#{date},0)) GROUP BY year(ADD_WEEKS(#{date},0))
+    </select>
+
+    <select id="queryJcfMonth" resultType="java.util.Map">
+        select
+            year(ADD_MONTHS(#{date},-6)) as year,
+            MONTH(ADD_MONTHS(#{date},-6)) as SJ ,
+            IFNULL(SUM(ZYCJFY),0) as ZYCJFY,
+            IFNULL(SUM(MZCJFY),0) as MZCJFY,
+            IFNULL(SUM(MCRFY),0) as MCRFY
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            MONTH(SJ) = MONTH(ADD_MONTHS(#{date},-6)) GROUP BY MONTH(ADD_MONTHS(#{date},-6))
+        union all
+        select
+            year(ADD_MONTHS(#{date},-5)) as year,
+            MONTH(ADD_MONTHS(#{date},-5)) as SJ ,
+            IFNULL(SUM(ZYCJFY),0) as ZYCJFY,
+            IFNULL(SUM(MZCJFY),0) as MZCJFY,
+            IFNULL(SUM(MCRFY),0) as MCRFY
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            MONTH(SJ) =  MONTH(ADD_MONTHS(#{date},-5)) GROUP BY MONTH(ADD_MONTHS(#{date},-5))
+        union all
+        select
+            year(ADD_MONTHS(#{date},-4)) as year,
+            MONTH(ADD_MONTHS(#{date},-4)) as SJ ,
+            IFNULL(SUM(ZYCJFY),0) as ZYCJFY,
+            IFNULL(SUM(MZCJFY),0) as MZCJFY,
+            IFNULL(SUM(MCRFY),0) as MCRFY
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            MONTH(SJ) =  MONTH(ADD_MONTHS(#{date},-4)) GROUP BY MONTH(ADD_MONTHS(#{date},-4))
+        union all
+        select
+            year(ADD_MONTHS(#{date},-3)) as year,
+            MONTH(ADD_MONTHS(#{date},-3)) as SJ ,
+            IFNULL(SUM(ZYCJFY),0) as ZYCJFY,
+            IFNULL(SUM(MZCJFY),0) as MZCJFY,
+            IFNULL(SUM(MCRFY),0) as MCRFY
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            MONTH(SJ) =  MONTH(ADD_MONTHS(#{date},-3)) GROUP BY MONTH(ADD_MONTHS(#{date},-3))
+        union all
+        select
+            year(ADD_MONTHS(#{date},-2)) as year,
+            MONTH(ADD_MONTHS(#{date},-2)) as SJ ,
+            IFNULL(SUM(ZYCJFY),0) as ZYCJFY,
+            IFNULL(SUM(MZCJFY),0) as MZCJFY,
+            IFNULL(SUM(MCRFY),0) as MCRFY
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            MONTH(SJ) = MONTH(ADD_MONTHS(#{date},-2)) GROUP BY MONTH(ADD_MONTHS(#{date},-2))
+        union all
+        select
+            year(ADD_MONTHS(#{date},-1)) as year,
+            MONTH(ADD_MONTHS(#{date},-1)) as SJ ,
+            IFNULL(SUM(ZYCJFY),0) as ZYCJFY,
+            IFNULL(SUM(MZCJFY),0) as MZCJFY,
+            IFNULL(SUM(MCRFY),0) as MCRFY
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            MONTH(SJ) =  MONTH(ADD_MONTHS(#{date},-1)) GROUP BY MONTH(ADD_MONTHS(#{date},-1))
+        union all
+        select
+            year(ADD_MONTHS(#{date},0)) as year,
+            MONTH(ADD_MONTHS(#{date},0)) as SJ ,
+            IFNULL(SUM(ZYCJFY),0) as ZYCJFY,
+            IFNULL(SUM(MZCJFY),0) as MZCJFY,
+            IFNULL(SUM(MCRFY),0) as MCRFY
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            MONTH(SJ) =  MONTH(ADD_MONTHS(#{date},0)) GROUP BY MONTH(ADD_MONTHS(#{date},0))
+    </select>
+
+    <select id="queryJcfYear" resultType="java.util.Map">
+        select
+            (year(#{date}) - 6 ) as year,
+            IFNULL(SUM(ZYCJFY),0) as ZYCJFY,
+            IFNULL(SUM(MZCJFY),0) as MZCJFY,
+            IFNULL(SUM(MCRFY),0) as MCRFY
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            year(SJ) = (year(#{date}) - 6 )  group by (year(#{date}) - 6 )
+        union all
+        select
+            (year(#{date}) - 5 ) as year,
+            IFNULL(SUM(ZYCJFY),0) as ZYCJFY,
+            IFNULL(SUM(MZCJFY),0) as MZCJFY,
+            IFNULL(SUM(MCRFY),0) as MCRFY
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            year(SJ) = (year(#{date}) - 5 )  group by (year(#{date}) - 5 )
+        union all
+        select
+            (year(#{date}) - 4 ) as year,
+            IFNULL(SUM(ZYCJFY),0) as ZYCJFY,
+            IFNULL(SUM(MZCJFY),0) as MZCJFY,
+            IFNULL(SUM(MCRFY),0) as MCRFY
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            year(SJ) = (year(#{date}) - 4 )  group by (year(#{date}) - 4 )
+        union all
+        select
+            (year(#{date}) - 3 ) as year,
+            IFNULL(SUM(ZYCJFY),0) as ZYCJFY,
+            IFNULL(SUM(MZCJFY),0) as MZCJFY,
+            IFNULL(SUM(MCRFY),0) as MCRFY
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            year(SJ) = (year(#{date}) - 3 )  group by (year(#{date}) - 3 )
+        union all
+        select
+            (year(#{date}) - 2 ) as year,
+            IFNULL(SUM(ZYCJFY),0) as ZYCJFY,
+            IFNULL(SUM(MZCJFY),0) as MZCJFY,
+            IFNULL(SUM(MCRFY),0) as MCRFY
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            year(SJ) = (year(#{date}) - 2 )  group by (year(#{date}) - 2 )
+        union all
+        select
+            (year(#{date}) - 1 ) as year,
+            IFNULL(SUM(ZYCJFY),0) as ZYCJFY,
+            IFNULL(SUM(MZCJFY),0) as MZCJFY,
+            IFNULL(SUM(MCRFY),0) as MCRFY
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            year(SJ) = (year(#{date}) - 1 )  group by (year(#{date}) - 1 )
+        union all
+        select
+            (year(#{date}) - 0 ) as year,
+            IFNULL(SUM(ZYCJFY),0) as ZYCJFY,
+            IFNULL(SUM(MZCJFY),0) as MZCJFY,
+            IFNULL(SUM(MCRFY),0) as MCRFY
+        from "GP_SZZF_I"."GP_YZJSC" WHERE
+            year(SJ) = (year(#{date}) - 0 )  group by (year(#{date}) - 0 )
+    </select>
 </mapper>

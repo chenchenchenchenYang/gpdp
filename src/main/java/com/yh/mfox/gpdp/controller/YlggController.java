@@ -37,6 +37,11 @@ public class YlggController {
         }
     }
 
+    /**
+     * @Author: Wangcheny
+     * @Date: 2021年04月16日 下午 05:31:40
+     * @Description: 门诊/住院收入占比
+     */
     @PostMapping("/srCount")
     public Map<String, Object> getSrCount(String type,String date) {
         try {
@@ -46,4 +51,45 @@ public class YlggController {
         }
     }
 
+    /**
+     * @Author: Wangcheny
+     * @Date: 2021年04月17日 上午 09:54:16
+     * @Description: 手术及检查例数趋势图
+     */
+    @PostMapping("/ssjc")
+    public Map<String, Object> getSsjc(String type,String date) {
+        try {
+            return R.ok(200,"成功",ylggService.getSsjc(type,date));
+        } catch (Exception e) {
+            return R.error(400,"失败");
+        }
+    }
+
+    /**
+     * @Author: Wangcheny
+     * @Date: 2021年04月17日 上午 09:57:33
+     * @Description: 入院人数变化
+     */
+    @PostMapping("/ryrs")
+    public Map<String, Object> getRyrs(String type,String date) {
+        try {
+            return R.ok(200,"成功",ylggService.getRyrs(type,date));
+        } catch (Exception e) {
+            return R.error(400,"失败");
+        }
+    }
+
+    /**
+     * @Author: Wangcheny
+     * @Date: 2021年04月17日 上午 10:41:23
+     * @Description: 住院、门诊均次费
+     */
+    @PostMapping("/jcf")
+    public Map<String, Object> getJcf(String type,String date) {
+        try {
+            return R.ok(200,"成功",ylggService.getJcf(type,date));
+        } catch (Exception e) {
+            return R.error(400,"失败");
+        }
+    }
 }

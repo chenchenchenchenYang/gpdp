@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -78,5 +79,32 @@ public class YlggServiceImpl implements YlggService {
             res.put("zy",map);
         }
         return res;
+    }
+
+    @Override
+    public List<Map<String, Object>> getSsjc(String type, String date) {
+        if(!"".equals(type) && "day".equals(type)) return ylggMapper.querySsjcDay(date);
+        else if("week".equals(type)) return ylggMapper.querySsjcWeek(date);
+        else if("month".equals(type)) return ylggMapper.querySsjcMonth(date);
+        else if("year".equals(type)) return ylggMapper.querySsjcYear(date);
+        return new ArrayList<>();
+    }
+
+    @Override
+    public List<Map<String, Object>> getRyrs(String type, String date) {
+        if(!"".equals(type) && "day".equals(type)) return ylggMapper.queryRyrsDay(date);
+        else if("week".equals(type)) return ylggMapper.queryRyrsWeek(date);
+        else if("month".equals(type)) return ylggMapper.queryRyrsMonth(date);
+        else if("year".equals(type)) return ylggMapper.queryRyrsYear(date);
+        return new ArrayList<>();
+    }
+
+    @Override
+    public List<Map<String, Object>> getJcf(String type, String date) {
+        if(!"".equals(type) && "day".equals(type)) return ylggMapper.queryJcfDay(date);
+        else if("week".equals(type)) return ylggMapper.queryJcfWeek(date);
+        else if("month".equals(type)) return ylggMapper.queryJcfMonth(date);
+        else if("year".equals(type)) return ylggMapper.queryJcfYear(date);
+        return new ArrayList<>();
     }
 }
