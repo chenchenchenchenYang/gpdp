@@ -107,4 +107,14 @@ public class YlggServiceImpl implements YlggService {
         else if("year".equals(type)) return ylggMapper.queryJcfYear(date);
         return new ArrayList<>();
     }
+
+    @Override
+    public List<Map<String, Object>> getXl() {
+        return ylggMapper.queryXl();
+    }
+
+    @Override
+    public List<Map<String, Object>> getZc() {
+        return ylggMapper.queryZc();
+    }
 }

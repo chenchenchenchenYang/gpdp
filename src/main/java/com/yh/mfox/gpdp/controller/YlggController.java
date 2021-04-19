@@ -92,4 +92,33 @@ public class YlggController {
             return R.error(400,"失败");
         }
     }
+
+    /**
+     * @Author: Wangcheny
+     * @Date: 2021年04月19日 上午 09:57:03
+     * @Description: 学历占比
+     */
+    @PostMapping("/xl")
+    public Map<String, Object> getXl() {
+        try {
+            return R.ok(200,"成功",ylggService.getXl());
+        } catch (Exception e) {
+            return R.error(400,"失败");
+        }
+    }
+
+    /**
+     * @Author: Wangcheny
+     * @Date: 2021年04月19日 上午 09:57:03
+     * @Description: 职称构成
+     */
+    @PostMapping("/zc")
+    public Map<String, Object> getZc() {
+        try {
+            return R.ok(200,"成功",ylggService.getZc());
+        } catch (Exception e) {
+            return R.error(400,"失败");
+        }
+    }
+
 }

@@ -13,4 +13,8 @@ public interface YlggService {
     List<Map<String, Object>> getRyrs(String type, String date);
 
     List<Map<String, Object>> getJcf(String type, String date);
+
+    List<Map<String, Object>> getXl();
+
+    List<Map<String, Object>> getZc();
 }

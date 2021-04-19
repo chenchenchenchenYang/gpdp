@@ -42,4 +42,8 @@ public interface YlggMapper {
     List<Map<String, Object>> queryJcfMonth(@Param("date") String date);
 
     List<Map<String, Object>> queryJcfYear(@Param("date") String date);
+
+    List<Map<String, Object>> queryXl();
+
+    List<Map<String, Object>> queryZc();
 }

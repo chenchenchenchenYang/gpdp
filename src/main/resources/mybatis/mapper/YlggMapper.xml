@@ -767,4 +767,14 @@
         from "GP_SZZF_I"."GP_YZJSC" WHERE
             year(SJ) = (year(#{date}) - 0 )  group by (year(#{date}) - 0 )
     </select>
+
+    <select id="queryXl" resultType="java.util.Map">
+        select "XL","ZB"
+        from "GP_SZZF_I"."RYXLGC";
+    </select>
+
+    <select id="queryZc" resultType="java.util.Map">
+        select "JB","RS"
+        from "GP_SZZF_I"."RYZCGC";
+    </select>
 </mapper>
