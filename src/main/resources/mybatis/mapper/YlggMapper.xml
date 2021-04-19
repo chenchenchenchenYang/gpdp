@@ -769,7 +769,7 @@
     </select>
 
     <select id="queryXl" resultType="java.util.Map">
-        select "XL","ZB"
+        select "XL","SL"
         from "GP_SZZF_I"."RYXLGC";
     </select>
 
