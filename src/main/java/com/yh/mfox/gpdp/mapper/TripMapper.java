@@ -25,4 +25,6 @@ public interface TripMapper {
     List<Map<String, Object>> querySfq(String date);
 
     List<Map<String, Object>> queryCwCount();
+
+    List<Map<String, Object>> queryGis();
 }

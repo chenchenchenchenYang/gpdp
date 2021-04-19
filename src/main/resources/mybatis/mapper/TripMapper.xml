@@ -93,4 +93,9 @@
         select "JQMC","SL"
         from "GP_SZZF_O"."GTCCCWZBFX";
     </select>
+
+    <select id="queryGis" resultType="java.util.Map" >
+        select "JQMC","JQDJ","FZR","LXDH","XZQY","YB","XXDZ","JD","WD","GW","JQJS","TP","SP","TB"
+        from "GP_SZZF_O"."ZYQJ";
+    </select>
 </mapper>

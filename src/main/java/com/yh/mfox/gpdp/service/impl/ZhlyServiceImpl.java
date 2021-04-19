@@ -1,0 +1,55 @@
+package com.yh.mfox.gpdp.service.impl;
+
+import com.yh.mfox.gpdp.mapper.ZhlyMapper;
+import com.yh.mfox.gpdp.service.ZhlyService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Map;
+
+@Service
+public class ZhlyServiceImpl implements ZhlyService {
+    @Autowired
+    private ZhlyMapper zhlyMapper;
+
+    @Override
+    public List<Map<String, Object>> getCount() {
+        return zhlyMapper.queryCount();
+    }
+
+    @Override
+    public List<Map<String, Object>> getHxdjzb() {
+        return zhlyMapper.queryHxdjzb();
+    }
+
+    @Override
+    public List<Map<String, Object>> getDyx() {
+        return zhlyMapper.queryDyx();
+    }
+
+    @Override
+    public List<Map<String, Object>> getFhwz() {
+        return zhlyMapper.queryFhwz();
+    }
+
+    @Override
+    public List<Map<String, Object>> getHly() {
+        return zhlyMapper.queryHly();
+    }
+
+    @Override
+    public List<Map<String, Object>> getZfdw(String dwmc) {
+        return zhlyMapper.queryZfdw(dwmc);
+    }
+
+    @Override
+    public List<Map<String, Object>> getZbxq(String dwmc,String zbmc) {
+        return zhlyMapper.queryZbxq(dwmc,zbmc);
+    }
+
+    @Override
+    public List<Map<String, Object>> getJbxx(String lcmc) {
+        return zhlyMapper.queryJbxx(lcmc);
+    }
+}

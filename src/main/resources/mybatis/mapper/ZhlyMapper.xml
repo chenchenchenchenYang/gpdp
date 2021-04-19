@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yh.mfox.gpdp.mapper.ZhlyMapper">
+    <select id="queryCount" resultType="java.util.Map">
+        select 'mj' as title ,cast(ifnull(sum(MJM),0) as varchar) as count
+        from "GP_SZZF_K"."JC_GJGYLXBMBGY_JT"
+        union all
+        select 'rate' as title,SLFGL as count
+        from "GP_SZZF_K"."JC_GPSSLFGL_ND" where ND =year(curdate())
+        union all
+        select 'lcsl' as title,cast(count(*) as varchar) as count
+        from "GP_SZZF_K"."JC_GJGYLXBMBGY_JT"
+    </select>
+
+    <select id="queryHxdjzb" resultType="java.util.Map">
+        select WXCD,count(*) as num
+        from "GP_SZZF_K"."LCWL24XSHXDJYB" group by WXCD order by count(*) desc;
+    </select>
+
+    <select id="queryDyx" resultType="java.util.Map">
+        select 'type' as name, count(distinct SZ) as num
+        from "GP_SZZF_K"."JC_GPSGSMMML"
+        union all
+        select 'num' as name, count(distinct BH) as num
+        from "GP_SZZF_K"."JC_GPSGSMMML"
+        union all
+        select 'yj' as name, ifnull(sum(GJYJBHDWSL),0) as num
+        from "GP_SZZF_K"."JC_GPSGSMMML"
+        union all
+        select 'ej' as name, ifnull(sum(GJEJBHDWSL),0) as num
+        from "GP_SZZF_K"."JC_GPSGSMMML"
+    </select>
+
+    <select id="queryFhwz" resultType="java.util.Map">
+        select 'dwzf' as name ,ifnull(count(*),0) as num
+        from "GP_SZZF_K"."ZSDWB"
+        union all
+        select 'dwzb' as name ,ifnull(sum(ZBSL),0) as num
+        from "GP_SZZF_K"."ZFDWZBB"
+        union all
+        select 'hly' as name ,ifnull(count(*),0) as num
+        from "GP_SZZF_K"."HLYB"
+        union all
+        select 'qsdd' as name, ifnull(count(*),0) as num
+        from ( select QSDD
+        from "GP_SZZF_K"."JC_GJGYLXBMBGY_JT" where QSDD is not null group by QSDD) a
+    </select>
+    <select id="queryHly" resultType="java.util.Map">
+        select  XM, ZYJSZC, FZLCMC, DH
+        from "GP_SZZF_K"."HLYB";
+    </select>
+    <select id="queryZfdw" resultType="java.util.Map" parameterType="java.lang.String">
+        select aa."DWMC",aa."DWRS",aa."GSDW",
+               aa."FZEXM",aa."FZRDH",aa."ZSDD",ifnull(bb.ZBMC,'') as ZBMC
+        from "GP_SZZF_K"."ZSDWB" aa
+                 left join
+             (
+                 select b.ZBMC,b.GSDWMC from (
+                     select GSDWMC,max(ZBSL) as num  from "GP_SZZF_K"."ZFDWZBB" group by GSDWMC
+                 ) t  left join "GP_SZZF_K"."ZFDWZBB" b on  t.GSDWMC = b.GSDWMC and t.num = b.ZBSL
+             )
+        bb on aa.DWMC = bb.GSDWMC
+        <where>
+            <if test="dwmc != null and dwmc != ''">
+                and aa.dwmc = #{dwmc}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryZbxq" resultType="java.util.Map" parameterType="java.lang.String">
+        select "ZBMC","ZBSL","FZRXM","FZRDH"
+        from "GP_SZZF_K"."ZFDWZBB" where GSDWMC = #{dwmc}
+        <if test="zbmc != null and zbmc != ''">
+            and ZBMC = #{zbmc}
+        </if>
+    </select>
+    <select id="queryJbxx" resultType="java.util.Map" parameterType="java.lang.String">
+        select a.LCMC,a.LCDZ,b.LCHXDJ,a.MJM,a.QSDD,(select count(*) hlysl from
+        "GP_SZZF_K"."HLYB" c where FZLCMC = a.LCMC ) as hlysl,a.FZRXM,a.FZRDH,a.WD,a.JD
+        from "GP_SZZF_K"."JC_GJGYLXBMBGY_JT" a
+        left join "GP_SZZF_K"."LCWL24XSHXDJYB" b on a.LCMC = b.LCMC
+        <where>
+            <if test="lcmc != null and lcmc != ''">
+                and a.LCMC = #{lcmc}
+            </if>
+        </where>
+    </select>
+</mapper>

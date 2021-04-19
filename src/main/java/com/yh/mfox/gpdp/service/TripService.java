@@ -26,4 +26,6 @@ public interface TripService {
     Map<String,Object> getSfq(String date);
 
     List<Map<String,Object>> getCwCount();
+
+    List<Map<String,Object>> getGis();
 }

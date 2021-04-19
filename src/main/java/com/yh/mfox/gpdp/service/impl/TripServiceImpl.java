@@ -69,4 +69,9 @@ public class TripServiceImpl implements TripService {
     public List<Map<String, Object>> getCwCount() {
         return tripMapper.queryCwCount();
     }
+
+    @Override
+    public List<Map<String, Object>> getGis() {
+        return tripMapper.queryGis();
+    }
 }

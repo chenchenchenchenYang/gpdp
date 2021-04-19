@@ -146,4 +146,13 @@ public class TripController {
             return R.error(400,"失败");
         }
     }
+
+    @PostMapping("/gis")
+    public Map<String, Object> getGis() {
+        try {
+            return R.ok(200,"成功",tripService.getGis());
+        } catch (Exception e) {
+            return R.error(400,"失败");
+        }
+    }
 }
