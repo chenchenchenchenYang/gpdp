@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yh.mfox.gpdp.mapper.EduMapper">
+    <select id="queryCount" resultType="java.util.Map">
+        select
+            count(*) as school,sum(JZGRS) as teacher ,sum(XSZS) as student
+        from "GP_SZZF_Q"."XXJBXXB";
+    </select>
+
+    <select id="queryInfo" resultType="java.util.Map">
+        select
+            SL_NAME as school,XSZS as student,JZGRS as teacher
+        from "GP_SZZF_Q"."XXJBXXB";
+    </select>
+
+    <select id="queryXxzb" resultType="java.util.Map">
+        select
+            SL_TYPE as name ,count(*) as num
+        from "GP_SZZF_Q"."XXJBXXB" group by  SL_TYPE
+    </select>
+
+    <select id="queryXbbl" resultType="java.util.Map" parameterType="java.lang.String">
+        select ifnull(sum(aa.m),0) as m,ifnull(sum(aa.f),0) as f from (
+            select (ZXSS_HJ - ZXSS_N) as m,cast(ZXSS_N as int) as f from
+            "GP_SZZF_Q"."GPSTSJYZXXGNJXSSTJBR" where ND = #{date}
+            union
+            select (ZXSS - ZXSS_N) as m ,cast(ZXSS_N as int) as f from
+            "GP_SZZF_Q"."XSFNJZXXSQKJBXX" where ND = #{date}
+            union
+            select (ZXSS-ZXSS_N) as m,cast(ZXSS_N as int) as f from
+            "GP_SZZF_Q"."XSFNJZXXSQKJBXXXX" where ND = #{date}
+            union
+            select (ZYRS-ZYRS_N) as m,cast(ZYRS_N as int) as f from
+            "GP_SZZF_Q"."XSFNJZXXSQKJBXXYRY" where ND = #{date}
+            ) aa
+    </select>
+    <select id="queryJszb" resultType="java.util.Map" >
+        select XB,count(*) as num   from  "GP_SZZF_Q"."GPSSYDWGZRYJBQKHMC" group by XB
+    </select>
+
+    <select id="queryType" resultType="java.util.Map" >
+        select
+            wm_concat(SL_TYPE)  as type
+        from "GP_SZZF_Q"."XXJBXXB" group by  SL_TYPE
+    </select>
+
+    <select id="queryBase" resultType="java.util.Map" parameterType="java.lang.String">
+        select a.SL_NAME,a.SL_TYPE,a.SL_ADD,a.XSZS,a.JZGRS,b.SFJS,b.JD,b.WD
+        from  "GP_SZZF_Q"."XXJBXXB" a
+        left join "GP_SZZF_Q"."JYJGJBXXDJ" b on a.SL_NAME = b.XXMC
+        <where>
+            <if test=" type !=null and type !=''">
+                and a.SL_TYPE = #{type}
+            </if>
+            <if test=" name !=null and name !=''">
+                and a.SL_NAME = #{name}
+            </if>
+        </where>
+    </select>
+</mapper>
