@@ -16,7 +16,7 @@ public interface ZhlyMapper {
 
     List<Map<String, Object>> queryFhwz();
 
-    List<Map<String, Object>> queryHly();
+    List<Map<String, Object>> queryHly(@Param("name") String name);
 
     List<Map<String, Object>> queryZfdw(@Param("dwmc") String dwmc);
 

@@ -34,8 +34,8 @@ public class ZhlyServiceImpl implements ZhlyService {
     }
 
     @Override
-    public List<Map<String, Object>> getHly() {
-        return zhlyMapper.queryHly();
+    public List<Map<String, Object>> getHly(String name) {
+        return zhlyMapper.queryHly(name);
     }
 
     @Override

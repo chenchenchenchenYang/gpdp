@@ -13,7 +13,7 @@ public interface ZhlyService {
 
     List<Map<String, Object>> getFhwz();
 
-    List<Map<String, Object>> getHly();
+    List<Map<String, Object>> getHly(String name);
 
     List<Map<String, Object>> getZfdw(String dwmc);
 

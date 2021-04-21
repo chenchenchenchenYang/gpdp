@@ -83,9 +83,9 @@ public class ZhlyController {
      * @Description: 护林员列表
      */
     @PostMapping("/hly")
-    public Map<String, Object> getHly() {
+    public Map<String, Object> getHly(String name) {
         try {
-            return R.ok(200,"成功",zhlyService.getHly());
+            return R.ok(200,"成功",zhlyService.getHly(name));
         } catch (Exception e) {
             return R.error(400,"失败");
         }

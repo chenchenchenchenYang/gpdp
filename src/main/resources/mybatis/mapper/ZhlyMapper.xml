@@ -47,7 +47,12 @@
     </select>
     <select id="queryHly" resultType="java.util.Map">
         select  XM, ZYJSZC, FZLCMC, DH
-        from "GP_SZZF_K"."HLYB";
+        from "GP_SZZF_K"."HLYB"
+        <where>
+            <if test="null != name and '' != name ">
+                and XM = #{name}
+            </if>
+        </where>
     </select>
     <select id="queryZfdw" resultType="java.util.Map" parameterType="java.lang.String">
         select aa."DWMC",aa."DWRS",aa."GSDW",
