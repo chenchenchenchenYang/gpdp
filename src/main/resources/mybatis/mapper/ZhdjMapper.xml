@@ -5,7 +5,8 @@
         select * from "GP_SZZF_S"."DLJG" ;
     </select>
     <select id="queryDjfcByType" resultType="java.util.Map" parameterType="java.lang.String">
-        select MS,PIC from "GP_SZZF_S"."DJFC" where type = #{type};
+        select "PIC","MS","PIC_MC","TZ_URL"
+        from "GP_SZZF_S"."DJFC" where type = #{type};
     </select>
     <select id="queryDyxl" resultType="java.util.Map">
         select XLLX,ZB from "GP_SZZF_S"."DYXLJG";
@@ -22,11 +23,11 @@
         from "GP_SZZF_S"."DYYDZZJBQK";
     </select>
     <select id="queryDyfc" resultType="java.util.Map">
-        select "PIC","PIC_MS"
+        select "PIC","PIC_MS","PIC_MC"
         from "GP_SZZF_S"."DYFC";
     </select>
     <select id="queryDdmf" resultType="java.util.Map">
-        select "DDMF_PIC","DDMF_PIC_MS"
+        select "DDMF_PIC","DDMF_PIC_MS","PIC_MC"
         from "GP_SZZF_S"."DDMF";
     </select>
 
