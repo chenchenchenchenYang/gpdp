@@ -6,9 +6,9 @@ import java.util.Map;
 public interface EduService {
     Map<String, Object> getCount();
 
-    List<Map<String, Object>> getInfo();
+    List<Map<String, Object>> getXlfb();
 
-    List<Map<String, Object>> getXxzb();
+    List<Map<String, Object>> getByyx();
 
     Map<String, Object> getXbbl(String date);
 
@@ -17,4 +17,8 @@ public interface EduService {
     Map<String, Object>  getType();
 
     List<Map<String, Object>> getBase(String type, String name);
+
+    List<Map<String, Object>> getXsrs(String date);
+
+    List<Map<String, Object>> getNlfb();
 }

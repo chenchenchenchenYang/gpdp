@@ -14,7 +14,7 @@ public class CommonServiceImpl implements CommonService {
     private CommenMapper commenMapper;
 
     @Override
-    public Map<String, Object>getSp(int page,int size,String yj, String ej, String sj) {
+    public Map<String, Object> getSp(int page,int size,String yj, String ej, String sj) {
         Map<String, Object> params = new HashMap<>();
         params.put("page", (page-1)*size);
         params.put("size", size);

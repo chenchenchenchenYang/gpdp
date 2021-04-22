@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yh.mfox.gpdp.mapper.ZhswMapper">
+    <select id="queryYsl" resultType="java.util.Map" parameterType="java.lang.String">
+        select year(ND) as year,SZYZLWDBS,SZYZLWDXS,SZYZLWHJ,SZYZLWZFL
+        from "GP_SZZF_N"."JC_SZYZKJNDSZYLYQK"
+        <where>
+            <if test="null != year and '' != year ">
+                and year(ND) = #{year}
+            </if>
+        </where>
+        order by ND desc
+    </select>
+    <select id="queryGgqk" resultType="java.util.Map" >
+        select
+            XSZDXGCJSMJWM,
+            XSZDXGCSJCG,
+            XSZDXGCSJXZ,
+            XXSLGGJJY,
+            XXSLJXYSCZ,
+            XXSLSCZRLWF,
+            XXSLSJKRWF,
+            XXSLXXSKZ,
+            XZLSCNGCJSMJWM,
+            XZLSCNGCSJCG,
+            XZLSCNGCSJXZ,
+            ZXGQQKGGQNSK,
+            ZXGQQKGHMJWM,
+            ZXGQQKSLG
+        from "GP_SZZF_N"."JC_QSGGQK" ORDER BY CREATE_TIME DESC;
+    </select>
+
+    <select id="queryZlmj" resultType="java.util.Map" parameterType="java.lang.String">
+        select SJWCKM2,XDZBKM
+        from "GP_SZZF_N"."JC_GPSNDSTLSZLMJ" where ND = #{year}
+    </select>
+    <select id="queryYsgc" resultType="java.util.Map" parameterType="java.lang.String">
+        select
+            CSGWYSGCCSC,
+            CSGWYSGCSJXZCSG,
+            CSGWYSGCSYRKWR,
+            DCJZGSGCCSC,
+            DCJZGSGCSJXZCSG,
+            DCJZGSGCSYRKWR,
+            LCJZGSGCCSC,
+            LCJZGSGCSJXZCSG,
+            LCJZGSGCSYRKWR
+        from "GP_SZZF_N"."JC_GPSNCYSQKFLB" where ND = #{year}
+    </select>
+
+    <select id="queryZlssy" resultType="java.util.Map" parameterType="java.lang.String">
+        select
+            AZLSQKF_WRH_SJXZCSG,
+            AZLSQKF_WRH_SJZRCSG,
+            AZLSQKF_ZH_SJXZCSG,
+            AZLSQKF_ZH_SJZRCSGSG,
+            AZLSQKF_ZLSRH_SJXZCSG,
+            AZLSQKF_ZLSRH_SJZRCSG
+        from "GP_SZZF_N"."JC_GPSNCYSQKFLB"  where ND = #{year}
+    </select>
+    <select id="queryHlInfo" resultType="java.util.Map" parameterType="java.lang.String">
+        select  HLMC, HLCDKM,JNHLCDKM,LYMJKM2,JNLYMJKM2
+        from "GP_SZZF_N"."JC_GPSLYMJ"
+        <where>
+            <if test="null != name and '' != name">
+                and HLMC = #{name}
+            </if>
+        </where>
+    </select>
+
+    <select id="querySkInfp" resultType="java.util.Map" parameterType="java.lang.String">
+        select SKMC,SZDZ,XXSW,XHHSW,SJHSW,JYMJ,KRWM3,WD,JD
+        from "GP_SZZF_N"."JC_GPSXXSKJCXX"
+        <where>
+            <if test="null != name and '' != name">
+                and SKMC = #{name}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryXqjyl" resultType="java.util.Map" >
+        select NY,XQJYL6Y,XQJYL7Y,XQJYL8Y,XQJYL9Y
+        from "GP_SZZF_N"."JC_GPSSHZHFZJSQK" order by NY desc;
+    </select>
+</mapper>

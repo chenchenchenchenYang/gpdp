@@ -7,23 +7,18 @@
         from "GP_SZZF_Q"."XXJBXXB";
     </select>
 
-    <select id="queryInfo" resultType="java.util.Map">
-        select
-            SL_NAME as school,XSZS as student,JZGRS as teacher
-        from "GP_SZZF_Q"."XXJBXXB";
+    <select id="queryXlfb" resultType="java.util.Map">
+        select WHCD_XL,COUNT(*) as num
+        from "GP_SZZF_Q"."GPSSYDWGZRYJBQKHMC" GROUP BY WHCD_XL order by COUNT(*) desc
     </select>
 
-    <select id="queryXxzb" resultType="java.util.Map">
-        select
-            SL_TYPE as name ,count(*) as num
-        from "GP_SZZF_Q"."XXJBXXB" group by  SL_TYPE
+    <select id="queryByyx" resultType="java.util.Map">
+        select WHCD_BYYX,COUNT(*) as num
+        from "GP_SZZF_Q"."GPSSYDWGZRYJBQKHMC" GROUP BY WHCD_BYYX order by COUNT(*) desc
     </select>
 
     <select id="queryXbbl" resultType="java.util.Map" parameterType="java.lang.String">
         select ifnull(sum(aa.m),0) as m,ifnull(sum(aa.f),0) as f from (
-            select (ZXSS_HJ - ZXSS_N) as m,cast(ZXSS_N as int) as f from
-            "GP_SZZF_Q"."GPSTSJYZXXGNJXSSTJBR" where ND = #{date}
-            union
             select (ZXSS - ZXSS_N) as m ,cast(ZXSS_N as int) as f from
             "GP_SZZF_Q"."XSFNJZXXSQKJBXX" where ND = #{date}
             union
@@ -56,5 +51,35 @@
                 and a.SL_NAME = #{name}
             </if>
         </where>
+    </select>
+
+    <select id="queryXsrs" resultType="java.util.Map" parameterType="java.lang.String">
+        select JYJDCZGZZZ as name,sum(cast(ZXSS as int)) as total,sum(cast(ZXSS_N as int)) as nv from
+            "GP_SZZF_Q"."XSFNJZXXSQKJBXX" where ND = #{date} group by JYJDCZGZZZ
+        union
+        select '小学' as name,sum(cast(ZXSS as int)) as total,sum(cast(ZXSS_N as int)) as nv from
+            "GP_SZZF_Q"."XSFNJZXXSQKJBXXXX" where ND = #{date}
+        union
+        select '幼儿园' as name,sum(cast(ZYRS as int)) as total,sum(cast(ZYRS_N as int)) as nv  from
+            "GP_SZZF_Q"."XSFNJZXXSQKJBXXYRY" where ND = #{date}
+    </select>
+    <select id="queryNlfb" resultType="java.util.Map" >
+        select '5岁及以下' as name,count(*) as num from "GP_SZZF_Q"."ZXXSJBXXHZ"
+        where SFZH is not null and YEAR(CURDATE())-CAST(SUBSTR(SFZH,7,4) AS INT) &lt;= 5
+        union all
+        select   '6-7岁' as name,count(*) as num from "GP_SZZF_Q"."ZXXSJBXXHZ"
+        where SFZH is not null and YEAR(CURDATE())-CAST(SUBSTR(SFZH,7,4) AS INT)  &gt;= 6 and YEAR(CURDATE())-CAST(SUBSTR(SFZH,7,4) AS INT)  &lt; 7
+        union all
+        select   '7-8岁' as name,count(*) as num from "GP_SZZF_Q"."ZXXSJBXXHZ"
+        where SFZH is not null and YEAR(CURDATE())-CAST(SUBSTR(SFZH,7,4) AS INT)  &gt;= 7 and YEAR(CURDATE())-CAST(SUBSTR(SFZH,7,4) AS INT)  &lt; 8
+        union all
+        select   '8-9岁' as name,count(*) as num from "GP_SZZF_Q"."ZXXSJBXXHZ"
+        where SFZH is not null and YEAR(CURDATE())-CAST(SUBSTR(SFZH,7,4) AS INT)  &gt;= 8 and YEAR(CURDATE())-CAST(SUBSTR(SFZH,7,4) AS INT)  &lt;= 9
+        union all
+        select  '10-11岁' as name,count(*) as num from "GP_SZZF_Q"."ZXXSJBXXHZ"
+        where SFZH is not null and YEAR(CURDATE())-CAST(SUBSTR(SFZH,7,4) AS INT)  &gt;= 10 and YEAR(CURDATE())-CAST(SUBSTR(SFZH,7,4) AS INT)  &lt;= 11
+        union all
+        select  '12岁及以上' as name,count(*) as num from "GP_SZZF_Q"."ZXXSJBXXHZ"
+        where SFZH is not null and YEAR(CURDATE())-CAST(SUBSTR(SFZH,7,4) AS INT)  &gt;= 12
     </select>
 </mapper>

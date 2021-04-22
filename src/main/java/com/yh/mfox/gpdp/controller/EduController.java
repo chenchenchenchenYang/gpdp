@@ -37,13 +37,27 @@ public class EduController {
 
     /**
      * @Author: Wangcheny
-     * @Date: 2021年04月20日 下午 02:55:37
-     * @Description: 学校人数信息
+     * @Date: 2021年04月20日 下午 04:52:30
+     * @Description: 全市教师性别占比
      */
-    @PostMapping("/info")
-    public Map<String, Object> getInfo() {
+    @PostMapping("/jszb")
+    public Map<String, Object> getJszb() {
         try {
-            return R.ok(200,"成功",eduService.getInfo());
+            return R.ok(200,"成功",eduService.getJszb());
+        } catch (Exception e) {
+            return R.error(400,"失败");
+        }
+    }
+
+    /**
+     * @Author: Wangcheny
+     * @Date: 2021年04月20日 下午 02:55:37
+     * @Description: 教师学历分布
+     */
+    @PostMapping("/xlfb")
+    public Map<String, Object> getXlfb() {
+        try {
+            return R.ok(200,"成功",eduService.getXlfb());
         } catch (Exception e) {
             return R.error(400,"失败");
         }
@@ -52,12 +66,12 @@ public class EduController {
     /**
      * @Author: Wangcheny
      * @Date: 2021年04月20日 下午 04:27:55
-     * @Description: 学校数量占比
+     * @Description: 教师毕业院校统计
      */
-    @PostMapping("/xxzb")
-    public Map<String, Object> getXxzb() {
+    @PostMapping("/byyx")
+    public Map<String, Object> getByyx() {
         try {
-            return R.ok(200,"成功",eduService.getXxzb());
+            return R.ok(200,"成功",eduService.getByyx());
         } catch (Exception e) {
             return R.error(400,"失败");
         }
@@ -72,20 +86,6 @@ public class EduController {
     public Map<String, Object> getXbbl(String date) {
         try {
             return R.ok(200,"成功",eduService.getXbbl(date));
-        } catch (Exception e) {
-            return R.error(400,"失败");
-        }
-    }
-
-    /**
-     * @Author: Wangcheny
-     * @Date: 2021年04月20日 下午 04:52:30
-     * @Description: 全市教师性别占比
-     */
-    @PostMapping("/jszb")
-    public Map<String, Object> getJszb() {
-        try {
-            return R.ok(200,"成功",eduService.getJszb());
         } catch (Exception e) {
             return R.error(400,"失败");
         }
@@ -114,6 +114,34 @@ public class EduController {
     public Map<String, Object> getBase(String type,String name) {
         try {
             return R.ok(200,"成功",eduService.getBase(type,name));
+        } catch (Exception e) {
+            return R.error(400,"失败");
+        }
+    }
+
+    /**
+     * @Author: Wangcheny
+     * @Date: 2021年04月21日 上午 11:55:00
+     * @Description: 在线学生人数情况
+     */
+    @PostMapping("/xsrs")
+    public Map<String, Object> getXsrs(String date) {
+        try {
+            return R.ok(200,"成功",eduService.getXsrs(date));
+        } catch (Exception e) {
+            return R.error(400,"失败");
+        }
+    }
+
+    /**
+     * @Author: Wangcheny
+     * @Date: 2021年04月21日 上午 11:55:00
+     * @Description: 年龄分布
+     */
+    @PostMapping("/nlfb")
+    public Map<String, Object> getNlfb() {
+        try {
+            return R.ok(200,"成功",eduService.getNlfb());
         } catch (Exception e) {
             return R.error(400,"失败");
         }

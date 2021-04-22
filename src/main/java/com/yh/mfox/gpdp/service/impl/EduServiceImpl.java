@@ -22,13 +22,13 @@ public class EduServiceImpl implements EduService {
     }
 
     @Override
-    public List<Map<String, Object>> getInfo() {
-        return eduMapper.queryInfo();
+    public List<Map<String, Object>> getXlfb() {
+        return eduMapper.queryXlfb();
     }
 
     @Override
-    public List<Map<String, Object>> getXxzb() {
-        return eduMapper.queryXxzb();
+    public List<Map<String, Object>> getByyx() {
+        return eduMapper.queryByyx();
     }
 
     @Override
@@ -53,5 +53,15 @@ public class EduServiceImpl implements EduService {
     @Override
     public List<Map<String, Object>> getBase(String type, String name) {
         return eduMapper.queryBase(type,name);
+    }
+
+    @Override
+    public List<Map<String, Object>> getXsrs(String date) {
+        return eduMapper.queryXsrs(date);
+    }
+
+    @Override
+    public List<Map<String, Object>> getNlfb() {
+        return eduMapper.queryNlfb();
     }
 }
