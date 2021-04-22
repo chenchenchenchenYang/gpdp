@@ -64,4 +64,9 @@ public class EduServiceImpl implements EduService {
     public List<Map<String, Object>> getNlfb() {
         return eduMapper.queryNlfb();
     }
+
+    @Override
+    public List<Map<String, Object>> getHjsl() {
+        return eduMapper.queryHjsl();
+    }
 }

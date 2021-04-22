@@ -21,4 +21,6 @@ public interface EduService {
     List<Map<String, Object>> getXsrs(String date);
 
     List<Map<String, Object>> getNlfb();
+
+    List<Map<String, Object>> getHjsl();
 }

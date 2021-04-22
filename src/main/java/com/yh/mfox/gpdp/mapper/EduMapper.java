@@ -25,4 +25,6 @@ public interface EduMapper {
     List<Map<String, Object>> queryXsrs(String date);
 
     List<Map<String, Object>> queryNlfb();
+
+    List<Map<String, Object>> queryHjsl();
 }

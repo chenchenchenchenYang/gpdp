@@ -146,4 +146,18 @@ public class EduController {
             return R.error(400,"失败");
         }
     }
+
+    /**
+     * @Author: Wangcheny
+     * @Date: 2021年04月22日 下午 05:32:21
+     * @Description: 外市户籍数量占比
+     */
+    @PostMapping("/hjsl")
+    public Map<String, Object> getHjsl() {
+        try {
+            return R.ok(200,"成功",eduService.getHjsl());
+        } catch (Exception e) {
+            return R.error(400,"失败");
+        }
+    }
 }

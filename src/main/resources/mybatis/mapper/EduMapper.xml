@@ -82,4 +82,13 @@
         select  '12岁及以上' as name,count(*) as num from "GP_SZZF_Q"."ZXXSJBXXHZ"
         where SFZH is not null and YEAR(CURDATE())-CAST(SUBSTR(SFZH,7,4) AS INT)  &gt;= 12
     </select>
+
+    <select id="queryHjsl" resultType="java.util.Map" >
+        select ifnull(tt.NAME,'其他省') as NAME ,COUNT(*) as num from
+            (select substr(a.SFZH,1,4) as code ,b.NAME
+             from "GP_SZZF_Q"."ZXXSJBXXHZ"  a
+                      left join "GP_SZZF_Q"."BM" b on substr(a.SFZH,1,4) = b.code
+             where a.SFZH IS NOT NULL AND substr(a.SFZH,1,4) != '1405') tt
+        group by tt.NAME ORDER BY COUNT(*) DESC
+    </select>
 </mapper>
