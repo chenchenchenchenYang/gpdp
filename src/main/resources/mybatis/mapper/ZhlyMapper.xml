@@ -24,11 +24,8 @@
         select 'num' as name, count(distinct BH) as num
         from "GP_SZZF_K"."JC_GPSGSMMML"
         union all
-        select 'yj' as name, ifnull(sum(GJYJBHDWSL),0) as num
-        from "GP_SZZF_K"."JC_GPSGSMMML"
-        union all
-        select 'ej' as name, ifnull(sum(GJEJBHDWSL),0) as num
-        from "GP_SZZF_K"."JC_GPSGSMMML"
+        select GSBHJB as name, count(*) as num
+        from "GP_SZZF_K"."JC_GPSGSMMML" where GSBHJB is not null group by GSBHJB
     </select>
 
     <select id="queryFhwz" resultType="java.util.Map">
