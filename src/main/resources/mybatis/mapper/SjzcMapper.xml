@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yh.mfox.gpdp.mapper.SjzcMapper">
+    <select id="queryCount" resultType="java.util.Map">
+        select "SJJL_WT","ZCCL_GB","JRJHL_GB","YRKZZ_G","ZYS_G"
+        from "GP_SZZF_R"."ZGL";
+    </select>
+    <select id="queryJrzl" resultType="java.util.Map">
+        select "DWMC","SJL_WT"
+        from "GP_SZZF_R"."JRPM_JRZL" order by SJL_WT desc;
+    </select>
+    <select id="queryRzl" resultType="java.util.Map">
+        select "DWMC","SJL_WT"
+        from "GP_SZZF_R"."JRPM_RZL" order by SJL_WT desc;
+    </select>
+    <select id="queryQb" resultType="java.util.Map">
+        select "DWMC","SJL_WT"
+        from "GP_SZZF_R"."JRPM_QB" order by SJL_WT desc;
+    </select>
+    <select id="queryKbsl" resultType="java.util.Map">
+        select "DWMC","JRS","GXS","GXL"
+        from "GP_SZZF_R"."JRPC_KBSL"
+    </select>
+    <select id="querySpsl" resultType="java.util.Map">
+        select "DWMC","JRS","GXS","GXL"
+        from "GP_SZZF_R"."JRPC_SPSL";
+    </select>
+    <select id="queryQbpc" resultType="java.util.Map">
+        select "DWMC","JRS","GXS","GXL"
+        from "GP_SZZF_R"."JRPC_QB";
+    </select>
+    <select id="queryExchange" resultType="java.util.Map">
+        select "JRJHL_G","BYJHL_YT","JRZZ_J","JRX","JRZYS_G","JRZYSJKBS_G","JRZYSWJS_G",
+       "JRZYS_API_S_G","GXZYSJKBS_G","GXZYWJS_G","GXZY_API_S_G","JHGXZSJL_WT","JHGXZCCL_GB",
+       "JHGXZYS_G","ZTKZS_WT","ZTKZCCL_GB","ZTKZYS_G","BMKZSJL_WT","BMKZCCL_GB","BMKZYS_G","ZQXL_WT","LXSJ_WT","SJ_T","SSSJ_WT"
+        from "GP_SZZF_R"."JHGX" order by TBSJ DESC
+    </select>
+    <select id="querySjzl" resultType="java.util.Map">
+        select "JHSJL_WT","WTSL_WT"
+        from "GP_SZZF_R"."SJZL" order by TBSJ DESC ;
+    </select>
+    <select id="queryXlpmLx" resultType="java.util.Map">
+        select "BM","ZQJHSL","WTJHSL","WJHSL"
+        from "GP_SZZF_R"."XLPM_LX" order by ZQJHSL desc
+    </select>
+    <select id="queryXlpmSs" resultType="java.util.Map">
+        select "BM","ZQJHSL","WTJHSL","WJHSL"
+        from "GP_SZZF_R"."XLPM_SS" order by ZQJHSL desc
+    </select>
+    <select id="queryXlpmQb" resultType="java.util.Map">
+        select "BM","ZQJHSL","WTJHSL","WJHSL"
+        from "GP_SZZF_R"."XLPM_QB" order by ZQJHSL desc
+    </select>
+    <select id="queryWts" resultType="java.util.Map">
+        select "WTMS","SL"
+        from "GP_SZZF_R"."XLPM_WTS";
+    </select>
+</mapper>
