@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yh.mfox.gpdp.mapper.ZhswMapper">
     <select id="queryYsl" resultType="java.util.Map" parameterType="java.lang.String">
-        select year(ND) as year,SZYZLWDBS,SZYZLWDXS,SZYZLWHJ,SZYZLWZFL
+        select ND as year,SZYZLWDBS,SZYZLWDXS,SZYZLWHJ,SZYZLWZFL
         from "GP_SZZF_N"."JC_SZYZKJNDSZYLYQK"
         <where>
             <if test="null != year and '' != year ">
-                and year(ND) = #{year}
+                and ND = #{year}
             </if>
         </where>
         order by ND desc
