@@ -69,10 +69,10 @@
     </select>
     <select id="queryRjrsCount" resultType="java.util.Map" parameterType="java.lang.String">
         select
-            sum(RJYZB_1ZBYLJJDRJRS_WGR) as WGR,
-            sum(RJYZB_1ZBYLJJDRJRS_XG) as XG,
-            sum(RJYZB_1ZBYLJJDRJRS_AM) as AM,
-            sum(RJYZB_1ZBYLJJDRJRS_HJ_TW) as TW
+            ifnull(sum(RJYZB_1ZBYLJJDRJRS_WGR),0) as WGR,
+            ifnull(sum(RJYZB_1ZBYLJJDRJRS_XG),0) as XG,
+            ifnull(sum(RJYZB_1ZBYLJJDRJRS_AM),0) as AM,
+            ifnull(sum(RJYZB_1ZBYLJJDRJRS_HJ_TW),0) as TW
         from "GP_SZZF_O"."JC_LYTJZYZBYBB" where year(TBSJ) = #{date}
     </select>
     <select id="querySfq" resultType="java.util.Map" parameterType="java.lang.String">

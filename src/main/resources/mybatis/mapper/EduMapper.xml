@@ -3,10 +3,8 @@
 <mapper namespace="com.yh.mfox.gpdp.mapper.EduMapper">
     <select id="queryCount" resultType="java.util.Map">
         select
-            (select
-                 count(*)
-             from "GP_SZZF_Q"."JYJGJBXXDJ") as school,sum(JZGRS) as teacher ,sum(XSZS) as student
-        from "GP_SZZF_Q"."XXJBXXB";
+            count(*) as school,ifnull(sum(JZGRS),0) as teacher,ifnull(sum(XSZS),0) as student
+        from "GP_SZZF_Q"."JYJGJBXXDJ"
     </select>
 
     <select id="queryXlfb" resultType="java.util.Map">
@@ -43,9 +41,8 @@
 
     <select id="queryBase" resultType="java.util.Map" parameterType="java.lang.String">
         select b.XXMC as SL_NAME,b.BXLX as SL_TYPE,b.DZ as SL_ADD,
-        a.XSZS,a.JZGRS,b.SFJS,b.JD,b.WD
+        b.XSZS,b.JZGRS,b.SFJS,b.JD,b.WD
         from  "GP_SZZF_Q"."JYJGJBXXDJ" b
-        left join "GP_SZZF_Q"."XXJBXXB" a  on a.SL_NAME = b.XXMC
         <where>
             <if test=" type !=null and type !=''">
                 and b.BXLX = #{type}
