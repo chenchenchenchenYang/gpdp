@@ -3,7 +3,9 @@
 <mapper namespace="com.yh.mfox.gpdp.mapper.EduMapper">
     <select id="queryCount" resultType="java.util.Map">
         select
-            count(*) as school,sum(JZGRS) as teacher ,sum(XSZS) as student
+            (select
+                 count(*)
+             from "GP_SZZF_Q"."JYJGJBXXDJ") as school,sum(JZGRS) as teacher ,sum(XSZS) as student
         from "GP_SZZF_Q"."XXJBXXB";
     </select>
 
@@ -35,20 +37,21 @@
 
     <select id="queryType" resultType="java.util.Map" >
         select
-            wm_concat(SL_TYPE)  as type
-        from "GP_SZZF_Q"."XXJBXXB" group by  SL_TYPE
+            wm_concat(distinct BXLX)  as type
+        from "GP_SZZF_Q"."JYJGJBXXDJ"
     </select>
 
     <select id="queryBase" resultType="java.util.Map" parameterType="java.lang.String">
-        select a.SL_NAME,a.SL_TYPE,a.SL_ADD,a.XSZS,a.JZGRS,b.SFJS,b.JD,b.WD
-        from  "GP_SZZF_Q"."XXJBXXB" a
-        left join "GP_SZZF_Q"."JYJGJBXXDJ" b on a.SL_NAME = b.XXMC
+        select b.XXMC as SL_NAME,b.BXLX as SL_TYPE,b.DZ as SL_ADD,
+        a.XSZS,a.JZGRS,b.SFJS,b.JD,b.WD
+        from  "GP_SZZF_Q"."JYJGJBXXDJ" b
+        left join "GP_SZZF_Q"."XXJBXXB" a  on a.SL_NAME = b.XXMC
         <where>
             <if test=" type !=null and type !=''">
-                and a.SL_TYPE = #{type}
+                and b.BXLX = #{type}
             </if>
             <if test=" name !=null and name !=''">
-                and a.SL_NAME = #{name}
+                and b.XXMC = #{name}
             </if>
         </where>
     </select>
