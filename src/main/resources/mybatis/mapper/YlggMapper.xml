@@ -277,7 +277,7 @@
     </select>
 
     <select id="queryRyrsDay" resultType="java.util.Map">
-        select
+        select DISTINCT
             to_char(SJ,'yyyy-MM-dd') as SJ,
             CYRS,
             RYLS,
@@ -285,7 +285,7 @@
         from "GP_SZZF_I"."GP_YZJSC" where
             to_char(SJ,'yyyy-MM-dd') = ADD_DAYS(#{date},-6)
         union all
-        select
+        select DISTINCT
             to_char(SJ,'yyyy-MM-dd') as SJ,
             CYRS,
             RYLS,
@@ -293,7 +293,7 @@
         from "GP_SZZF_I"."GP_YZJSC" where
             to_char(SJ,'yyyy-MM-dd') = ADD_DAYS(#{date},-5)
         union all
-        select
+        select DISTINCT
             to_char(SJ,'yyyy-MM-dd') as SJ,
             CYRS,
             RYLS,
@@ -301,7 +301,7 @@
         from "GP_SZZF_I"."GP_YZJSC" where
             to_char(SJ,'yyyy-MM-dd') = ADD_DAYS(#{date},-4)
         union all
-        select
+        select DISTINCT
             to_char(SJ,'yyyy-MM-dd') as SJ,
             CYRS,
             RYLS,
@@ -309,7 +309,7 @@
         from "GP_SZZF_I"."GP_YZJSC" where
             to_char(SJ,'yyyy-MM-dd') = ADD_DAYS(#{date},-3)
         union all
-        select
+        select DISTINCT
             to_char(SJ,'yyyy-MM-dd') as SJ,
             CYRS,
             RYLS,
@@ -317,7 +317,7 @@
         from "GP_SZZF_I"."GP_YZJSC" where
             to_char(SJ,'yyyy-MM-dd') = ADD_DAYS(#{date},-2)
         union all
-        select
+        select DISTINCT
             to_char(SJ,'yyyy-MM-dd') as SJ,
             CYRS,
             RYLS,
@@ -325,7 +325,7 @@
         from "GP_SZZF_I"."GP_YZJSC" where
             to_char(SJ,'yyyy-MM-dd') = ADD_DAYS(#{date},-1)
         union all
-        select
+        select DISTINCT
             to_char(SJ,'yyyy-MM-dd') as SJ,
             CYRS,
             RYLS,
