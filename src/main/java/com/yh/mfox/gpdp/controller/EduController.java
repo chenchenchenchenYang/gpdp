@@ -160,4 +160,46 @@ public class EduController {
             return R.error(400,"失败");
         }
     }
+
+    /**
+     * @Author: Wangcheny
+     * @Date: 2021年04月28日 下午 03:57:11
+     * @Description: 中小学户口所在地
+     */
+    @PostMapping("/hkszd")
+    public Map<String, Object> getHkszd() {
+        try {
+            return R.ok(200,"成功",eduService.getHkszd());
+        } catch (Exception e) {
+            return R.error(400,"失败");
+        }
+    }
+
+    /**
+     * @Author: Wangcheny
+     * @Date: 2021年04月28日 下午 04:21:47
+     * @Description: 在编教师工作经验
+     */
+    @PostMapping("/gzjy")
+    public Map<String, Object> getGzjy() {
+        try {
+            return R.ok(200,"成功",eduService.getGzjy());
+        } catch (Exception e) {
+            return R.error(400,"失败");
+        }
+    }
+
+    /**
+     * @Author: Wangcheny
+     * @Date: 2021年04月28日 下午 05:08:51
+     * @Description: 年级分布
+     */
+    @PostMapping("/njfb")
+    public Map<String, Object> getNjfb() {
+        try {
+            return R.ok(200,"成功",eduService.getNjfb());
+        } catch (Exception e) {
+            return R.error(400,"失败");
+        }
+    }
 }

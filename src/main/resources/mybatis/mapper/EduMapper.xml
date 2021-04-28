@@ -91,4 +91,71 @@
              where a.SFZH IS NOT NULL AND substr(a.SFZH,1,4) != '1405') tt
         group by tt.NAME ORDER BY COUNT(*) DESC
     </select>
+    <select id="queryHkszd" resultType="java.util.Map" >
+        select b.NAME,count(*) as num
+        from "GP_SZZF_Q"."ZXXSJBXXHZ" a
+        join  "GP_SZZF_Q"."BM" b on substr(a."SFZH",1,2) = b.CODE
+        where a.SFZH is not null
+        group by b.NAME order by count(*) desc
+    </select>
+    <select id="queryGzjy" resultType="java.util.Map" >
+        select '1年' as title ,count(*) as num
+        from "GP_SZZF_Q"."GPSSYDWGZRYJBQKHMC" where year(curdate()) -  year(to_date("CJGZSJ",'yyyy.MM')) = 1
+        union
+        select '2-3年' as title ,count(*) as num
+        from "GP_SZZF_Q"."GPSSYDWGZRYJBQKHMC" where year(curdate()) -  year(to_date("CJGZSJ",'yyyy.MM')) = 2 or year(curdate()) -  year(to_date("CJGZSJ",'yyyy.MM')) = 3
+        union
+        select '4-5年' as title ,count(*) as num
+        from "GP_SZZF_Q"."GPSSYDWGZRYJBQKHMC" where year(curdate()) -  year(to_date("CJGZSJ",'yyyy.MM')) = 4  or year(curdate()) -  year(to_date("CJGZSJ",'yyyy.MM')) = 5
+        union
+        select '6-7年' as title ,count(*) as num
+        from "GP_SZZF_Q"."GPSSYDWGZRYJBQKHMC"
+        where year(curdate()) -  year(to_date("CJGZSJ",'yyyy.MM')) = 6  or year(curdate()) -  year(to_date("CJGZSJ",'yyyy.MM')) = 7
+        union
+        select '8-10年' as title ,count(*) as num
+        from "GP_SZZF_Q"."GPSSYDWGZRYJBQKHMC"
+        where year(curdate()) -  year(to_date("CJGZSJ",'yyyy.MM')) >= 8 and year(curdate()) -  year(to_date("CJGZSJ",'yyyy.MM')) &lt;= 10
+        union
+        select '11-15年' as title ,count(*) as num
+        from "GP_SZZF_Q"."GPSSYDWGZRYJBQKHMC"
+        where year(curdate()) -  year(to_date("CJGZSJ",'yyyy.MM')) &gt;= 11  and year(curdate()) -  year(to_date("CJGZSJ",'yyyy.MM')) &lt;= 15
+        union
+        select '16-20年' as title ,count(*) as num
+        from "GP_SZZF_Q"."GPSSYDWGZRYJBQKHMC"
+        where year(curdate()) -  year(to_date("CJGZSJ",'yyyy.MM')) &gt;= 16  and year(curdate()) -  year(to_date("CJGZSJ",'yyyy.MM')) &lt;= 20
+        union
+        select '20年以上' as title ,count(*) as num
+        from "GP_SZZF_Q"."GPSSYDWGZRYJBQKHMC" where year(curdate()) -  year(to_date("CJGZSJ",'yyyy.MM')) &gt; 20
+    </select>
+    <select id="queryNjfb" resultType="java.util.Map" >
+
+        select '小学1-2年级' as title, count(*) as num
+        from "GP_SZZF_Q"."ZXXSJBXXHZ"
+        where "NJ" is not null
+        and  year(curdate()) - substr("NJ",3,4) &gt;= 1
+        and  year(curdate()) - substr("NJ",3,4) &lt;= 2
+        union
+        select '小学3-4年级' as title, count(*) as num
+        from "GP_SZZF_Q"."ZXXSJBXXHZ"
+        where "NJ" is not null
+        and  year(curdate()) - substr("NJ",3,4) &gt;= 3
+        and  year(curdate()) - substr("NJ",3,4) &lt;= 4
+        union
+        select '小学5-6年级' as title, count(*) as num
+        from "GP_SZZF_Q"."ZXXSJBXXHZ"
+        where "NJ" is not null
+        and  year(curdate()) - substr("NJ",3,4) &gt;= 5
+        and  year(curdate()) - substr("NJ",3,4) &lt;= 6
+        union
+        select '初中1-2年级' as title, count(*) as num
+        from "GP_SZZF_Q"."ZXXSJBXXHZ"
+        where "NJ" is not null
+        and  year(curdate()) - substr("NJ",3,4) &gt;= 7
+        and  year(curdate()) - substr("NJ",3,4) &lt;= 8
+        union
+        select '初中3年级' as title, count(*) as num
+        from "GP_SZZF_Q"."ZXXSJBXXHZ"
+        where "NJ" is not null
+        and  year(curdate()) - substr("NJ",3,4) = 9
+    </select>
 </mapper>

@@ -23,4 +23,10 @@ public interface EduService {
     List<Map<String, Object>> getNlfb();
 
     List<Map<String, Object>> getHjsl();
+
+    List<Map<String, Object>> getHkszd();
+
+    List<Map<String, Object>> getGzjy();
+
+    List<Map<String, Object>> getNjfb();
 }

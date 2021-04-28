@@ -27,4 +27,10 @@ public interface EduMapper {
     List<Map<String, Object>> queryNlfb();
 
     List<Map<String, Object>> queryHjsl();
+
+    List<Map<String, Object>> queryHkszd();
+
+    List<Map<String, Object>> queryGzjy();
+
+    List<Map<String, Object>> queryNjfb();
 }
