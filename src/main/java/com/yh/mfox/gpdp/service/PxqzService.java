@@ -15,4 +15,6 @@ public interface PxqzService {
     Map<String, Object> getPxInfo();
 
     Map<String, Object> getQzInfo();
+
+    Map<String, Object> getRyInfoNew();
 }

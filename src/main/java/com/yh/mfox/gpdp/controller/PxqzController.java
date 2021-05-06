@@ -104,4 +104,18 @@ public class PxqzController {
             return R.error(400,"失败");
         }
     }
+
+    /**
+     * @Author: Wangcheny
+     * @Date: 2021年05月06日 下午 03:02:27
+     * @Description: 新需求-培训技能工种人员信息
+     */
+    @PostMapping("/ryInfoNew")
+    public Map<String, Object> getRyInfoNew(HttpServletRequest request) {
+        try {
+            return R.ok(200,"成功",pxqzService.getRyInfoNew());
+        } catch (Exception e) {
+            return R.error(400,"失败");
+        }
+    }
 }

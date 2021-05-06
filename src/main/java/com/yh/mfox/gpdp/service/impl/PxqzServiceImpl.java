@@ -110,4 +110,14 @@ public class PxqzServiceImpl implements PxqzService {
         res.put("xz",pxqzMapper.queryQzXz());
         return res;
     }
+
+    @Override
+    public Map<String, Object> getRyInfoNew() {
+        Map<String, Object> pxMap = new HashMap<>();
+        pxMap.put("type", pxqzMapper.queryPxType().get(0).get("NUM")); // 类型数量
+        pxMap.put("total", pxqzMapper.queryPxTotal().get(0).get("NUM")); // 总人数
+        pxMap.put("typeInfo", pxqzMapper.queryPxTypeInfo()); // 类型详情
+        pxMap.put("jyType", pxqzMapper.queryPxRyJyType()); // 就业类型统计
+        return pxMap;
+    }
 }

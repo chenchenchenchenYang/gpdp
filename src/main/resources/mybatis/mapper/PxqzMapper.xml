@@ -136,4 +136,32 @@
         select QJYY_QWXZ_YPJ as name , count(*) AS NUM
         from "GP_SZZF_M"."RRCZJNSH" where QJYY_YWQZYY = '有' and QJYY_QWXZ_YPJ is not null group by QJYY_QWXZ_YPJ
     </select>
+    <select id="queryPxType" resultType="java.util.Map">
+        select ifnull(count(*),0) as num  from (
+         select PXYY_PXJNGZ,count(*) as num from "GP_SZZF_M"."RRCZJNSH"
+         where PXYY_YWPXYY = '有' and PXYY_PXJNGZ is not null
+         group by PXYY_PXJNGZ) a
+    </select>
+    <select id="queryPxTotal" resultType="java.util.Map">
+        select count(*) AS NUM from "GP_SZZF_M"."RRCZJNSH"
+        where PXYY_YWPXYY = '有' and PXYY_PXJNGZ is not null
+    </select>
+    <select id="queryPxTypeInfo" resultType="java.util.Map">
+        select PXYY_PXJNGZ,count(*) as num from "GP_SZZF_M"."RRCZJNSH"
+        where PXYY_YWPXYY = '有' and PXYY_PXJNGZ is not null
+        group by PXYY_PXJNGZ
+    </select>
+    <select id="queryPxRyJyType" resultType="java.util.Map">
+        select 'lh' as name, count(*) as num from "GP_SZZF_M"."RRCZJNSH"
+        where PXYY_YWPXYY = '有' and PXYY_PXJNGZ is not null and LHJY_LHJYFS is not null
+        union all
+        select 'xyt' as name, count(*) as num from "GP_SZZF_M"."RRCZJNSH"
+        where PXYY_YWPXYY = '有' and PXYY_PXJNGZ is not null and XYTJY_XYTJYFS is not null
+        union all
+        select 'zz' as name, count(*) as num from "GP_SZZF_M"."RRCZJNSH"
+        where PXYY_YWPXYY = '有' and PXYY_PXJNGZ is not null and ZZCY_CYLX is not null
+        union all
+        select 'wd' as name, count(*) as num from "GP_SZZF_M"."RRCZJNSH"
+        where PXYY_YWPXYY = '有' and PXYY_PXJNGZ is not null and WDJY_DWLX is not null
+    </select>
 </mapper>

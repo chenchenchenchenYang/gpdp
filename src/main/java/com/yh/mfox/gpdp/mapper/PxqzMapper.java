@@ -30,4 +30,12 @@ public interface PxqzMapper {
     List<Map<String, Object>> queryQzXz();
 
     List<Map<String, Object>> queryQzCount();
+
+    List<Map<String, Object>> queryPxType();
+
+    List<Map<String, Object>> queryPxTotal();
+
+    List<Map<String, Object>> queryPxTypeInfo();
+
+    List<Map<String, Object>> queryPxRyJyType();
 }
