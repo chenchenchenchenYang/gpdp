@@ -149,7 +149,7 @@
     <select id="queryPxTypeInfo" resultType="java.util.Map">
         select PXYY_PXJNGZ,count(*) as num from "GP_SZZF_M"."RRCZJNSH"
         where PXYY_YWPXYY = '有' and PXYY_PXJNGZ is not null
-        group by PXYY_PXJNGZ
+        group by PXYY_PXJNGZ order by count(*) desc
     </select>
     <select id="queryPxRyJyType" resultType="java.util.Map">
         select 'lh' as name, count(*) as num from "GP_SZZF_M"."RRCZJNSH"
@@ -163,5 +163,56 @@
         union all
         select 'wd' as name, count(*) as num from "GP_SZZF_M"."RRCZJNSH"
         where PXYY_YWPXYY = '有' and PXYY_PXJNGZ is not null and WDJY_DWLX is not null
+    </select>
+
+    <select id="queryQzType" resultType="java.util.Map">
+        select count(*) as num from (
+        select QJYY_QZHY
+        from "GP_SZZF_M"."RRCZJNSH"
+        where QJYY_YWQZYY is not null  and QJYY_YWQZYY = '有' and QJYY_QZHY is not null group by QJYY_QZHY )
+    </select>
+    <select id="queryQzTotal" resultType="java.util.Map">
+        select count(*) as num
+        from "GP_SZZF_M"."RRCZJNSH"
+        where QJYY_YWQZYY is not null  and QJYY_YWQZYY = '有'
+    </select>
+    <select id="queryQzTypeInfo" resultType="java.util.Map">
+        select QJYY_QZHY,count(*) as num
+        from "GP_SZZF_M"."RRCZJNSH"
+        where QJYY_YWQZYY is not null  and QJYY_YWQZYY = '有' and QJYY_QZHY is not null
+        group by QJYY_QZHY order by  count(*) desc
+    </select>
+    <select id="queryQzRyJyType" resultType="java.util.Map">
+        select 'lh' as name, count(*) as num from "GP_SZZF_M"."RRCZJNSH"
+        where QJYY_YWQZYY is not null  and QJYY_YWQZYY = '有' and LHJY_LHJYFS is not null
+        union all
+        select 'xyt' as name, count(*) as num from "GP_SZZF_M"."RRCZJNSH"
+        where QJYY_YWQZYY is not null  and QJYY_YWQZYY = '有' and XYTJY_XYTJYFS is not null
+        union all
+        select 'zz' as name, count(*) as num from "GP_SZZF_M"."RRCZJNSH"
+        where QJYY_YWQZYY is not null  and QJYY_YWQZYY = '有' and ZZCY_CYLX is not null
+        union all
+        select 'wd' as name, count(*) as num from "GP_SZZF_M"."RRCZJNSH"
+        where QJYY_YWQZYY is not null  and QJYY_YWQZYY = '有' and WDJY_DWLX is not null
+    </select>
+    <select id="queryDyyx" resultType="java.util.Map">
+        select YWDWLDSCYY_YYGJ as YYGJ,count(*) as num from "GP_SZZF_M"."RRCZJNSH"
+        where YWDWLDSCYY_YWYY is not null and YWDWLDSCYY_YWYY ='有' and YWDWLDSCYY_YYGJ is not null
+        group by YWDWLDSCYY_YYGJ order by count(*) desc
+    </select>
+    <select id="querySexInfo" resultType="java.util.Map">
+        select aa.xb,count(*) as num  from (
+           select
+               CASE (SUBSTR(TRIM(SFZH),17,1)%2)
+                   WHEN 1 THEN '男'
+                   WHEN  0 THEN '女'
+                   END AS xb  from "GP_SZZF_M"."RRCZJNSH" where SFZH is not null and length(SFZH) = 18
+            <if test="type != '' and type == 'px'">
+                and PXYY_YWPXYY = '有' and PXYY_PXJNGZ is not null
+            </if>
+            <if test="type != '' and type == 'qz'">
+                and QJYY_YWQZYY is not null and QJYY_YWQZYY = '有'
+            </if>
+       ) aa group by aa.xb
     </select>
 </mapper>

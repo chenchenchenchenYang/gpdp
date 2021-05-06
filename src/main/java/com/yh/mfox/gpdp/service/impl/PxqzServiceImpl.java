@@ -120,4 +120,24 @@ public class PxqzServiceImpl implements PxqzService {
         pxMap.put("jyType", pxqzMapper.queryPxRyJyType()); // 就业类型统计
         return pxMap;
     }
+
+    @Override
+    public Map<String, Object> getQzInfoNew() {
+        Map<String, Object> qzMap = new HashMap<>();
+        qzMap.put("type", pxqzMapper.queryQzType().get(0).get("NUM")); // 类型数量
+        qzMap.put("total", pxqzMapper.queryQzTotal().get(0).get("NUM")); // 总人数
+        qzMap.put("typeInfo", pxqzMapper.queryQzTypeInfo()); // 类型详情
+        qzMap.put("jyType", pxqzMapper.queryQzRyJyType()); // 就业类型统计
+        return qzMap;
+    }
+
+    @Override
+    public List<Map<String, Object>> getDyyx() {
+        return pxqzMapper.queryDyyx();
+    }
+
+    @Override
+    public List<Map<String, Object>> getSexInfo(String type) {
+        return pxqzMapper.querySexInfo(type);
+    }
 }

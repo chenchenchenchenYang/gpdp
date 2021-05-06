@@ -118,4 +118,46 @@ public class PxqzController {
             return R.error(400,"失败");
         }
     }
+
+    /**
+     * @Author: Wangcheny
+     * @Date: 2021年05月06日 下午 05:30:04
+     * @Description:  新需求- 求职人员信息
+     */
+    @RequestMapping("/qzryInfo")
+    public Map<String, Object> getQzInfoNew(HttpServletRequest request) {
+        try {
+            return R.ok(200,"成功",pxqzService.getQzInfoNew());
+        } catch (Exception e) {
+            return R.error(400,"失败");
+        }
+    }
+
+    /**
+     * @Author: Wangcheny
+     * @Date: 2021年05月06日 下午 06:05:48
+     * @Description: 新需求-对外意向国家
+     */
+    @RequestMapping("/dyyx")
+    public Map<String, Object> getDyyx(HttpServletRequest request) {
+        try {
+            return R.ok(200,"成功",pxqzService.getDyyx());
+        } catch (Exception e) {
+            return R.error(400,"失败");
+        }
+    }
+
+    /**
+     * @Author: Wangcheny
+     * @Date: 2021年05月06日 下午 06:17:27
+     * @Description: 培训/求职性别
+     */
+    @RequestMapping("/sexInfo")
+    public Map<String, Object> getSexInfo(String type) {
+        try {
+            return R.ok(200,"成功",pxqzService.getSexInfo(type));
+        } catch (Exception e) {
+            return R.error(400,"失败");
+        }
+    }
 }

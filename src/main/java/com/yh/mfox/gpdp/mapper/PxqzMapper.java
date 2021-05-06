@@ -1,6 +1,7 @@
 package com.yh.mfox.gpdp.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -38,4 +39,16 @@ public interface PxqzMapper {
     List<Map<String, Object>> queryPxTypeInfo();
 
     List<Map<String, Object>> queryPxRyJyType();
+
+    List<Map<String, Object>> queryQzType();
+
+    List<Map<String, Object>> queryQzTotal();
+
+    List<Map<String, Object>> queryQzTypeInfo();
+
+    List<Map<String, Object>> queryQzRyJyType();
+
+    List<Map<String, Object>> queryDyyx();
+
+    List<Map<String, Object>> querySexInfo(@Param("type") String type);
 }

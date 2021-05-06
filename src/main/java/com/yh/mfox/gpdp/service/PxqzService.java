@@ -17,4 +17,10 @@ public interface PxqzService {
     Map<String, Object> getQzInfo();
 
     Map<String, Object> getRyInfoNew();
+
+    Map<String, Object> getQzInfoNew();
+
+    List<Map<String,Object>> getDyyx();
+
+    List<Map<String,Object>> getSexInfo(String type);
 }
