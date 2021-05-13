@@ -53,7 +53,7 @@
     </select>
     <select id="queryZfdw" resultType="java.util.Map" parameterType="java.lang.String">
         select aa."DWMC",aa."DWRS",aa."GSDW",
-               aa."FZEXM",aa."FZRDH",aa."ZSDD",ifnull(bb.ZBMC,'') as ZBMC
+               aa."FZEXM",aa."FZRDH",aa."ZSDD",ifnull(bb.ZBMC,'') as ZBMC,ZSDDJD,ZSDDWD
         from "GP_SZZF_K"."ZSDWB" aa
                  left join
              (
