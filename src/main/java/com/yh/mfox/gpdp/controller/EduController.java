@@ -202,4 +202,19 @@ public class EduController {
             return R.error(400,"失败");
         }
     }
+
+    /**
+     * @Author: Wangcheny
+     * @Date: 2021年05月13日 下午 05:08:51
+     * @Description: 中小学户籍统计
+     */
+    @PostMapping("/hjtj")
+    public Map<String, Object> getHjtj() {
+        try {
+            return R.ok(200,"成功",eduService.getHjtj());
+        } catch (Exception e) {
+            return R.error(400,"失败");
+        }
+    }
+
 }

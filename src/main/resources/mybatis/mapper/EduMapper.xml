@@ -158,4 +158,13 @@
         where "NJ" is not null
         and  year(curdate()) - substr("NJ",3,4) = 9
     </select>
+
+    <select id="queryHjtj" resultType="java.util.Map" >
+        select b.NAME,count(*) as num
+        from "GP_SZZF_Q"."ZXXSJBXXHZ" a
+                 join "GP_SZZF_Q"."BM" b on substr(a.SFZH,1,2)  = b.CODE
+        where SFZH is not null and length(SFZH) = 18
+        group by  b.NAME  order by count(*) desc
+    </select>
+
 </mapper>
