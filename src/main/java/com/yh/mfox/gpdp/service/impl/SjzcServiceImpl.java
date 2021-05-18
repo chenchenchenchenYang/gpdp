@@ -24,11 +24,11 @@ public class SjzcServiceImpl implements SjzcService {
     public Map<String, Object> getJrpm() {
         List<Map<String, Object>> jrzl = sjzcMapper.queryJrzl();
         List<Map<String, Object>> rzl = sjzcMapper.queryRzl();
-        List<Map<String, Object>> qb = sjzcMapper.queryQb();
+        // List<Map<String, Object>> qb = sjzcMapper.queryQb();
         Map<String,Object> result =  new HashMap<>();
         result.put("jrzl",jrzl);
         result.put("rzl",rzl);
-        result.put("qb",qb);
+        // result.put("qb",qb);
         return result;
     }
 
@@ -36,11 +36,11 @@ public class SjzcServiceImpl implements SjzcService {
     public Map<String, Object> getJrpc() {
         List<Map<String, Object>> kbsl = sjzcMapper.queryKbsl();
         List<Map<String, Object>> spsl = sjzcMapper.querySpsl();
-        List<Map<String, Object>> qb = sjzcMapper.queryQbpc();
+        // List<Map<String, Object>> qb = sjzcMapper.queryQbpc();
         Map<String,Object> result =  new HashMap<>();
         result.put("kbsl",kbsl);
         result.put("spsl",spsl);
-        result.put("qb",qb);
+        // result.put("qb",qb);
         return result;
     }
 
@@ -61,13 +61,13 @@ public class SjzcServiceImpl implements SjzcService {
     @Override
     public Map<String, Object> getXlpm() {
         List<Map<String, Object>> lx = sjzcMapper.queryXlpmLx();
-        List<Map<String, Object>> ss = sjzcMapper.queryXlpmSs();
-        List<Map<String, Object>> qb = sjzcMapper.queryXlpmQb();
+        // List<Map<String, Object>> ss = sjzcMapper.queryXlpmSs();
+        // List<Map<String, Object>> qb = sjzcMapper.queryXlpmQb();
         List<Map<String, Object>> wts = sjzcMapper.queryWts();
         Map<String,Object> result =  new HashMap<>();
         result.put("lx",lx);
-        result.put("ss",ss);
-        result.put("qb",qb);
+        // result.put("ss",ss);
+        // result.put("qb",qb);
         result.put("wts",wts);
         return result;
     }
