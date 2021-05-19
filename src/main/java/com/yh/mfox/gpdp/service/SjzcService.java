@@ -1,6 +1,5 @@
 package com.yh.mfox.gpdp.service;
 
-import java.util.List;
 import java.util.Map;
 
 public interface SjzcService {
