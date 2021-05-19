@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yh.mfox.gpdp.mapper.SjzcMapper">
     <select id="queryCount" resultType="java.util.Map">
-        select total_count,into_organization,resource_num,total_store,exchange
-        from GP_SZZF_R.WKYPT_TOTAL_OVERVIEW order by sync_date desc limit 1
+        select "total_count","into_organization","resource_num","total_store","exchange"
+        from "GP_SZZF_R"."WKYPT_TOTAL_OVERVIEW" order by "sync_date" desc limit 1
     </select>
     <select id="queryJrzl" resultType="java.util.Map">
-        select "DWMC","SJL_WT"
-        from "GP_SZZF_R"."JRPM_JRZL" order by SJL_WT desc;
+        select "name","total"
+        from "GP_SZZF_R"."WKYPT_ACCESS_TOTAL" order by "sync_date" desc limit 5
     </select>
     <select id="queryRzl" resultType="java.util.Map">
         select "name","total"
@@ -38,12 +38,12 @@
                "data_num","real_data" from "GP_SZZF_R"."WKYPT_EXCHANGE_SHARED" order by "sync_date" desc limit 1
     </select>
     <select id="querySjzl" resultType="java.util.Map">
-        select "JHSJL_WT","WTSL_WT"
-        from "GP_SZZF_R"."SJZL" order by TBSJ DESC ;
+        select "total_data_data","problem_data"
+        from "GP_SZZF_R"."WKYPT_DATA_QUALITY" order by "sync_date" desc limit 1
     </select>
     <select id="queryXlpmLx" resultType="java.util.Map">
-        select "BM","ZQJHSL","WTJHSL","WJHSL"
-        from "GP_SZZF_R"."XLPM_LX" order by ZQJHSL desc
+        select "dept","correct_data","problem_data","not_data"
+        from "GP_SZZF_R"."WKYPT_OFFLINE" order by "sync_date" desc limit 1
     </select>
     <select id="queryXlpmSs" resultType="java.util.Map">
         select "BM","ZQJHSL","WTJHSL","WJHSL"
