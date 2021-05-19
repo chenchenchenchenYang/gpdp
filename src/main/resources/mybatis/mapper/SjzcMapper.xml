@@ -2,38 +2,40 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yh.mfox.gpdp.mapper.SjzcMapper">
     <select id="queryCount" resultType="java.util.Map">
-        select "SJJL_WT","ZCCL_GB","JRJHL_GB","YRKZZ_G","ZYS_G"
-        from "GP_SZZF_R"."ZGL";
+        select total_count,into_organization,resource_num,total_store,exchange
+        from GP_SZZF_R.WKYPT_TOTAL_OVERVIEW order by sync_date desc limit 1
     </select>
     <select id="queryJrzl" resultType="java.util.Map">
         select "DWMC","SJL_WT"
         from "GP_SZZF_R"."JRPM_JRZL" order by SJL_WT desc;
     </select>
     <select id="queryRzl" resultType="java.util.Map">
-        select "DWMC","SJL_WT"
-        from "GP_SZZF_R"."JRPM_RZL" order by SJL_WT desc;
+        select "name","total"
+        from "GP_SZZF_R"."WKYPT_DAILY_INCREASE" order by "sync_date" desc limit 5
     </select>
     <select id="queryQb" resultType="java.util.Map">
         select "DWMC","SJL_WT"
         from "GP_SZZF_R"."JRPM_QB" order by SJL_WT desc;
     </select>
     <select id="queryKbsl" resultType="java.util.Map">
-        select "DWMC","JRS","GXS","GXL"
-        from "GP_SZZF_R"."JRPC_KBSL"
+        select "name","insert_num","update_num","last_report_time"
+        from "GP_SZZF_R"."WKYPT_TABLENUM" order by "sync_date" desc
     </select>
     <select id="querySpsl" resultType="java.util.Map">
-        select "DWMC","JRS","GXS","GXL"
-        from "GP_SZZF_R"."JRPC_SPSL";
+        select SBPT,count(*) as num
+        from "GP_SZZF_W"."SP" group by SBPT
     </select>
     <select id="queryQbpc" resultType="java.util.Map">
         select "DWMC","JRS","GXS","GXL"
         from "GP_SZZF_R"."JRPC_QB";
     </select>
     <select id="queryExchange" resultType="java.util.Map">
-        select "JRJHL_G","BYJHL_YT","JRZZ_J","JRX","JRZYS_G","JRZYSJKBS_G","JRZYSWJS_G",
-       "JRZYS_API_S_G","GXZYSJKBS_G","GXZYWJS_G","GXZY_API_S_G","JHGXZSJL_WT","JHGXZCCL_GB",
-       "JHGXZYS_G","ZTKZS_WT","ZTKZCCL_GB","ZTKZYS_G","BMKZSJL_WT","BMKZCCL_GB","BMKZYS_G","ZQXL_WT","LXSJ_WT","SJ_T","SSSJ_WT"
-        from "GP_SZZF_R"."JHGX" order by TBSJ DESC
+        select "day_exchange_num","month_exchange_num",
+               "into_organization","into_city","into_resource","into_resource_data","into_resource_file",
+               "into_resource_api","share_data","share_file","share_api","total_exchange",
+               "total_exchange_store","exchange_resource","total_theme","total_theme_store",
+               "theme_resource","total_dept","total_dept_store","dept_resource","wash_data","offline_num",
+               "data_num","real_data" from "GP_SZZF_R"."WKYPT_EXCHANGE_SHARED" order by "sync_date" desc limit 1
     </select>
     <select id="querySjzl" resultType="java.util.Map">
         select "JHSJL_WT","WTSL_WT"
@@ -52,7 +54,7 @@
         from "GP_SZZF_R"."XLPM_QB" order by ZQJHSL desc
     </select>
     <select id="queryWts" resultType="java.util.Map">
-        select "WTMS","SL"
-        from "GP_SZZF_R"."XLPM_WTS";
+        select "Query_data_volume","Volume_unquestioned"
+        from "GP_SZZF_R"."WKYPT_QUESTION_PROPORTION" order by "sync_date" desc limit 1
     </select>
 </mapper>
