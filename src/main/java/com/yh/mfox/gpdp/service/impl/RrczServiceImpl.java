@@ -38,7 +38,7 @@ public class RrczServiceImpl implements RrczService {
         gprsMap.put("NAME", "本地市居民");
         gprsMap.put("NUM",
                 ((bi.divide(bj, 4, BigDecimal.ROUND_HALF_UP)).multiply(new BigDecimal(100))).setScale(2));
-        extMap.put("NAME", "外地是居民");
+        extMap.put("NAME", "外地市居民");
         extMap.put("NUM", zrs - gprs > 0 ?
                 ((new BigDecimal(String.valueOf(bj.subtract(new BigDecimal(gprs)))).divide(bi, 4, BigDecimal.ROUND_HALF_UP)).multiply(new BigDecimal(100))).setScale(2) : 0);
         res.add(gprsMap);
