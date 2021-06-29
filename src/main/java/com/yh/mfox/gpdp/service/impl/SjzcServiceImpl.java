@@ -24,11 +24,11 @@ public class SjzcServiceImpl implements SjzcService {
     public Map<String, Object> getJrpm() {
         List<Map<String, Object>> jrzl = sjzcMapper.queryJrzl();
         List<Map<String, Object>> rzl = sjzcMapper.queryRzl();
-        // List<Map<String, Object>> qb = sjzcMapper.queryQb();
+        List<Map<String, Object>> qb = sjzcMapper.queryQb();
         Map<String,Object> result =  new HashMap<>();
         result.put("jrzl",jrzl);
         result.put("rzl",rzl);
-        // result.put("qb",qb);
+        result.put("qb",qb);
         return result;
     }
 
@@ -36,11 +36,11 @@ public class SjzcServiceImpl implements SjzcService {
     public Map<String, Object> getJrpc() {
         List<Map<String, Object>> kbsl = sjzcMapper.queryKbsl();
         List<Map<String, Object>> spsl = sjzcMapper.querySpsl();
-        // List<Map<String, Object>> qb = sjzcMapper.queryQbpc();
+        List<Map<String, Object>> qb = sjzcMapper.queryQbpc();
         Map<String,Object> result =  new HashMap<>();
         result.put("kbsl",kbsl);
         result.put("spsl",spsl);
-        // result.put("qb",qb);
+        result.put("qb",qb);
         return result;
     }
 
