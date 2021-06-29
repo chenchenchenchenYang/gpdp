@@ -15,7 +15,7 @@
     <select id="queryRzl" resultType="java.util.Map">
         select "name","total"
         from "GP_SZZF_R"."WKYPT_DAILY_INCREASE"
-        where to_char("sync_date",'YYYY-MM-DD') =  add_days(curdate(),-1);
+        where to_char("sync_date",'YYYY-MM-DD') =  add_days(curdate(),-1)
         order by "total" desc
     </select>
     <select id="queryQb" resultType="java.util.Map">
@@ -41,15 +41,11 @@
         from "GP_SZZF_W"."SP" group by SBPT
     </select>
     <select id="queryQbpc" resultType="java.util.Map">
-        select a.name,sum(a.insert_num),sum(a.update_num),sum(a.num) from
-            (
-                select "name" as name,"insert_num" as insert_num,"update_num" as update_num, 0 as num
-                from "GP_SZZF_R"."WKYPT_TABLENUM"
-                where to_char("sync_date",'YYYY-MM-DD') =  add_days(curdate(),-1)
-                union
-                select SBPT as name,0 as insert_num,0 as update_num,count(*) as num
-                from "GP_SZZF_W"."SP" group by SBPT
-            ) a group by a.name
+        select a.name,sum(a.insert_num) insert_num,sum(a.update_num) update_num,sum(a.num) num from
+            ( select "name" as name,"insert_num" as insert_num,"update_num" as update_num, 0 as num
+              from "GP_SZZF_R"."WKYPT_TABLENUM" where to_char("sync_date",'YYYY-MM-DD') = add_days(curdate(),-1) union
+              select SBPT as name,0 as insert_num,0 as update_num,count(*) as num from "GP_SZZF_W"."SP" group by SBPT ) a
+        group by a.name
     </select>
     <select id="queryExchange" resultType="java.util.Map">
         select "day_exchange_num","month_exchange_num",
