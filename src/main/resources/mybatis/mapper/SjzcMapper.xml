@@ -83,4 +83,7 @@
         from "GP_SZZF_R"."WKYPT_QUESTION_PROPORTION"
         where to_char("sync_date",'YYYY-MM-DD') =  add_days(curdate(),-1)
     </select>
+    <select id="querySpCount" resultType="java.util.Map">
+        select count(*) as num from "GP_SZZF_W"."SP"
+    </select>
 </mapper>

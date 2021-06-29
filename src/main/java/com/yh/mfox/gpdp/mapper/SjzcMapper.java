@@ -33,4 +33,6 @@ public interface SjzcMapper {
     List<Map<String, Object>> queryXlpmQb();
 
     List<Map<String, Object>> queryWts();
+
+    List<Map<String, Object>> querySpCount();
 }
