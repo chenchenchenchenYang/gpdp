@@ -18,8 +18,9 @@ public class SjzcServiceImpl implements SjzcService {
     public Map<String, Object> getCount() {
         List<Map<String, Object>> maps = sjzcMapper.queryCount();
         List<Map<String, Object>> spMaps = sjzcMapper.querySpCount();
-        HashMap<Object, Object> map = new HashMap<>();
+        HashMap<String, Object> map = new HashMap<>();
         map.put("spCount", spMaps.isEmpty() ? 0 : spMaps.get(0).get("NUM"));
+        maps.add(map);
         if (null == maps || maps.isEmpty()) return new HashMap<>();
         return maps.get(0);
     }
