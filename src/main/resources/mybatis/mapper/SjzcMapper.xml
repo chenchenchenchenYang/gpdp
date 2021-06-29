@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yh.mfox.gpdp.mapper.SjzcMapper">
     <select id="queryCount" resultType="java.util.Map">
-        select "total_count","into_organization","resource_num","total_store","exchange"
+        select ifnull("total_count",0),ifnull("into_organization",0),ifnull("resource_num",0),ifnull("total_store",0),ifnull("exchange",0)
         from "GP_SZZF_R"."WKYPT_TOTAL_OVERVIEW"
         where to_char("sync_date",'YYYY-MM-DD') =  add_days(curdate(),-1);
     </select>
