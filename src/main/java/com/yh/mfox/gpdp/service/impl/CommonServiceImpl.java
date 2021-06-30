@@ -42,7 +42,8 @@ public class CommonServiceImpl implements CommonService {
         for (Map<String, Object> map : list) {
             result = new HashMap<>();
             String splx = map.get("SPLX") + "";
-            result.put(splx,commenMapper.queryEjfl(splx));
+            result.put("name",splx);
+            result.put("child",commenMapper.queryEjfl(splx));
             l.add(result);
         }
         return l;

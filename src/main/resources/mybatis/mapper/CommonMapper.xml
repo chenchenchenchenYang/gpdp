@@ -36,6 +36,6 @@
         select "SPLX" from "GP_SZZF_W"."SP" group by SPLX
     </select>
     <select id="queryEjfl" resultType="java.util.Map">
-        select EJFL from "GP_SZZF_W"."SP" WHERE  SPLX = #{splx} group by EJFL
+        select EJFL from "GP_SZZF_W"."SP" WHERE EJFL is not null and SPLX = #{splx} group by EJFL
     </select>
 </mapper>
