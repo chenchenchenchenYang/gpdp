@@ -33,4 +33,18 @@ public class CommonController {
             return R.error(400,"失败");
         }
     }
+
+    /**
+     * 获取视频分类
+     *
+     * @return
+     */
+    @PostMapping("/spType")
+    public Map<String,Object> spType(){
+        try {
+            return R.ok(200,"成功",commonService.getSpType());
+        } catch (Exception e) {
+            return R.error(400,"失败");
+        }
+    }
 }
