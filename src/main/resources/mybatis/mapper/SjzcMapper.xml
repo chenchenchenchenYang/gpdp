@@ -4,18 +4,25 @@
     <select id="queryCount" resultType="java.util.Map">
         select ifnull("total_count",0) total_count,ifnull("into_organization",0) into_organization ,
         ifnull("resource_num",0) resource_num,ifnull("total_store",0) total_store,ifnull("exchange",0) "EXCHANGE"
-        from "GP_SZZF_R"."WKYPT_TOTAL_OVERVIEW" where to_char("sync_date",'YYYY-MM-DD') = add_days(curdate(),-1);
+        from "GP_SZZF_R"."WKYPT_TOTAL_OVERVIEW"
+        where "sync_date" =  (
+            select max("sync_date") from "GP_SZZF_R"."WKYPT_TOTAL_OVERVIEW"
+        )
     </select>
     <select id="queryJrzl" resultType="java.util.Map">
         select "name","total"
         from "GP_SZZF_R"."WKYPT_ACCESS_TOTAL"
-        where to_char("sync_date",'YYYY-MM-DD') =  add_days(curdate(),-1)
+        where "sync_date" =  (
+            select max("sync_date") from "GP_SZZF_R"."WKYPT_ACCESS_TOTAL"
+        )
         order by "total" desc
     </select>
     <select id="queryRzl" resultType="java.util.Map">
         select "name","total"
         from "GP_SZZF_R"."WKYPT_DAILY_INCREASE"
-        where to_char("sync_date",'YYYY-MM-DD') =  add_days(curdate(),-1)
+        where "sync_date" =  (
+            select max("sync_date") from "GP_SZZF_R"."WKYPT_DAILY_INCREASE"
+        )
         order by "total" desc
     </select>
     <select id="queryQb" resultType="java.util.Map">
@@ -23,18 +30,24 @@
             (
                 select "name" as name,"total" as jrzl ,0 as rzl
                 from "GP_SZZF_R"."WKYPT_ACCESS_TOTAL"
-                where to_char("sync_date",'YYYY-MM-DD') =  add_days(curdate(),-1)
+                where "sync_date" =  (
+                    select max("sync_date") from "GP_SZZF_R"."WKYPT_ACCESS_TOTAL"
+                )
                 union  all
                 select "name" as name,"total" as rzl, 0 as jrzl
                 from "GP_SZZF_R"."WKYPT_DAILY_INCREASE"
-                where to_char("sync_date",'YYYY-MM-DD') =  add_days(curdate(),-1)
+                where "sync_date" =  (
+                    select max("sync_date") from "GP_SZZF_R"."WKYPT_ACCESS_TOTAL"
+                )
             )a  group by  a.name
 
     </select>
     <select id="queryKbsl" resultType="java.util.Map">
         select "name","insert_num","update_num","last_report_time"
         from "GP_SZZF_R"."WKYPT_TABLENUM"
-        where to_char("sync_date",'YYYY-MM-DD') =  add_days(curdate(),-1)
+        where "sync_date" =  (
+            select max("sync_date") from "GP_SZZF_R"."WKYPT_TABLENUM"
+        )
     </select>
     <select id="querySpsl" resultType="java.util.Map">
         select SBPT,count(*) as num
@@ -43,7 +56,11 @@
     <select id="queryQbpc" resultType="java.util.Map">
         select a.name,sum(a.insert_num) insert_num,sum(a.update_num) update_num,sum(a.num) num from
             ( select "name" as name,"insert_num" as insert_num,"update_num" as update_num, 0 as num
-              from "GP_SZZF_R"."WKYPT_TABLENUM" where to_char("sync_date",'YYYY-MM-DD') = add_days(curdate(),-1) union
+              from "GP_SZZF_R"."WKYPT_TABLENUM"
+              where "sync_date" =  (
+                  select max("sync_date") from "GP_SZZF_R"."WKYPT_TABLENUM"
+              )
+            union
               select SBPT as name,0 as insert_num,0 as update_num,count(*) as num from "GP_SZZF_W"."SP" group by SBPT ) a
         group by a.name
     </select>
@@ -54,17 +71,23 @@
                "total_exchange_store","exchange_resource","total_theme","total_theme_store",
                "theme_resource","total_dept","total_dept_store","dept_resource","wash_data","offline_num",
                "data_num","real_data" from "GP_SZZF_R"."WKYPT_EXCHANGE_SHARED"
-        where to_char("sync_date",'YYYY-MM-DD') =  add_days(curdate(),-1)
+        where "sync_date" =  (
+            select max("sync_date") from "GP_SZZF_R"."WKYPT_EXCHANGE_SHARED"
+        )
     </select>
     <select id="querySjzl" resultType="java.util.Map">
         select "total_data_data","problem_data"
         from "GP_SZZF_R"."WKYPT_DATA_QUALITY"
-        where to_char("sync_date",'YYYY-MM-DD') =  add_days(curdate(),-1)
+        where "sync_date" =  (
+            select max("sync_date") from "GP_SZZF_R"."WKYPT_DATA_QUALITY"
+        )
     </select>
     <select id="queryXlpmLx" resultType="java.util.Map">
         select "dept","correct_data","problem_data","not_data"
         from "GP_SZZF_R"."WKYPT_OFFLINE"
-        where to_char("sync_date",'YYYY-MM-DD') =  add_days(curdate(),-1)
+        where "sync_date" =  (
+            select max("sync_date") from "GP_SZZF_R"."WKYPT_OFFLINE"
+        )
     </select>
     <select id="queryXlpmSs" resultType="java.util.Map">
         select "BM","ZQJHSL","WTJHSL","WJHSL"
@@ -77,7 +100,9 @@
     <select id="queryWts" resultType="java.util.Map">
         select "Query_data_volume","Volume_unquestioned"
         from "GP_SZZF_R"."WKYPT_QUESTION_PROPORTION"
-        where to_char("sync_date",'YYYY-MM-DD') =  add_days(curdate(),-1)
+        where "sync_date" =  (
+            select max("sync_date") from "GP_SZZF_R"."WKYPT_QUESTION_PROPORTION"
+        )
     </select>
     <select id="querySpCount" resultType="java.util.Map">
         select count(*) as num from "GP_SZZF_W"."SP"
