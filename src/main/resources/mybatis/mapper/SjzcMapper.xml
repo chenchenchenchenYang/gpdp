@@ -34,13 +34,12 @@
                     select max("sync_date") from "GP_SZZF_R"."WKYPT_ACCESS_TOTAL"
                 )
                 union  all
-                select "name" as name,"total" as rzl, 0 as jrzl
+                select "name" as name,0 as jrzl,"total" as rzl
                 from "GP_SZZF_R"."WKYPT_DAILY_INCREASE"
                 where "sync_date" =  (
-                    select max("sync_date") from "GP_SZZF_R"."WKYPT_ACCESS_TOTAL"
+                    select max("sync_date") from "GP_SZZF_R"."WKYPT_DAILY_INCREASE"
                 )
             )a  group by  a.name
-
     </select>
     <select id="queryKbsl" resultType="java.util.Map">
         select "name","insert_num","update_num","last_report_time"
