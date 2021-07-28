@@ -83,7 +83,7 @@
         from "GP_SZZF_N"."JC_GPSSHZHFZJSQK" order by NY desc;
     </select>
     <select id="queryDmYear" resultType="java.util.Map" >
-        select "name",max("year")
+        select "name",max("year") as  "year"
         from "GP_SZZF_N"."JC_DBSKHDMSZ" group by "name";
     </select>
 
@@ -92,10 +92,14 @@
         from "GP_SZZF_N"."JC_DBSKHDMSZ" where "name" = #{name} and "year" = #{year}
     </select>
 
-    <select id="queryDmdetail" resultType="java.util.Map" >
+    <select id="queryDmdetail" resultType="java.util.Map" parameterType="java.lang.Integer">
         select "name","get_time","water_temp","flow","ph","conductivity","DO","PV","BOD","NH4","oil","phenol","Hg","Pb","COD","TN","TP","Cu","Zn","FL","Se","As","Cd","Cr","CN","AACG","sulphide","FCB"
-        from "GP_SZZF_N"."JC_DBSHJJCSJ" order by "name","get_time" desc
+        from "GP_SZZF_N"."JC_DBSHJJCSJ" order by "name","get_time" desc limit #{page},#{size}
     </select>
 
+    <select id="queryCount" resultType="java.lang.Long" >
+        select count(*)
+        from "GP_SZZF_N"."JC_DBSHJJCSJ"
+    </select>
 
 </mapper>

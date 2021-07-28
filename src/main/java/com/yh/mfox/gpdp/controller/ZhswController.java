@@ -160,9 +160,9 @@ public class ZhswController {
     }
 
     @PostMapping("/dmdetail")
-    public Map<String,Object> getDmdetail(){
+    public Map<String,Object> getDmdetail(int page,int size){
         try {
-            return R.ok(200,"成功",zhswService.getDmdetail());
+            return R.ok(200,"成功",zhswService.getDmdetail(page,size));
         } catch (Exception e) {
             e.printStackTrace();
             return R.error(400,"失败");

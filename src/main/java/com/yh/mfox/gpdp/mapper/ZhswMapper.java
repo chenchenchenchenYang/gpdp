@@ -28,5 +28,7 @@ public interface ZhswMapper {
 
     List<Map<String, Object>> queryDmCount(@Param("name") String name, @Param("year") String year);
 
-    List<Map<String, Object>> queryDmdetail();
+    List<Map<String, Object>> queryDmdetail(@Param("page") int page, @Param("size") int size);
+
+    long queryCount();
 }

@@ -71,7 +71,7 @@ public class ZhswServiceImpl implements ZhswService {
         if (yearList.isEmpty()) return new ArrayList<>();
         List<Map<String, Object>> count = new ArrayList<>();
         for (Map<String, Object> map : yearList) {
-            List<Map<String, Object>> c = zhswMapper.queryDmCount(map.get("NAME") + "", map.get("YEAR") + "");
+            List<Map<String, Object>> c = zhswMapper.queryDmCount(map.get("name") + "", map.get("year") + "");
             count.addAll(c);
         }
         // 便利通过
@@ -79,7 +79,12 @@ public class ZhswServiceImpl implements ZhswService {
     }
 
     @Override
-    public List<Map<String, Object>> getDmdetail() {
-        return zhswMapper.queryDmdetail();
+    public Map<String, Object> getDmdetail(int page,int size) {
+        Map<String, Object> result = new HashMap<>();
+        result.put("page", page);
+        result.put("size", size);
+        result.put("count", zhswMapper.queryCount());
+        result.put("rows", zhswMapper.queryDmdetail((page - 1) * size,size));
+        return result;
     }
 }

@@ -22,6 +22,6 @@ public interface ZhswService {
 
     List<Map<String, Object>> getDmjc();
 
-    List<Map<String, Object>> getDmdetail();
+    Map<String, Object> getDmdetail(int page,int size);
 
 }
