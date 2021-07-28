@@ -20,4 +20,8 @@ public interface ZhswService {
 
     List<Map<String, Object>> getXqjyl();
 
+    List<Map<String, Object>> getDmjc();
+
+    List<Map<String, Object>> getDmdetail();
+
 }

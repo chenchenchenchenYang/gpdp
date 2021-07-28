@@ -23,4 +23,10 @@ public interface ZhswMapper {
     List<Map<String, Object>> querySkInfp(@Param("name") String name);
 
     List<Map<String, Object>> queryXqjyl();
+
+    List<Map<String, Object>> queryDmYear();
+
+    List<Map<String, Object>> queryDmCount(@Param("name") String name, @Param("year") String year);
+
+    List<Map<String, Object>> queryDmdetail();
 }

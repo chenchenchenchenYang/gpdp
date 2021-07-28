@@ -82,4 +82,20 @@
         select NY,XQJYL6Y,XQJYL7Y,XQJYL8Y,XQJYL9Y
         from "GP_SZZF_N"."JC_GPSSHZHFZJSQK" order by NY desc;
     </select>
+    <select id="queryDmYear" resultType="java.util.Map" >
+        select "name",max("year")
+        from "GP_SZZF_N"."JC_DBSKHDMSZ" group by "name";
+    </select>
+
+    <select id="queryDmCount" resultType="java.util.Map" parameterType="java.lang.String" >
+        select "name","year","month","COD","NH3-N","TP","type"
+        from "GP_SZZF_N"."JC_DBSKHDMSZ" where "name" = #{name} and "year" = #{year}
+    </select>
+
+    <select id="queryDmdetail" resultType="java.util.Map" >
+        select "name","get_time","water_temp","flow","ph","conductivity","DO","PV","BOD","NH4","oil","phenol","Hg","Pb","COD","TN","TP","Cu","Zn","FL","Se","As","Cd","Cr","CN","AACG","sulphide","FCB"
+        from "GP_SZZF_N"."JC_DBSHJJCSJ" order by "name","get_time" desc
+    </select>
+
+
 </mapper>

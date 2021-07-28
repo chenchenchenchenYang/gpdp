@@ -143,4 +143,30 @@ public class ZhswController {
             return R.error(400,"失败");
         }
     }
+
+    /**
+     * @Author: Wangcheny
+     * @Date: 2021年07月28日 下午 02:01:06
+     * @Description:断面监测数据
+     */
+    @PostMapping("/dmjc")
+    public Map<String,Object> getDmjc(){
+        try {
+            return R.ok(200,"成功",zhswService.getDmjc());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return R.error(400,"失败");
+        }
+    }
+
+    @PostMapping("/dmdetail")
+    public Map<String,Object> getDmdetail(){
+        try {
+            return R.ok(200,"成功",zhswService.getDmdetail());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return R.error(400,"失败");
+        }
+    }
+
 }

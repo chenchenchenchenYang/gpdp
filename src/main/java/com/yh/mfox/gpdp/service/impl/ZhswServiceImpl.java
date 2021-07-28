@@ -5,6 +5,7 @@ import com.yh.mfox.gpdp.service.ZhswService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,29 +24,29 @@ public class ZhswServiceImpl implements ZhswService {
     @Override
     public Map<String, Object> getGgqk() {
         List<Map<String, Object>> maps = zhswMapper.queryGgqk();
-        if(null == maps || maps.isEmpty()) return new HashMap<>();
-        return maps.get(0) ;
+        if (null == maps || maps.isEmpty()) return new HashMap<>();
+        return maps.get(0);
     }
 
     @Override
     public Map<String, Object> getZlmj(String year) {
         List<Map<String, Object>> maps = zhswMapper.queryZlmj(year);
-        if(null == maps || maps.isEmpty()) return new HashMap<>();
-        return maps.get(0) ;
+        if (null == maps || maps.isEmpty()) return new HashMap<>();
+        return maps.get(0);
     }
 
     @Override
     public Map<String, Object> getYsgc(String year) {
         List<Map<String, Object>> maps = zhswMapper.queryYsgc(year);
-        if(null == maps || maps.isEmpty()) return new HashMap<>();
-        return maps.get(0) ;
+        if (null == maps || maps.isEmpty()) return new HashMap<>();
+        return maps.get(0);
     }
 
     @Override
     public Map<String, Object> getZlssy(String year) {
         List<Map<String, Object>> maps = zhswMapper.queryZlssy(year);
-        if(null == maps || maps.isEmpty()) return new HashMap<>();
-        return maps.get(0) ;
+        if (null == maps || maps.isEmpty()) return new HashMap<>();
+        return maps.get(0);
     }
 
     @Override
@@ -61,5 +62,24 @@ public class ZhswServiceImpl implements ZhswService {
     @Override
     public List<Map<String, Object>> getXqjyl() {
         return zhswMapper.queryXqjyl();
+    }
+
+    @Override
+    public List<Map<String, Object>> getDmjc() {
+        // 先查每个断面最新年份
+        List<Map<String, Object>> yearList = zhswMapper.queryDmYear();
+        if (yearList.isEmpty()) return new ArrayList<>();
+        List<Map<String, Object>> count = new ArrayList<>();
+        for (Map<String, Object> map : yearList) {
+            List<Map<String, Object>> c = zhswMapper.queryDmCount(map.get("NAME") + "", map.get("YEAR") + "");
+            count.addAll(c);
+        }
+        // 便利通过
+        return count;
+    }
+
+    @Override
+    public List<Map<String, Object>> getDmdetail() {
+        return zhswMapper.queryDmdetail();
     }
 }
