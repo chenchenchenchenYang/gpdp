@@ -16,3 +16,4 @@ logging:
 
 netty:
   port: 10086
+  host: 10.58.0.92
