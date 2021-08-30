@@ -1,6 +1,6 @@
 package com.yh.mfox.gpdp.service.impl;
 
-import com.yh.mfox.gpdp.mapper.JyrqMapper;
+import com.yh.mfox.gpdp.mapper.query.JyrqMapper;
 import com.yh.mfox.gpdp.service.JyrqService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

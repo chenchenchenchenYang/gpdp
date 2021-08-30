@@ -1,7 +1,7 @@
 package com.yh.mfox.gpdp.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.yh.mfox.gpdp.mapper.ZhdjMapper;
+import com.yh.mfox.gpdp.mapper.query.ZhdjMapper;
 import com.yh.mfox.gpdp.service.ZhdjService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

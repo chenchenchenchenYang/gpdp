@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yh.mfox.gpdp.mapper.ZhlyMapper">
+<mapper namespace="com.yh.mfox.gpdp.mapper.query.ZhlyMapper">
     <select id="queryCount" resultType="java.util.Map">
         select 'mj' as title ,cast(ifnull(sum(MJM),0) as varchar) as count
         from "GP_SZZF_K"."JC_GJGYLXBMBGY_JT"

@@ -1,7 +1,7 @@
 package com.yh.mfox.gpdp.service.impl;
 
 
-import com.yh.mfox.gpdp.mapper.RrczMapper;
+import com.yh.mfox.gpdp.mapper.query.RrczMapper;
 import com.yh.mfox.gpdp.service.RrczService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yh.mfox.gpdp.mapper.RrczMapper">
+<mapper namespace="com.yh.mfox.gpdp.mapper.query.RrczMapper">
     <select id="queryResidenceAddr" resultType="java.util.Map">
         select 'gprs' as name ,count(*) as num from "GP_SZZF_M"."RRCZJNSH" where HJDZ_SSXXC_WSTXSSX like '%高平市%'
         union all

@@ -1,6 +1,6 @@
 package com.yh.mfox.gpdp.service.impl;
 
-import com.yh.mfox.gpdp.mapper.ZhlyMapper;
+import com.yh.mfox.gpdp.mapper.query.ZhlyMapper;
 import com.yh.mfox.gpdp.service.ZhlyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

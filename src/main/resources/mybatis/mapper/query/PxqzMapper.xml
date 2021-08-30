@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yh.mfox.gpdp.mapper.PxqzMapper">
+<mapper namespace="com.yh.mfox.gpdp.mapper.query.PxqzMapper">
     <select id="queryCount" resultType="java.util.Map">
         select 'bc' as name , count(*) AS NUM
         from "GP_SZZF_M"."RRCZJNSH" where PXYY_PXRQ is not null

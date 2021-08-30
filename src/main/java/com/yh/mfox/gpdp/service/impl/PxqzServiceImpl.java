@@ -1,6 +1,6 @@
 package com.yh.mfox.gpdp.service.impl;
 
-import com.yh.mfox.gpdp.mapper.PxqzMapper;
+import com.yh.mfox.gpdp.mapper.query.PxqzMapper;
 import com.yh.mfox.gpdp.service.PxqzService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

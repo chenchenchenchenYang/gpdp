@@ -1,6 +1,6 @@
 package com.yh.mfox.gpdp.service.impl;
 
-import com.yh.mfox.gpdp.mapper.SjzcMapper;
+import com.yh.mfox.gpdp.mapper.query.SjzcMapper;
 import com.yh.mfox.gpdp.service.SjzcService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

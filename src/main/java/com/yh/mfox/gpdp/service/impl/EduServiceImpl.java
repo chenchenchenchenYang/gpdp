@@ -1,6 +1,6 @@
 package com.yh.mfox.gpdp.service.impl;
 
-import com.yh.mfox.gpdp.mapper.EduMapper;
+import com.yh.mfox.gpdp.mapper.query.EduMapper;
 import com.yh.mfox.gpdp.service.EduService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

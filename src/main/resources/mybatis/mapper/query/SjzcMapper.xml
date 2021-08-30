@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yh.mfox.gpdp.mapper.SjzcMapper">
+<mapper namespace="com.yh.mfox.gpdp.mapper.query.SjzcMapper">
     <select id="queryCount" resultType="java.util.Map">
         select ifnull("total_count",0) total_count,ifnull("into_organization",0) into_organization ,
         ifnull("resource_num",0) resource_num,ifnull("total_store",0) total_store,ifnull("exchange",0) "EXCHANGE"

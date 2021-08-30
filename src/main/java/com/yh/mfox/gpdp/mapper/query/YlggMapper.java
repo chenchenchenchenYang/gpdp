@@ -1,4 +1,4 @@
-package com.yh.mfox.gpdp.mapper;
+package com.yh.mfox.gpdp.mapper.query;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
