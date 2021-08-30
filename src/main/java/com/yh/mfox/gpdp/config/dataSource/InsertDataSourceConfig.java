@@ -21,14 +21,14 @@ import javax.sql.DataSource;
 @MapperScan(basePackages = "com.yh.mfox.gpdp.mapper.add", sqlSessionFactoryRef = "insertSqlSessionFactory")
 public class InsertDataSourceConfig {
 
-    @Primary // 表示这个数据源是默认数据源, 这个注解必须要加，因为不加的话spring将分不清楚那个为主数据源（默认数据源）
+     // 表示这个数据源是默认数据源, 这个注解必须要加，因为不加的话spring将分不清楚那个为主数据源（默认数据源）
     @Bean("insertDataSource")
     @ConfigurationProperties(prefix = "spring.datasource.add") //读取application.yml中的配置参数映射成为
     public DataSource getDb1DataSource(){
         return DataSourceBuilder.create().build();
     }
 
-    @Primary
+
     @Bean("insertSqlSessionFactory")
     public SqlSessionFactory db1SqlSessionFactory(@Qualifier("insertDataSource") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
@@ -38,7 +38,6 @@ public class InsertDataSourceConfig {
         return bean.getObject();
     }
 
-    @Primary
     @Bean("insertSqlSessionTemplate")
     public SqlSessionTemplate db1SqlSessionTemplate(@Qualifier("insertSqlSessionFactory") SqlSessionFactory sqlSessionFactory){
         return new SqlSessionTemplate(sqlSessionFactory);

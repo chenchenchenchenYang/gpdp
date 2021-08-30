@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 @Mapper
-public interface CommenMapper {
+public interface CommonMapper {
     List<Map<String, Object>> querySp(Map<String, Object> params);
 
     long querySpCount(Map<String, Object> params);
@@ -16,6 +16,4 @@ public interface CommenMapper {
     List<Map<String, Object>> querySpType();
 
     List<Map<String, Object>> queryEjfl(@Param("splx") String splx);
-
-    int insertVideos(JSONObject sps);
 }

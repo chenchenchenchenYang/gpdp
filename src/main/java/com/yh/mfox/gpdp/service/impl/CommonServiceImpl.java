@@ -1,6 +1,6 @@
 package com.yh.mfox.gpdp.service.impl;
 
-import com.yh.mfox.gpdp.mapper.query.CommenMapper;
+import com.yh.mfox.gpdp.mapper.query.CommonMapper;
 import com.yh.mfox.gpdp.service.CommonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import java.util.Map;
 @Service
 public class CommonServiceImpl implements CommonService {
     @Autowired
-    private CommenMapper commenMapper;
+    private CommonMapper commenMapper;
 
     @Override
     public Map<String, Object> getSp(int page, int size, String yj, String ej, String sj) {

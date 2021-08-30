@@ -2,7 +2,6 @@ package com.yh.mfox.gpdp.config;
 
 import com.alibaba.fastjson.JSONObject;
 import com.yh.mfox.gpdp.mapper.add.InsertMapper;
-import com.yh.mfox.gpdp.mapper.query.CommenMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,6 @@ public class DbScheduleTask {
 
     @Autowired
     private NettyClient client;
-
 
     @Autowired
     private InsertMapper insertMapper;
@@ -43,7 +41,11 @@ public class DbScheduleTask {
                     client.sendMsg(JSONObject.toJSONString(json) + "**");
                 }
                 while(!CodeCache.list.isEmpty()){
-                    insertMapper.insertVideos(CodeCache.list.poll());
+                    JSONObject poll = CodeCache.list.poll();
+                    insertMapper.insertVideos(poll.getInteger("resourceid"),
+                            poll.getString("name"),
+                            poll.getString("longitude"),
+                            poll.getString("latitude"));
                 }
             } catch (Exception e) {
                 CodeCache.flag = true;

@@ -9,6 +9,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import javax.sql.DataSource;
@@ -19,12 +20,14 @@ import javax.sql.DataSource;
 @Configuration
 @MapperScan(basePackages = "com.yh.mfox.gpdp.mapper.query", sqlSessionFactoryRef = "querySqlSessionFactory")
 public class QueryDataSourceConfig {
+    @Primary
     @Bean("queryDataSource")
     @ConfigurationProperties(prefix = "spring.datasource.query")
     public DataSource getDb1DataSource(){
         return DataSourceBuilder.create().build();
     }
 
+    @Primary
     @Bean("querySqlSessionFactory")
     public SqlSessionFactory db1SqlSessionFactory(@Qualifier("queryDataSource") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
@@ -33,6 +36,7 @@ public class QueryDataSourceConfig {
         return bean.getObject();
     }
 
+    @Primary
     @Bean("querySqlSessionTemplate")
     public SqlSessionTemplate db1SqlSessionTemplate(@Qualifier("querySqlSessionFactory") SqlSessionFactory sqlSessionFactory){
         return new SqlSessionTemplate(sqlSessionFactory);

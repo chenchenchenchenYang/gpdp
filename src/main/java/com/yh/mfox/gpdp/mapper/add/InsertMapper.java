@@ -9,5 +9,8 @@ import java.util.Map;
 
 @Mapper
 public interface InsertMapper {
-    int insertVideos(JSONObject sps);
+    int insertVideos(@Param("resourceid") Integer resourceid,
+                     @Param("name") String name,
+                     @Param("longitude") String longitude,
+                     @Param("latitude") String latitude);
 }
