@@ -9,11 +9,9 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import java.io.IOException;
 import java.net.InetSocketAddress;
 
 
@@ -22,7 +20,7 @@ import java.net.InetSocketAddress;
  * @date: 2021年08月24日 17:25
  * @Description:
  */
-@Component
+//@Component
 public class NettyServer {
     private static final Logger log = LoggerFactory.getLogger(NettyServer.class);
     /**

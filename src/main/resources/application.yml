@@ -15,5 +15,5 @@ logging:
     com.yh.mfox.gpdp.mapper: debug
 
 netty:
-  port: 10086
+  port: 10167
   host: 10.58.0.92

@@ -1,5 +1,6 @@
 package com.yh.mfox.gpdp.mapper;
 
+import com.alibaba.fastjson.JSONObject;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -15,4 +16,6 @@ public interface CommenMapper {
     List<Map<String, Object>> querySpType();
 
     List<Map<String, Object>> queryEjfl(@Param("splx") String splx);
+
+    int insertVideos(JSONObject sps);
 }
