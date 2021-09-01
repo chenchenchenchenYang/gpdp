@@ -2,6 +2,7 @@ package com.yh.mfox.gpdp.config;
 
 import com.alibaba.fastjson.JSONObject;
 import com.yh.mfox.gpdp.mapper.add.InsertMapper;
+import com.yh.mfox.gpdp.service.InsertService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class DbScheduleTask {
     private NettyClient client;
 
     @Autowired
-    private InsertMapper insertMapper;
+    private InsertService insertService;
     //3.添加定时任务
     @Scheduled(cron = "0/10 * * * * ?")
     //或直接指定时间间隔，例如：5秒
@@ -42,10 +43,14 @@ public class DbScheduleTask {
                 }
                 while(!CodeCache.list.isEmpty()){
                     JSONObject poll = CodeCache.list.poll();
-                    insertMapper.insertVideos(poll.getInteger("resourceid"),
+                    insertService.addVideos(poll.getInteger("resourceid"),
                             poll.getString("name"),
                             poll.getString("longitude"),
-                            poll.getString("latitude"));
+                            poll.getString("latitude"),
+                            poll.getInteger("statue"),
+                            poll.getString("mainCodeStream"),
+                            poll.getString("subCodeStream")
+                    );
                 }
             } catch (Exception e) {
                 CodeCache.flag = true;
