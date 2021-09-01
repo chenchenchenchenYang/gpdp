@@ -47,4 +47,27 @@ public class CommonController {
             return R.error(400,"失败");
         }
     }
+
+    /**
+     * 视频初始化树形结构
+     *
+     * @return
+     */
+    @PostMapping("/spInit")
+    public Map<String,Object> spInit(){
+        try {
+            return R.ok(200,"成功",commonService.spInit());
+        } catch (Exception e) {
+            return R.error(400,"失败");
+        }
+    }
+
+    @PostMapping("/queryNode")
+    public Map<String,Object> queryNode(int resourceId){
+        try {
+            return R.ok(200,"成功",commonService.queryNode(resourceId));
+        } catch (Exception e) {
+            return R.error(400,"失败");
+        }
+    }
 }

@@ -14,7 +14,7 @@ public class DbRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        System.out.println("数据库初始化加载");
+        System.out.println("TCP 认证");
         json = new JSONObject();
         json.put("msg", "req");
         json.put("action", "cmuLogin");
@@ -24,11 +24,5 @@ public class DbRunner implements CommandLineRunner {
         json.put("password", "123456789@Usc?.");
         json.put("cuid", 0);
         client.sendMsg(JSONObject.toJSONString(json) + "**" );
-        json.clear();
-        json.put("msg", "req");
-        json.put("action", "cmuInitResData");
-        json.put("act_seq", 102);
-        json.put("mid", 9);
-        client.sendMsg(JSONObject.toJSONString(json) + "**");
     }
 }

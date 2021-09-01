@@ -13,8 +13,8 @@ import org.springframework.scheduling.annotation.Scheduled;
 import java.io.*;
 import java.util.Queue;
 
-@Configuration
-@EnableScheduling
+/*@Configuration
+@EnableScheduling*/
 public class DbScheduleTask {
 
     private static final Logger log = LoggerFactory.getLogger(DbScheduleTask.class);

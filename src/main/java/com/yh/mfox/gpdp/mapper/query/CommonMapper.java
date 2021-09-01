@@ -1,6 +1,5 @@
 package com.yh.mfox.gpdp.mapper.query;
 
-import com.alibaba.fastjson.JSONObject;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

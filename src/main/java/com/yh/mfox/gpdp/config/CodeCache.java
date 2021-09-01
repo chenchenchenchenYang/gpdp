@@ -6,11 +6,6 @@ import org.springframework.stereotype.Component;
 import java.util.LinkedList;
 import java.util.Queue;
 
-/**
- * @author: Wangcheny
- * @date: 2021年08月27日 12:24
- * @Description:
- */
 
 @Component
 public class CodeCache {

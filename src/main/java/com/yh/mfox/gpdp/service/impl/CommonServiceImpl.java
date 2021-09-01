@@ -1,5 +1,8 @@
 package com.yh.mfox.gpdp.service.impl;
 
+import com.alibaba.fastjson.JSONObject;
+import com.yh.mfox.gpdp.config.CodeCache;
+import com.yh.mfox.gpdp.config.NettyClient;
 import com.yh.mfox.gpdp.mapper.query.CommonMapper;
 import com.yh.mfox.gpdp.service.CommonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +17,10 @@ import java.util.Map;
 public class CommonServiceImpl implements CommonService {
     @Autowired
     private CommonMapper commenMapper;
+    @Autowired
+    private NettyClient nettyClient;
+
+    private JSONObject json;
 
     @Override
     public Map<String, Object> getSp(int page, int size, String yj, String ej, String sj) {
@@ -46,5 +53,34 @@ public class CommonServiceImpl implements CommonService {
             l.add(result);
         }
         return l;
+    }
+
+    @Override
+    public JSONObject spInit() {
+        json= new JSONObject();
+        json.put("msg", "req");
+        json.put("action", "cmuInitResData");
+        json.put("act_seq", 102);
+        json.put("mid", 9);
+        nettyClient.sendMsg(JSONObject.toJSONString(json) + "**");
+        while (!CodeCache.list.isEmpty()){
+            return CodeCache.list.poll();
+        }
+        return null;
+    }
+
+    @Override
+    public JSONObject queryNode(int resourceId) {
+        json= new JSONObject();
+        json.put("msg", "req");
+        json.put("action", "cmuQueryResData");
+        json.put("act_seq", 102);
+        json.put("mid", 9);
+        json.put("resourceid", resourceId);
+        nettyClient.sendMsg(JSONObject.toJSONString(json) + "**");
+        while (!CodeCache.list.isEmpty()){
+            return CodeCache.list.poll();
+        }
+        return null;
     }
 }

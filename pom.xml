@@ -40,11 +40,11 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>com.dm</groupId>
             <artifactId>DmJdbcDriver</artifactId>
             <version>1.7.0</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
