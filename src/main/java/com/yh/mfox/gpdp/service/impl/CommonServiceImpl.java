@@ -63,10 +63,10 @@ public class CommonServiceImpl implements CommonService {
         json.put("act_seq", 102);
         json.put("mid", 9);
         nettyClient.sendMsg(JSONObject.toJSONString(json) + "**");
-        while (!CodeCache.list.isEmpty()){
+        while (true){
+            if(CodeCache.list.isEmpty()) continue;
             return CodeCache.list.poll();
         }
-        return null;
     }
 
     @Override
@@ -78,9 +78,9 @@ public class CommonServiceImpl implements CommonService {
         json.put("mid", 9);
         json.put("resourceid", resourceId);
         nettyClient.sendMsg(JSONObject.toJSONString(json) + "**");
-        while (!CodeCache.list.isEmpty()){
+        while (true){
+            if(CodeCache.list.isEmpty()) continue;
             return CodeCache.list.poll();
         }
-        return null;
     }
 }

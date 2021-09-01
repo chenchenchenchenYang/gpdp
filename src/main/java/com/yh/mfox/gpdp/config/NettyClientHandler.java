@@ -21,9 +21,10 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
         String res = msg.toString();
         if (res.contains("cmuLogin") || res.contains("cmuHeartBeat") || res.contains("cmuLogout") || res.contains("cmuReportPuStatus")) return;
         JSONObject result = JSONObject.parseObject(res);
-        log.info("客户端收到消息: {}", res);
+        //log.info("客户端收到消息: {}", res);
         JSONObject node = JSONObject.parseObject(result.get("node") + "");
-        if ("cmuInitResData".equals(result.get("action"))) {
+        CodeCache.list.add(node);
+        /*if ("cmuInitResData".equals(result.get("action"))) {
             Object children = node.get("children");
             if (null == children) return;
             aa((JSONArray) children);
@@ -36,7 +37,7 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
                 Object children = node.get("children");
                 if (null != children) aa((JSONArray) children);
             }
-        }
+        }*/
     }
     private  Integer resourcetypeid;
 
