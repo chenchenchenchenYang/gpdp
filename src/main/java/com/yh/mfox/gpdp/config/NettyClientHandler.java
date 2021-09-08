@@ -18,12 +18,16 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        String res = msg.toString();
-        if (res.contains("cmuLogin") || res.contains("cmuHeartBeat") || res.contains("cmuLogout") || res.contains("cmuReportPuStatus")) return;
-        JSONObject result = JSONObject.parseObject(res);
-        //log.info("客户端收到消息: {}", res);
-        JSONObject node = JSONObject.parseObject(result.get("node") + "");
-        CodeCache.list.add(node);
+        try {
+            String res = msg.toString();
+            if (res.contains("cmuLogin") || res.contains("cmuHeartBeat") || res.contains("cmuLogout") || res.contains("cmuReportPuStatus")) return;
+            JSONObject result = JSONObject.parseObject(res);
+            log.info("客户端收到消息: {}", res);
+            JSONObject node = JSONObject.parseObject(result.get("node") + "");
+            CodeCache.list.add(node);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         /*if ("cmuInitResData".equals(result.get("action"))) {
             Object children = node.get("children");
             if (null == children) return;

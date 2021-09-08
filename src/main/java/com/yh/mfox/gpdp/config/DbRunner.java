@@ -1,12 +1,15 @@
 package com.yh.mfox.gpdp.config;
 
 import com.alibaba.fastjson.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
 public class DbRunner implements CommandLineRunner {
+    private static final Logger log = LoggerFactory.getLogger(DbRunner.class);
 
     private JSONObject json;
     @Autowired
@@ -14,7 +17,7 @@ public class DbRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        System.out.println("TCP 认证");
+        log.info("TCP 认证");
         json = new JSONObject();
         json.put("msg", "req");
         json.put("action", "cmuLogin");

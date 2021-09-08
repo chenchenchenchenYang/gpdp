@@ -15,6 +15,7 @@ import java.util.Map;
 
 @Service
 public class CommonServiceImpl implements CommonService {
+
     @Autowired
     private CommonMapper commenMapper;
     @Autowired
