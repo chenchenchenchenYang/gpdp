@@ -20,9 +20,9 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         try {
             String res = msg.toString();
+            log.info("客户端收到消息: {}", res);
             if (res.contains("cmuLogin") || res.contains("cmuHeartBeat") || res.contains("cmuLogout") || res.contains("cmuReportPuStatus")) return;
             JSONObject result = JSONObject.parseObject(res);
-            log.info("客户端收到消息: {}", res);
             JSONObject node = JSONObject.parseObject(result.get("node") + "");
             CodeCache.list.add(node);
         }catch (Exception e){

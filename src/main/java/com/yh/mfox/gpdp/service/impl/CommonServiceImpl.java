@@ -64,10 +64,14 @@ public class CommonServiceImpl implements CommonService {
         json.put("act_seq", 102);
         json.put("mid", 9);
         nettyClient.sendMsg(JSONObject.toJSONString(json) + "**");
+        long l1 = System.currentTimeMillis();
         while (true){
+            long l2 = System.currentTimeMillis();
+            if(l2-l1 > 5*1000) break;
             if(CodeCache.list.isEmpty()) continue;
             return CodeCache.list.poll();
         }
+        return  new JSONObject();
     }
 
     @Override
@@ -79,9 +83,13 @@ public class CommonServiceImpl implements CommonService {
         json.put("mid", 9);
         json.put("resourceid", resourceId);
         nettyClient.sendMsg(JSONObject.toJSONString(json) + "**");
+        long l1 = System.currentTimeMillis();
         while (true){
+            long l2 = System.currentTimeMillis();
+            if(l2-l1 > 5*1000) break;
             if(CodeCache.list.isEmpty()) continue;
             return CodeCache.list.poll();
         }
+        return  new JSONObject();
     }
 }
