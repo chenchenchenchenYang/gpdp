@@ -43,27 +43,6 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
             }
         }*/
     }
-    private  Integer resourcetypeid;
-
-    private void aa(JSONArray child) {
-        for (Object obj : child) {
-            JSONObject json = (JSONObject) obj;
-            resourcetypeid = json.getInteger("resourcetypeid");
-            if (resourcetypeid == 100) {
-                // 保存
-                CodeCache.list.add(json);
-            } else {
-                Object children = json.get("children");
-                if (null == children) {
-                    if (resourcetypeid == 200){
-                        CodeCache.queue.add(json.getInteger("resourceid"));
-                    }
-                }else {
-                    aa((JSONArray) children);
-                }
-            }
-        }
-    }
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
