@@ -1,5 +1,6 @@
 package com.yh.mfox.gpdp.config;
 
+import com.yh.mfox.gpdp.util.YmlUtil;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
@@ -23,11 +24,9 @@ public class NettyClient {
 
     private EventLoopGroup group = new NioEventLoopGroup();
 
-    @Value("${netty.port}")
-    private Integer port;
+    private Integer port = Integer.parseInt(YmlUtil.getConfigByYml("netty.port"));
 
-    @Value("${netty.host}")
-    private String host;
+    private String host = YmlUtil.getConfigByYml("netty.host");
 
     private SocketChannel socketChannel;
 
