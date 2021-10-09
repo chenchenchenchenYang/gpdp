@@ -9,6 +9,8 @@ import io.netty.handler.timeout.IdleStateEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 
 public class NettyClientHandler extends ChannelInboundHandlerAdapter {
@@ -17,7 +19,6 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        NettyClient client = new NettyClient();
         JSONObject json = new JSONObject();
         json.put("msg", "req");
         json.put("action", "cmuLogin");
@@ -26,7 +27,7 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
         json.put("username", "admin");
         json.put("password", "123456789@Usc?.");
         json.put("cuid", 0);
-        client.sendMsg(JSONObject.toJSONString(json) + "**" );
+        ctx.writeAndFlush(json.toString());
     }
 
     @Override
