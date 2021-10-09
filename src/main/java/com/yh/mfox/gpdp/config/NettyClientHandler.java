@@ -1,11 +1,15 @@
 package com.yh.mfox.gpdp.config;
 
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.channel.EventLoop;
+import io.netty.handler.timeout.IdleStateEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.concurrent.TimeUnit;
 
 public class NettyClientHandler extends ChannelInboundHandlerAdapter {
 
@@ -13,7 +17,38 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        log.info("客户端Active .....");
+        NettyClient client = new NettyClient();
+        JSONObject json = new JSONObject();
+        json.put("msg", "req");
+        json.put("action", "cmuLogin");
+        json.put("act_seq", 102);
+        json.put("mid", -1);
+        json.put("username", "admin");
+        json.put("password", "123456789@Usc?.");
+        json.put("cuid", 0);
+        client.sendMsg(JSONObject.toJSONString(json) + "**" );
+    }
+
+    @Override
+    public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
+        IdleStateEvent event = (IdleStateEvent) evt;
+        log.info("Client,Idle:" + event.state());
+        switch (event.state()) {
+            case READER_IDLE:
+            case ALL_IDLE:
+                break;
+            case WRITER_IDLE:
+                JSONObject json = new JSONObject();
+                json.put("msg", "req");
+                json.put("action", "cmuHeartBeat");
+                json.put("act_seq", -1);
+                json.put("mid", -1);
+                ctx.writeAndFlush(JSONObject.toJSONString(json) + "**").addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
+                break;
+            default:
+                super.userEventTriggered(ctx, evt);
+                break;
+        }
     }
 
     @Override
@@ -28,26 +63,21 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
         }catch (Exception e){
             e.printStackTrace();
         }
-        /*if ("cmuInitResData".equals(result.get("action"))) {
-            Object children = node.get("children");
-            if (null == children) return;
-            aa((JSONArray) children);
-        } else if ("cmuQueryResData".equals(result.get("action"))) {
-            resourcetypeid = node.getInteger("resourcetypeid");
-            if (resourcetypeid == 100) {
-                // 保存
-                CodeCache.list.add(node);
-            } else {
-                Object children = node.get("children");
-                if (null != children) aa((JSONArray) children);
-            }
-        }*/
     }
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         cause.printStackTrace();
         ctx.close();
+    }
+
+    @Override
+    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+        NettyClient client = new NettyClient();
+        log.info("服务器中途断线，重连！");
+        EventLoop eventLoop = ctx.channel().eventLoop();
+        eventLoop.schedule(client::start, 20, TimeUnit.SECONDS);
+        super.channelInactive(ctx);
     }
 
 }

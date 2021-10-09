@@ -1,20 +1,16 @@
 package com.yh.mfox.gpdp.config;
 
 import com.alibaba.fastjson.JSONObject;
-import com.yh.mfox.gpdp.mapper.add.InsertMapper;
-import com.yh.mfox.gpdp.service.InsertService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
 import java.io.*;
 import java.util.Queue;
 
-@Configuration
-@EnableScheduling
+/*@Configuration
+@EnableScheduling*/
 public class DbScheduleTask {
 
     private static final Logger log = LoggerFactory.getLogger(DbScheduleTask.class);
