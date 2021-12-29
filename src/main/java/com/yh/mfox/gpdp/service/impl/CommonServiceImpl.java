@@ -67,7 +67,7 @@ public class CommonServiceImpl implements CommonService {
         long l1 = System.currentTimeMillis();
         while (true){
             long l2 = System.currentTimeMillis();
-            if(l2-l1 > 5*1000) break;
+            if(l2-l1 > 20*1000) break;
             if(CodeCache.list.isEmpty()) continue;
             return CodeCache.list.poll();
         }
@@ -86,7 +86,7 @@ public class CommonServiceImpl implements CommonService {
         long l1 = System.currentTimeMillis();
         while (true){
             long l2 = System.currentTimeMillis();
-            if(l2-l1 > 5*1000) break;
+            if(l2-l1 > 20*1000) break;
             if(CodeCache.list.isEmpty()) continue;
             return CodeCache.list.poll();
         }
