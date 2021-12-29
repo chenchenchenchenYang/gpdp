@@ -1,3 +1,4 @@
+
 package com.yh.mfox.gpdp.config;
 
 import com.yh.mfox.gpdp.util.YmlUtil;
@@ -11,7 +12,6 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -29,7 +29,6 @@ public class NettyClient {
     private String host = YmlUtil.getConfigByYml("netty.host");
 
     private SocketChannel socketChannel;
-
     /**
      * 发送消息
      */
@@ -53,7 +52,7 @@ public class NettyClient {
                 log.info("连接Netty服务端成功");
             } else {
                 log.info("连接失败，进行断线重连");
-                future1.channel().eventLoop().schedule(() -> start(), 20, TimeUnit.SECONDS);
+                future1.channel().eventLoop().schedule(this::start, 20, TimeUnit.SECONDS);
             }
         });
         socketChannel = (SocketChannel) future.channel();
