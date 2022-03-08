@@ -1,4 +1,4 @@
-package com.yh.mfox.gpdp.config;
+package com.yh.mfox.gpdp.config.server;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;

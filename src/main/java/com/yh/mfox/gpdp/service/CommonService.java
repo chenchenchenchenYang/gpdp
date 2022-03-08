@@ -13,4 +13,6 @@ public interface CommonService {
     JSONObject spInit();
 
     JSONObject queryNode(int resourceId);
+
+    void ackSyncMsg(JSONObject msg);
 }

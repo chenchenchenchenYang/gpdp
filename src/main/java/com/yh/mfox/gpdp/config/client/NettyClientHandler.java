@@ -1,16 +1,24 @@
-package com.yh.mfox.gpdp.config;
+package com.yh.mfox.gpdp.config.client;
 
 import com.alibaba.fastjson.JSONObject;
-import io.netty.channel.ChannelFutureListener;
+import com.yh.mfox.gpdp.util.RedisUtil;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import io.netty.handler.timeout.IdleStateEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
+@ChannelHandler.Sharable
 public class NettyClientHandler extends ChannelInboundHandlerAdapter {
 
     private static final Logger log = LoggerFactory.getLogger(NettyClientHandler.class);
+
+    @Autowired
+    private RedisUtil redisUtil;
+
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
@@ -26,38 +34,22 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
     }
 
     @Override
-    public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
-        IdleStateEvent event = (IdleStateEvent) evt;
-        log.info("Client,Idle:" + event.state());
-        switch (event.state()) {
-            case READER_IDLE:
-            case ALL_IDLE:
-                break;
-            case WRITER_IDLE:
-                JSONObject json = new JSONObject();
-                json.put("msg", "req");
-                json.put("action", "cmuHeartBeat");
-                json.put("act_seq", -1);
-                json.put("mid", -1);
-                ctx.writeAndFlush(JSONObject.toJSONString(json) + "**").addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
-                break;
-            default:
-                super.userEventTriggered(ctx, evt);
-                break;
-        }
-    }
-
-    @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         try {
             String res = msg.toString();
-            log.info("客户端收到消息: {}", res);
-            if (res.contains("cmuLogin") || res.contains("cmuHeartBeat") || res.contains("cmuLogout") || res.contains("cmuReportPuStatus")) return;
+            JSONObject node;
+            // log.info("客户端收到消息: {}", res);
             JSONObject result = JSONObject.parseObject(res);
-            JSONObject node = JSONObject.parseObject(result.get("node") + "");
-            CodeCache.list.add(node);
-        }catch (Exception e){
+            node = JSONObject.parseObject(result.get("node") + "");
+            if (res.contains("cmuLogin") || res.contains("cmuHeartBeat") || res.contains("cmuLogout") || res.contains("cmuReportPuStatus")) return;
+            if (node != null && "cmuInitResData".equals(result.get("action"))) {
+                redisUtil.set("root", node);
+            } else if (node != null && "cmuQueryResData".equals(result.get("action"))) {
+                redisUtil.set(node.get("resourceid") + "", node);
+            }
+        } catch (Exception e) {
             e.printStackTrace();
+            log.error(e + " -- " + msg);
         }
     }
 
@@ -74,5 +66,4 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
         super.channelInactive(ctx);
         client.start();
     }
-
 }

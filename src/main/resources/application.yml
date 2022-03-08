@@ -1,5 +1,5 @@
 server:
-  port: 9090
+  port: 80
 spring:
   application:
     name: gp
@@ -14,6 +14,16 @@ spring:
       jdbc-url: jdbc:dm://10.58.0.46:5236
       username: GP_SZZF_W
       password: itUyfrfJi*uS7_sG8u
+  redis:
+    database: 0
+    port: 6379
+    host: 10.58.0.28
+    password: Mfox_O192
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
 logging:
   level:
     com.yh.mfox: debug

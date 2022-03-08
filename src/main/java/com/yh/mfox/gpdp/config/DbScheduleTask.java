@@ -1,6 +1,7 @@
 package com.yh.mfox.gpdp.config;
 
 import com.alibaba.fastjson.JSONObject;
+import com.yh.mfox.gpdp.config.client.NettyClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,12 +25,10 @@ public class DbScheduleTask {
     @Scheduled(fixedRate = 5000)
     private void configureTasks() {
         JSONObject json = new JSONObject();
-        CodeCache.flag = false;
         json.put("msg", "req");
         json.put("action", "cmuHeartBeat");
         json.put("act_seq", -1);
         json.put("mid", -1);
-        client.sendMsg(JSONObject.toJSONString(json) + "**");
 
     }
 

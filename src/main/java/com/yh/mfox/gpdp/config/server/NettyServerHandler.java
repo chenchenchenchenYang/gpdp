@@ -1,4 +1,4 @@
-package com.yh.mfox.gpdp.config;
+package com.yh.mfox.gpdp.config.server;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;

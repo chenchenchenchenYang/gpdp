@@ -1,4 +1,4 @@
-package com.yh.mfox.gpdp.config;
+package com.yh.mfox.gpdp.config.server;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;

@@ -1,6 +1,7 @@
 package com.yh.mfox.gpdp.config;
 
 import com.alibaba.fastjson.JSONObject;
+import com.yh.mfox.gpdp.config.client.NettyClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,6 @@ public class DbRunner implements CommandLineRunner {
         json.put("username", "admin");
         json.put("password", "123456789@Usc?.");
         json.put("cuid", 0);
-        client.sendMsg(JSONObject.toJSONString(json) + "**" );
+        client.send(JSONObject.toJSONString(json) + "**" );
     }
 }
