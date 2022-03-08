@@ -94,7 +94,7 @@ public class CommonServiceImpl implements CommonService {
         json.put("resourceid", resourceId);
         send(json);
         try {
-            Thread.sleep(2000);
+            Thread.sleep(8000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
