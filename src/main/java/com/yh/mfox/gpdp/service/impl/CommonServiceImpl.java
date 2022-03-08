@@ -77,7 +77,7 @@ public class CommonServiceImpl implements CommonService {
         json.put("mid", 9);
         send(json);
         try {
-            Thread.sleep(2000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -94,7 +94,7 @@ public class CommonServiceImpl implements CommonService {
         json.put("resourceid", resourceId);
         send(json);
         try {
-            Thread.sleep(8000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
