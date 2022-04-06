@@ -104,4 +104,19 @@ public class RrczController {
             return R.error(400,"失败");
         }
     }
+
+    @PostMapping("/sbcx")
+    public Map<String,Object> querySbcx(String name,String idCard){
+        try {
+            if("".equals(name) || "".equals(idCard)) return R.ok(202,"信息填写不完整，请重新输入","");
+            Map<String, Object> map = rrczService.querySbcx(name, idCard);
+            if(map == null){
+                return R.ok(201,"实名信息未通过，请重新输入","");
+            }else {
+                return R.ok(200,"成功",map);
+            }
+        } catch (Exception e) {
+            return R.error(400,"失败");
+        }
+    }
 }

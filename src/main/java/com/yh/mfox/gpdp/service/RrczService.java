@@ -15,4 +15,6 @@ public interface RrczService {
     Map<String, Object> getVocation();
 
     Map<String, Object> getCz();
+
+    Map<String, Object> querySbcx(String name, String idCard);
 }

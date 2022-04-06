@@ -1,6 +1,7 @@
 package com.yh.mfox.gpdp.mapper.query;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -26,4 +27,7 @@ public interface RrczMapper {
     List<Map<String, Object>> queryCzBd();
 
     List<Map<String, Object>> queryCzEdu();
+
+    Map<String, Object> querySbcxByName(@Param("name") String name);
+
 }
