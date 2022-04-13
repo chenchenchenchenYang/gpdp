@@ -52,4 +52,14 @@ public class ZhlyServiceImpl implements ZhlyService {
     public List<Map<String, Object>> getJbxx(String lcmc) {
         return zhlyMapper.queryJbxx(lcmc);
     }
+
+    @Override
+    public Map<String, Object> getSlfgl() {
+        return zhlyMapper.querySlfgl();
+    }
+
+    @Override
+    public List<Map<String, Object>> getGylxx() {
+        return zhlyMapper.queryGylxx();
+    }
 }

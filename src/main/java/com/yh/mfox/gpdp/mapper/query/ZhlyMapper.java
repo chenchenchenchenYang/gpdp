@@ -23,4 +23,8 @@ public interface ZhlyMapper {
     List<Map<String, Object>> queryZbxq(@Param("dwmc") String dwmc,@Param("zbmc") String zbmc);
 
     List<Map<String, Object>> queryJbxx(@Param("lcmc") String lcmc);
+
+    Map<String, Object> querySlfgl();
+
+    List<Map<String, Object>> queryGylxx();
 }

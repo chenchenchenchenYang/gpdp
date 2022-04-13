@@ -2,49 +2,42 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yh.mfox.gpdp.mapper.query.ZhlyMapper">
     <select id="queryCount" resultType="java.util.Map">
-        select 'mj' as title ,cast(ifnull(sum(MJM),0) as varchar) as count
-        from "GP_SZZF_K"."JC_GJGYLXBMBGY_JT"
+        select 'MJ' as title ,MJ as count
+        from "GP_SZZF_K"."LYZYTJ" order by update_time desc limit 1
         union all
-        select 'rate' as title,SLFGL as count
-        from "GP_SZZF_K"."JC_GPSSLFGL_ND" where ND =year(curdate())
-        union all
-        select 'lcsl' as title,cast(count(*) as varchar) as count
-        from "GP_SZZF_K"."JC_GJGYLXBMBGY_JT"
+        select 'LCSL' as title,LCSL as count
+        from "GP_SZZF_K"."LYZYTJ" order by update_time desc limit 1
     </select>
 
     <select id="queryHxdjzb" resultType="java.util.Map">
-        select WXCD,count(*) as num
-        from "GP_SZZF_K"."LCWL24XSHXDJYB" group by WXCD order by count(*) desc;
+        select distinct "SL" as num,"HXDJ" as WXCD from "GP_SZZF_K"."HXDJZB" where to_date(UPDATE_TIME,'yyyy.MM.DD') = (
+            select to_date(max(UPDATE_TIME),'yyyy.MM.DD') as ti from "GP_SZZF_K"."HXDJZB")
     </select>
 
     <select id="queryDyx" resultType="java.util.Map">
-        select 'type' as name, count(distinct SZ) as num
-        from "GP_SZZF_K"."JC_GPSGSMMML"
+        select 'type' as name, ZLSL as num
+        from "GP_SZZF_K"."SWDYX" order by update_time desc limit 1
         union all
-        select 'num' as name, count(distinct BH) as num
-        from "GP_SZZF_K"."JC_GPSGSMMML"
-        union all
-        select GSBHJB as name, count(*) as num
-        from "GP_SZZF_K"."JC_GPSGSMMML" where GSBHJB is not null group by GSBHJB
+        select 'num' as name, MSSL as num
+        from "GP_SZZF_K"."SWDYX" order by update_time desc limit 1
     </select>
 
     <select id="queryFhwz" resultType="java.util.Map">
-        select 'dwzf' as name ,ifnull(count(*),0) as num
-        from "GP_SZZF_K"."ZSDWB"
+        select 'dwzf' as name ,DWZF as num
+        from "GP_SZZF_K"."HLFHWZ" order by update_time desc limit 1
         union all
-        select 'dwzb' as name ,ifnull(sum(ZBSL),0) as num
-        from "GP_SZZF_K"."ZFDWZBB"
+        select 'dwzb' as name ,DWZB as num
+        from "GP_SZZF_K"."HLFHWZ" order by update_time desc limit 1
         union all
-        select 'hly' as name ,ifnull(count(*),0) as num
-        from "GP_SZZF_K"."HLYB"
+        select 'hly' as name ,HLY as num
+        from "GP_SZZF_K"."HLFHWZ" order by update_time desc limit 1
         union all
-        select 'qsdd' as name, ifnull(count(*),0) as num
-        from ( select QSDD
-        from "GP_SZZF_K"."JC_GJGYLXBMBGY_JT" where QSDD is not null group by QSDD) a
+        select 'qsdd' as name, QSDD as num
+        from "GP_SZZF_K"."HLFHWZ" order by update_time desc limit 1
     </select>
     <select id="queryHly" resultType="java.util.Map">
-        select  XM, ZYJSZC, FZLCMC, DH
-        from "GP_SZZF_K"."HLYB"
+        select  XM, ZYJSZC, FZLCMC, LXDH as DH
+        from "GP_SZZF_K"."HLYXXB"
         <where>
             <if test="null != name and '' != name ">
                 and XM = #{name}
@@ -52,19 +45,11 @@
         </where>
     </select>
     <select id="queryZfdw" resultType="java.util.Map" parameterType="java.lang.String">
-        select aa."DWMC",aa."DWRS",aa."GSDW",
-               aa."FZEXM",aa."FZRDH",aa."ZSDD",ifnull(bb.ZBMC,'') as ZBMC,ZSDDJD,ZSDDWD
-        from "GP_SZZF_K"."ZSDWB" aa
-                 left join
-             (
-                 select b.ZBMC,b.GSDWMC from (
-                     select GSDWMC,max(ZBSL) as num  from "GP_SZZF_K"."ZFDWZBB" group by GSDWMC
-                 ) t  left join "GP_SZZF_K"."ZFDWZBB" b on  t.GSDWMC = b.GSDWMC and t.num = b.ZBSL
-             )
-        bb on aa.DWMC = bb.GSDWMC
+        select DWMC,DWRS,GSDW,FZRXM,FZRDH,ZFDD as ZSDD,ZYZB as ZBMC
+        from "GP_SZZF_K"."ZFDWXX"
         <where>
             <if test="dwmc != null and dwmc != ''">
-                and aa.dwmc = #{dwmc}
+                and DWMC = #{dwmc}
             </if>
         </where>
     </select>
@@ -77,14 +62,22 @@
         </if>
     </select>
     <select id="queryJbxx" resultType="java.util.Map" parameterType="java.lang.String">
-        select a.LCMC,a.LCDZ,b.LCHXDJ,a.MJM,a.QSDD,(select count(*) hlysl from
-        "GP_SZZF_K"."HLYB" c where FZLCMC = a.LCMC ) as hlysl,a.FZRXM,a.FZRDH,a.WD,a.JD
-        from "GP_SZZF_K"."JC_GJGYLXBMBGY_JT" a
-        left join "GP_SZZF_K"."LCWL24XSHXDJYB" b on a.LCMC = b.LCMC
+        select "LCMC","DZ" as LCDZ,"SLHXDJ" as LCHXDJ,"MJ" as MJM,"QSDD","HLYSL","FZRXM","RZRDH"
+        from "GP_SZZF_K"."LCJBTJ"
         <where>
             <if test="lcmc != null and lcmc != ''">
-                and a.LCMC = #{lcmc}
+                and LCMC = #{lcmc}
             </if>
         </where>
     </select>
+
+    <select id="querySlfgl" resultType="java.util.Map" >
+        select "ND","SLFGL"
+        from "GP_SZZF_K"."SLFGL" order by "UPDATE_TIME" desc limit 1
+    </select>
+    <select id="queryGylxx" resultType="java.util.Map" >
+        select  "GJJGYLMJ","DFLCGJJGYLMJ","JTGJJGYLMJ"
+        from "GP_SZZF_K"."GJGYLXX" order by "UPDATE_TIME" desc limit 1
+    </select>
+
 </mapper>

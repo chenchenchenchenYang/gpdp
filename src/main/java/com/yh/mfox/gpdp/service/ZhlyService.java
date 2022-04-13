@@ -20,4 +20,8 @@ public interface ZhlyService {
     List<Map<String, Object>> getZbxq(String dwmc,String zbmc);
 
     List<Map<String, Object>> getJbxx(String lcmc);
+
+    Map<String, Object> getSlfgl();
+
+    List<Map<String, Object>> getGylxx();
 }

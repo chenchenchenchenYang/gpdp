@@ -133,4 +133,32 @@ public class ZhlyController {
             return R.error(400,"失败");
         }
     }
+    /**
+     * @Author: Wangcheny
+     * @Date: 2022年04月13日 上午 10:22:52
+     * @Description: 森林覆盖率
+     */
+    @PostMapping("/slfgl")
+    public Map<String, Object> getSlfgl() {
+        try {
+            return R.ok(200,"成功",zhlyService.getSlfgl());
+        } catch (Exception e) {
+            return R.error(400,"失败");
+        }
+    }
+
+    /**
+     * @Author: Wangcheny
+     * @Date: 2022年04月13日 上午 10:26:17
+     * @Description: 国家公益林信息
+     */
+    @PostMapping("/gylxx")
+    public Map<String, Object> getGylxx() {
+        try {
+            return R.ok(200,"成功",zhlyService.getGylxx());
+        } catch (Exception e) {
+            return R.error(400,"失败");
+        }
+    }
+
 }
