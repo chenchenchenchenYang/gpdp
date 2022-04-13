@@ -5,13 +5,13 @@ import java.util.List;
 import java.util.Map;
 
 public interface ZhlyService {
-    List<Map<String, Object>> getCount();
+    Map<String, Object> getCount();
 
     List<Map<String, Object>> getHxdjzb();
 
-    List<Map<String, Object>> getDyx();
+    Map<String, Object> getDyx();
 
-    List<Map<String, Object>> getFhwz();
+    Map<String, Object> getFhwz();
 
     List<Map<String, Object>> getHly(String name);
 

@@ -14,7 +14,7 @@ public class ZhlyServiceImpl implements ZhlyService {
     private ZhlyMapper zhlyMapper;
 
     @Override
-    public List<Map<String, Object>> getCount() {
+    public Map<String, Object> getCount() {
         return zhlyMapper.queryCount();
     }
 
@@ -24,12 +24,12 @@ public class ZhlyServiceImpl implements ZhlyService {
     }
 
     @Override
-    public List<Map<String, Object>> getDyx() {
+    public Map<String, Object> getDyx() {
         return zhlyMapper.queryDyx();
     }
 
     @Override
-    public List<Map<String, Object>> getFhwz() {
+    public Map<String, Object> getFhwz() {
         return zhlyMapper.queryFhwz();
     }
 

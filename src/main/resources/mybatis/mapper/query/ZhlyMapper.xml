@@ -2,10 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yh.mfox.gpdp.mapper.query.ZhlyMapper">
     <select id="queryCount" resultType="java.util.Map">
-        select 'MJ' as title ,MJ as count
-        from "GP_SZZF_K"."LYZYTJ" order by update_time desc limit 1
-        union all
-        select 'LCSL' as title,LCSL as count
+        select MJ,LCSL
         from "GP_SZZF_K"."LYZYTJ" order by update_time desc limit 1
     </select>
 
@@ -15,24 +12,12 @@
     </select>
 
     <select id="queryDyx" resultType="java.util.Map">
-        select 'type' as name, ZLSL as num
-        from "GP_SZZF_K"."SWDYX" order by update_time desc limit 1
-        union all
-        select 'num' as name, MSSL as num
+        select ZLSL ,MSSL
         from "GP_SZZF_K"."SWDYX" order by update_time desc limit 1
     </select>
 
     <select id="queryFhwz" resultType="java.util.Map">
-        select 'dwzf' as name ,DWZF as num
-        from "GP_SZZF_K"."HLFHWZ" order by update_time desc limit 1
-        union all
-        select 'dwzb' as name ,DWZB as num
-        from "GP_SZZF_K"."HLFHWZ" order by update_time desc limit 1
-        union all
-        select 'hly' as name ,HLY as num
-        from "GP_SZZF_K"."HLFHWZ" order by update_time desc limit 1
-        union all
-        select 'qsdd' as name, QSDD as num
+        select DWZF,DWZB,hly
         from "GP_SZZF_K"."HLFHWZ" order by update_time desc limit 1
     </select>
     <select id="queryHly" resultType="java.util.Map">

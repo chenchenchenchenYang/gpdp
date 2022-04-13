@@ -110,7 +110,7 @@ public class ZhlyController {
      * @Date: 2021年04月19日 下午 06:25:02
      * @Description: 装备详情
      */
-    @PostMapping("/zbxq")
+    /*@PostMapping("/zbxq")
     public Map<String, Object> getZbxq(String dwmc,String zbmc) {
         try {
             if("".equals(dwmc)) return R.error(400,"请求参数错误");
@@ -118,7 +118,7 @@ public class ZhlyController {
         } catch (Exception e) {
             return R.error(400,"失败");
         }
-    }
+    }*/
 
     /**
      * @Author: Wangcheny

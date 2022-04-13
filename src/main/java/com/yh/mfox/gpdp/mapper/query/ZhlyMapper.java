@@ -8,13 +8,13 @@ import java.util.Map;
 
 @Mapper
 public interface ZhlyMapper {
-    List<Map<String,Object>> queryCount();
+    Map<String,Object> queryCount();
 
     List<Map<String, Object>> queryHxdjzb();
 
-    List<Map<String, Object>> queryDyx();
+    Map<String, Object> queryDyx();
 
-    List<Map<String, Object>> queryFhwz();
+    Map<String, Object> queryFhwz();
 
     List<Map<String, Object>> queryHly(@Param("name") String name);
 
