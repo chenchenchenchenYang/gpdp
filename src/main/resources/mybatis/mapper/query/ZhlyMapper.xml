@@ -20,6 +20,7 @@
         select DWZF,DWZB,hly
         from "GP_SZZF_K"."HLFHWZ" order by update_time desc limit 1
     </select>
+
     <select id="queryHly" resultType="java.util.Map">
         select  XM, ZYJSZC, FZLCMC, LXDH as DH
         from "GP_SZZF_K"."HLYXXB"
@@ -29,6 +30,7 @@
             </if>
         </where>
     </select>
+
     <select id="queryZfdw" resultType="java.util.Map" parameterType="java.lang.String">
         select DWMC,DWRS,GSDW,FZRXM,FZRDH,ZFDD as ZSDD,ZYZB as ZBMC
         from "GP_SZZF_K"."ZFDWXX"
@@ -46,6 +48,7 @@
             and ZBMC = #{zbmc}
         </if>
     </select>
+
     <select id="queryJbxx" resultType="java.util.Map" parameterType="java.lang.String">
         select "LCMC","DZ" as LCDZ,"SLHXDJ" as LCHXDJ,"MJ" as MJM,"QSDD","HLYSL","FZRXM","RZRDH"
         from "GP_SZZF_K"."LCJBTJ"
@@ -60,6 +63,7 @@
         select "ND","SLFGL"
         from "GP_SZZF_K"."SLFGL" order by "UPDATE_TIME" desc limit 1
     </select>
+
     <select id="queryGylxx" resultType="java.util.Map" >
         select  "GJJGYLMJ","DFLCGJJGYLMJ","JTGJJGYLMJ"
         from "GP_SZZF_K"."GJGYLXX" order by "UPDATE_TIME" desc limit 1
