@@ -30,7 +30,7 @@ public interface ZhlyMapper {
 
     Map<String, Object> queryCountZfdw();
 
-    Map<String, Object> queryHlfhwz();
+    Map<String, Object> queryHlyCount();
 
     Map<String, Object> queryLyzytj();
 }

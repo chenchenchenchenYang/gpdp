@@ -71,10 +71,10 @@ public class ZhlyServiceImpl implements ZhlyService {
         map.putAll(zhlyMapper.querySlfgl());
         // 公益林
         map.putAll(zhlyMapper.queryGylxx());
-        // 驻防队伍数
+        // 驻防队伍数、队伍人数
         map.putAll(zhlyMapper.queryCountZfdw());
-        // 护林员、队伍装备数
-        map.putAll(zhlyMapper.queryHlfhwz());
+        // 护林员
+        map.putAll(zhlyMapper.queryHlyCount());
         // 林场总数
         map.putAll(zhlyMapper.queryLyzytj());
         return map;

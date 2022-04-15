@@ -70,11 +70,11 @@
     </select>
 
     <select id="queryCountZfdw" resultType="java.util.Map">
-        select count(*) as ZFDW
+        select count(*) as ZFDWRS,sum(ifnull(cast(DWRS as integer ),0)) as DWRS
         from "GP_SZZF_K"."ZFDWXX"
     </select>
-    <select id="queryHlfhwz" resultType="java.util.Map">
-        select DWZB,HLY from "GP_SZZF_K"."HLFHWZ" order by "UPDATE_TIME" desc limit 1
+    <select id="queryHlyCount" resultType="java.util.Map">
+        select count(*) from "GP_SZZF_K"."HLYXXB"
     </select>
     <select id="queryLyzytj" resultType="java.util.Map">
         select LCSL from "GP_SZZF_K"."LYZYTJ" order by "UPDATE_TIME" desc limit 1
