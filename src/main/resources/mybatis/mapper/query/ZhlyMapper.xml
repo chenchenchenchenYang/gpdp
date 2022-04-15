@@ -60,7 +60,7 @@
     </select>
 
     <select id="querySlfgl" resultType="java.util.Map" >
-        select "ND","SLFGL"
+        select "SLFGL"
         from "GP_SZZF_K"."SLFGL" order by "UPDATE_TIME" desc limit 1
     </select>
 
@@ -74,7 +74,7 @@
         from "GP_SZZF_K"."ZFDWXX"
     </select>
     <select id="queryHlyCount" resultType="java.util.Map">
-        select count(*) from "GP_SZZF_K"."HLYXXB"
+        select count(*) as hly from "GP_SZZF_K"."HLYXXB"
     </select>
     <select id="queryLyzytj" resultType="java.util.Map">
         select LCSL from "GP_SZZF_K"."LYZYTJ" order by "UPDATE_TIME" desc limit 1
