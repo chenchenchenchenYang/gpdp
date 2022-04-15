@@ -23,5 +23,7 @@ public interface ZhlyService {
 
     Map<String, Object> getSlfgl();
 
-    List<Map<String, Object>> getGylxx();
+    Map<String, Object> getGylxx();
+
+    Map<String, Object> getSytj();
 }

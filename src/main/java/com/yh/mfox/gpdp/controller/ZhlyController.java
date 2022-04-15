@@ -133,6 +133,22 @@ public class ZhlyController {
             return R.error(400,"失败");
         }
     }
+    
+    /**
+     * @Author: Wangcheny
+     * @Date: 2022年04月14日 下午 05:49:23
+     * @Description: 首页数据统计
+     */
+    @PostMapping("/sytj")
+    public Map<String, Object> getSytj() {
+        try {
+            return R.ok(200,"成功",zhlyService.getSytj());
+        } catch (Exception e) {
+            return R.error(400,"失败");
+        }
+    }
+
+
     /**
      * @Author: Wangcheny
      * @Date: 2022年04月13日 上午 10:22:52

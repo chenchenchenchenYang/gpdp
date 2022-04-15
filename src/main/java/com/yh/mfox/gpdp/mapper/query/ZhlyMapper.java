@@ -26,5 +26,11 @@ public interface ZhlyMapper {
 
     Map<String, Object> querySlfgl();
 
-    List<Map<String, Object>> queryGylxx();
+    Map<String, Object> queryGylxx();
+
+    Map<String, Object> queryCountZfdw();
+
+    Map<String, Object> queryHlfhwz();
+
+    Map<String, Object> queryLyzytj();
 }
