@@ -19,7 +19,7 @@
     <select id="queryFhwz" resultType="java.util.Map">
         select DWZF,
                (select sum(ifnull(cast(DWRS as integer ),0))
-                 from "GP_SZZF_K"."ZFDWXX") DWRS,
+                 from "GP_SZZF_K"."ZFDWXX") DWZB,
                hly
         from "GP_SZZF_K"."HLFHWZ" order by update_time desc limit 1
     </select>
