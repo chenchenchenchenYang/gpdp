@@ -20,7 +20,7 @@
         select DWZF,
                (select sum(ifnull(cast(DWRS as integer ),0))
                  from "GP_SZZF_K"."ZFDWXX") DWZB,
-               hly
+            (select count(*) as hly from "GP_SZZF_K"."HLYXXB") hly
         from "GP_SZZF_K"."HLFHWZ" order by update_time desc limit 1
     </select>
 
