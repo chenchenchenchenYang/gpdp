@@ -28,6 +28,6 @@ public interface RrczMapper {
 
     List<Map<String, Object>> queryCzEdu();
 
-    Map<String, Object> querySbcxByName(@Param("name") String name);
+    Map<String, Object> querySbcxByNameAndCard(@Param("name") String name,@Param("idCard") String idCard);
 
 }

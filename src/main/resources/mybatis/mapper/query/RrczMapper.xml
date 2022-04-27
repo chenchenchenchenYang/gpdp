@@ -52,8 +52,8 @@
         from "GP_SZZF_M"."RRCZJNSH" group by WHCD;
     </select>
 
-    <select id="querySbcxByName" resultType="java.util.Map">
-        select *
-        from "GP_SZZF_M"."YLBX" where XM = #{name};
+    <select id="querySbcxByNameAndCard" resultType="java.util.Map">
+        select DISTINCT *
+        from "GP_SZZF_M"."YLBX" where XM = #{name} and ZJHM = #{idCard};
     </select>
 </mapper>

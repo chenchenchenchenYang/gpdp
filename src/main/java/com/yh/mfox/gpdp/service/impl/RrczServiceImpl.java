@@ -133,16 +133,9 @@ public class RrczServiceImpl implements RrczService {
 
     @Override
     public Map<String, Object> querySbcx(String name, String idCard) {
-        Map<String, Object> maps = rrczMapper.querySbcxByName(name);
-        if(null == maps ||maps.isEmpty()){
-            return null;
-        }else {
-            String zjhm = maps.get("ZJHM") + "";
-            if (idCard.equals(zjhm)){
-                return maps;
-            }else {
-                return null;
-            }
-        }
+        Map<String, Object> maps = rrczMapper.querySbcxByNameAndCard(name,idCard);
+        if(null == maps ||maps.isEmpty()) return null;
+        return maps;
+
     }
 }
