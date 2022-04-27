@@ -54,6 +54,6 @@
 
     <select id="querySbcxByNameAndCard" resultType="java.util.Map">
         select DISTINCT *
-        from "GP_SZZF_M"."YLBX" where XM = #{name} and ZJHM = #{idCard};
+        from "GP_SZZF_M"."YLBX" where XM = #{name} and ZJHM = #{idCard} limit 1;
     </select>
 </mapper>
