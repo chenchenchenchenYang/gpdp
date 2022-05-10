@@ -2,19 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yh.mfox.gpdp.mapper.query.EduMapper">
     <select id="queryCount" resultType="java.util.Map">
-        select
-            count(*) as school,ifnull(sum(JZGRS),0) as teacher,ifnull(sum(XSZS),0) as student
-        from "GP_SZZF_Q"."JYJGJBXXDJ"
+        select sum(XSS) as student , count(*) as school,sum(ZRJSS) as teacher
+        from "GP_SZZF_Q"."A_XXJBQK"
     </select>
 
     <select id="queryXlfb" resultType="java.util.Map">
         select WHCD_XL,COUNT(*) as num
-        from "GP_SZZF_Q"."GPSSYDWGZRYJBQKHMC" GROUP BY WHCD_XL order by COUNT(*) desc
+        from "GP_SZZF_Q"."A_SYDWHMC" GROUP BY WHCD_XL order by COUNT(*) desc
     </select>
 
     <select id="queryByyx" resultType="java.util.Map">
         select WHCD_BYYX,COUNT(*) as num
-        from "GP_SZZF_Q"."GPSSYDWGZRYJBQKHMC" GROUP BY WHCD_BYYX order by COUNT(*) desc
+        from "GP_SZZF_Q"."A_SYDWHMC" GROUP BY WHCD_BYYX order by COUNT(*) desc
     </select>
 
     <select id="queryXbbl" resultType="java.util.Map" parameterType="java.lang.String">
@@ -30,7 +29,7 @@
             ) aa
     </select>
     <select id="queryJszb" resultType="java.util.Map" >
-        select XB,count(*) as num   from  "GP_SZZF_Q"."GPSSYDWGZRYJBQKHMC" group by XB
+        select NSRS,NSR as num   from  "GP_SZZF_Q"."A_XXSSQK"
     </select>
 
     <select id="queryType" resultType="java.util.Map" >
@@ -40,15 +39,14 @@
     </select>
 
     <select id="queryBase" resultType="java.util.Map" parameterType="java.lang.String">
-        select b.XXMC as SL_NAME,b.BXLX as SL_TYPE,b.DZ as SL_ADD,
-        b.XSZS,b.JZGRS,b.SFJS,b.JD,b.WD
-        from  "GP_SZZF_Q"."JYJGJBXXDJ" b
+        select LX,DZ,XSS,ZRJSS,XXMC
+        from  "GP_SZZF_Q"."A_XXJBQK"
         <where>
             <if test=" type !=null and type !=''">
-                and b.BXLX = #{type}
+                and LX = #{type}
             </if>
             <if test=" name !=null and name !=''">
-                and b.XXMC = #{name}
+                and XXMC = #{name}
             </if>
         </where>
     </select>
@@ -86,7 +84,7 @@
     <select id="queryHjsl" resultType="java.util.Map" >
         select ifnull(tt.NAME,'其他省') as NAME ,COUNT(*) as num from
             (select substr(a.SFZH,1,4) as code ,b.NAME
-             from "GP_SZZF_Q"."ZXXSJBXXHZ"  a
+             from "GP_SZZF_Q"."A_XXSJBXX" a
                       left join "GP_SZZF_Q"."BM" b on substr(a.SFZH,1,4) = b.code
              where a.SFZH IS NOT NULL AND substr(a.SFZH,1,4) != '1405') tt
         group by tt.NAME ORDER BY COUNT(*) DESC
@@ -100,32 +98,32 @@
     </select>
     <select id="queryGzjy" resultType="java.util.Map" >
         select '1年' as title ,count(*) as num
-        from "GP_SZZF_Q"."GPSSYDWGZRYJBQKHMC" where year(curdate()) -  year(to_date("CJGZSJ",'yyyy.MM')) = 1
+        from "GP_SZZF_Q"."A_SYDWHMC" where year(curdate()) -  year(to_date(substr(CJGZSJ,1,4),'yyyy')) = 1
         union
         select '2-3年' as title ,count(*) as num
-        from "GP_SZZF_Q"."GPSSYDWGZRYJBQKHMC" where year(curdate()) -  year(to_date("CJGZSJ",'yyyy.MM')) = 2 or year(curdate()) -  year(to_date("CJGZSJ",'yyyy.MM')) = 3
+        from "GP_SZZF_Q"."A_SYDWHMC" where year(curdate()) -  year(to_date(substr(CJGZSJ,1,4),'yyyy')) = 2 or year(curdate()) -  year(to_date(substr(CJGZSJ,1,4),'yyyy')) = 3
         union
         select '4-5年' as title ,count(*) as num
-        from "GP_SZZF_Q"."GPSSYDWGZRYJBQKHMC" where year(curdate()) -  year(to_date("CJGZSJ",'yyyy.MM')) = 4  or year(curdate()) -  year(to_date("CJGZSJ",'yyyy.MM')) = 5
+        from "GP_SZZF_Q"."A_SYDWHMC" where year(curdate()) -  year(to_date(substr(CJGZSJ,1,4),'yyyy')) = 4  or year(curdate()) -  year(to_date(substr(CJGZSJ,1,4),'yyyy')) = 5
         union
         select '6-7年' as title ,count(*) as num
-        from "GP_SZZF_Q"."GPSSYDWGZRYJBQKHMC"
-        where year(curdate()) -  year(to_date("CJGZSJ",'yyyy.MM')) = 6  or year(curdate()) -  year(to_date("CJGZSJ",'yyyy.MM')) = 7
+        from "GP_SZZF_Q"."A_SYDWHMC"
+        where year(curdate()) -  year(to_date(substr(CJGZSJ,1,4),'yyyy')) = 6  or year(curdate()) -  year(to_date(substr(CJGZSJ,1,4),'yyyy')) = 7
         union
         select '8-10年' as title ,count(*) as num
-        from "GP_SZZF_Q"."GPSSYDWGZRYJBQKHMC"
-        where year(curdate()) -  year(to_date("CJGZSJ",'yyyy.MM')) >= 8 and year(curdate()) -  year(to_date("CJGZSJ",'yyyy.MM')) &lt;= 10
+        from "GP_SZZF_Q"."A_SYDWHMC"
+        where year(curdate()) -  year(to_date(substr(CJGZSJ,1,4),'yyyy')) >= 8 and year(curdate()) -  year(to_date(substr(CJGZSJ,1,4),'yyyy')) &lt;= 10
         union
         select '11-15年' as title ,count(*) as num
-        from "GP_SZZF_Q"."GPSSYDWGZRYJBQKHMC"
-        where year(curdate()) -  year(to_date("CJGZSJ",'yyyy.MM')) &gt;= 11  and year(curdate()) -  year(to_date("CJGZSJ",'yyyy.MM')) &lt;= 15
+        from "GP_SZZF_Q"."A_SYDWHMC"
+        where year(curdate()) -  year(to_date(substr(CJGZSJ,1,4),'yyyy')) &gt;= 11  and year(curdate()) -  year(to_date(substr(CJGZSJ,1,4),'yyyy')) &lt;= 15
         union
         select '16-20年' as title ,count(*) as num
-        from "GP_SZZF_Q"."GPSSYDWGZRYJBQKHMC"
-        where year(curdate()) -  year(to_date("CJGZSJ",'yyyy.MM')) &gt;= 16  and year(curdate()) -  year(to_date("CJGZSJ",'yyyy.MM')) &lt;= 20
+        from "GP_SZZF_Q"."A_SYDWHMC"
+        where year(curdate()) -  year(to_date(substr(CJGZSJ,1,4),'yyyy')) &gt;= 16  and year(curdate()) -  year(to_date(substr(CJGZSJ,1,4),'yyyy')) &lt;= 20
         union
         select '20年以上' as title ,count(*) as num
-        from "GP_SZZF_Q"."GPSSYDWGZRYJBQKHMC" where year(curdate()) -  year(to_date("CJGZSJ",'yyyy.MM')) &gt; 20
+        from "GP_SZZF_Q"."A_SYDWHMC" where year(curdate()) -  year(to_date(substr(CJGZSJ,1,4),'yyyy')) &gt; 20
     </select>
     <select id="queryNjfb" resultType="java.util.Map" >
 
@@ -161,10 +159,23 @@
 
     <select id="queryHjtj" resultType="java.util.Map" >
         select b.NAME,count(*) as num
-        from "GP_SZZF_Q"."ZXXSJBXXHZ" a
+        from "GP_SZZF_Q"."A_XXSJBXX" a
                  join "GP_SZZF_Q"."BM" b on substr(a.SFZH,1,2)  = b.CODE
         where SFZH is not null and length(SFZH) = 18
         group by  b.NAME  order by count(*) desc
+    </select>
+    <select id="queryZxxstj" resultType="java.util.Map" >
+        select IFNULL("YEY",0) YEY,IFNULL("XX",0) XX,IFNULL("ZX",0) ZX,IFNULL("JNYGZ",0) JNYGZ,
+               IFNULL("GZ",0) GZ,IFNULL("ZYGZ",0) ZYGZ,IFNULL("PXJG",0) PXJG,IFNULL("QTTJX",0) QTTJX,IFNULL("SENYGZ",0) SENYGZ
+        from "GP_SZZF_Q"."A_RSTJ"
+        where to_date(UPDATE_TIME,'yyyy.MM.DD') = (
+            select to_date(max(UPDATE_TIME),'yyyy.MM.DD') as ti from "GP_SZZF_Q"."A_RSTJ")
+    </select>
+
+    <select id="querySsqk" resultType="java.util.Map" >
+        select XXZL,NSRS,NSR,XXSL,JZGSL from "GP_SZZF_Q"."A_XXSSQK"
+        where to_date(UPDATE_TIME,'yyyy.MM.DD') = (
+            select to_date(max(UPDATE_TIME),'yyyy.MM.DD') as ti from "GP_SZZF_Q"."A_XXSSQK")
     </select>
 
 </mapper>

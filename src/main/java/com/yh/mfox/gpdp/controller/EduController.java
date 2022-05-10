@@ -217,4 +217,32 @@ public class EduController {
         }
     }
 
+    /**
+     * @Author: Wangcheny
+     * @Date: 2022年05月10日 下午 05:52:53
+     * @Description: 在线校数统计
+     */
+    @PostMapping("/zxxstj")
+    public Map<String, Object> getZxxstj() {
+        try {
+            return R.ok(200,"成功",eduService.getZxxstj());
+        } catch (Exception e) {
+            return R.error(400,"失败");
+        }
+    }
+
+    /**
+     * @Author: Wangcheny
+     * @Date: 2022年05月10日 下午 06:05:58
+     * @Description:师生情况分析
+     */
+    @PostMapping("/ssqk")
+    public Map<String, Object> getSsqk() {
+        try {
+            return R.ok(200,"成功",eduService.getSsqk());
+        } catch (Exception e) {
+            return R.error(400,"失败");
+        }
+    }
+
 }

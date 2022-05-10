@@ -16,9 +16,7 @@ public class EduServiceImpl implements EduService {
 
     @Override
     public Map<String, Object> getCount() {
-        List<Map<String, Object>> maps = eduMapper.queryCount();
-        if (null == maps || maps.isEmpty()) return new HashMap<>();
-        return maps.get(0);
+        return eduMapper.queryCount();
     }
 
     @Override
@@ -39,7 +37,7 @@ public class EduServiceImpl implements EduService {
     }
 
     @Override
-    public List<Map<String, Object>> getJszb() {
+    public Map<String, Object> getJszb() {
         return eduMapper.queryJszb();
     }
 
@@ -88,5 +86,15 @@ public class EduServiceImpl implements EduService {
     @Override
     public List<Map<String, Object>> getHjtj() {
         return eduMapper.queryHjtj();
+    }
+
+    @Override
+    public List<Map<String, Object>> getZxxstj() {
+        return eduMapper.queryZxxstj();
+    }
+
+    @Override
+    public List<Map<String, Object>> getSsqk() {
+        return eduMapper.querySsqk();
     }
 }

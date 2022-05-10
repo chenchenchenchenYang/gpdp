@@ -12,7 +12,7 @@ public interface EduService {
 
     Map<String, Object> getXbbl(String date);
 
-    List<Map<String, Object>> getJszb();
+    Map<String, Object> getJszb();
 
     Map<String, Object>  getType();
 
@@ -32,4 +32,7 @@ public interface EduService {
 
     List<Map<String, Object>> getHjtj();
 
+    List<Map<String, Object>> getZxxstj();
+
+    List<Map<String, Object>> getSsqk();
 }

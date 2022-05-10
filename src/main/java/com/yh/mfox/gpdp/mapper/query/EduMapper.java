@@ -8,7 +8,7 @@ import java.util.Map;
 
 @Mapper
 public interface EduMapper {
-    List<Map<String, Object>> queryCount();
+    Map<String, Object> queryCount();
 
     List<Map<String, Object>> queryXlfb();
 
@@ -16,7 +16,7 @@ public interface EduMapper {
 
     List<Map<String, Object>> queryXbbl(@Param("date") String date);
 
-    List<Map<String, Object>> queryJszb();
+    Map<String, Object> queryJszb();
 
     List<Map<String, Object>> queryType();
 
@@ -35,4 +35,8 @@ public interface EduMapper {
     List<Map<String, Object>> queryNjfb();
 
     List<Map<String, Object>> queryHjtj();
+
+    List<Map<String, Object>> queryZxxstj();
+
+    List<Map<String, Object>> querySsqk();
 }
