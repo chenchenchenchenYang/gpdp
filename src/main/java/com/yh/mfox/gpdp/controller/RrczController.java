@@ -5,6 +5,7 @@ import com.yh.mfox.gpdp.util.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -106,7 +107,7 @@ public class RrczController {
     }
 
     @PostMapping("/sbcx")
-    public Map<String,Object> querySbcx(String name,String idCard){
+    public Map<String,Object> querySbcx(@RequestParam(name = "name") String name,@RequestParam(name = "idCard")String idCard){
         try {
             if("".equals(name) || "".equals(idCard)) return R.ok(202,"信息填写不完整，请重新输入","");
             Map<String, Object> map = rrczService.querySbcx(name, idCard);
