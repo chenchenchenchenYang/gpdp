@@ -97,4 +97,9 @@ public class EduServiceImpl implements EduService {
     public List<Map<String, Object>> getSsqk() {
         return eduMapper.querySsqk();
     }
+
+    @Override
+    public List<Map<String, Object>> getXszb() {
+        return eduMapper.queryXszb();
+    }
 }

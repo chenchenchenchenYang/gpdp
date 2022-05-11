@@ -35,4 +35,6 @@ public interface EduService {
     List<Map<String, Object>> getZxxstj();
 
     List<Map<String, Object>> getSsqk();
+
+    List<Map<String, Object>> getXszb();
 }

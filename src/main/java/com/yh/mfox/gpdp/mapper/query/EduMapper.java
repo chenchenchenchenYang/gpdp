@@ -39,4 +39,6 @@ public interface EduMapper {
     List<Map<String, Object>> queryZxxstj();
 
     List<Map<String, Object>> querySsqk();
+
+    List<Map<String, Object>> queryXszb();
 }

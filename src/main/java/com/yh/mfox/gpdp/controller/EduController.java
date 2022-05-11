@@ -245,4 +245,19 @@ public class EduController {
         }
     }
 
+    /**
+     * @Author: Wangcheny
+     * @Date: 2022年05月11日 上午 11:25:52
+     * @Description: 初中高中中职学生人数占比
+     */
+    @PostMapping("/xszb")
+    public Map<String, Object> getXszb() {
+        try {
+            return R.ok(200,"成功",eduService.getXszb());
+        } catch (Exception e) {
+            return R.error(400,"失败");
+        }
+    }
+
+
 }
