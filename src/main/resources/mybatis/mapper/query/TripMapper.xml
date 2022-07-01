@@ -88,7 +88,7 @@
         from "GP_SZZF_O"."JC_NDTBBSFQ" where ND = #{date};
     </select>
     <select id="queryCwCount" resultType="java.util.Map" >
-        select JQMC,ifnull(sum(TBCLSL),0) SL as from "GP_SZZF_O"."A_TCCSLTJ"  group by JQMC
+        select JQMC,ifnull(sum(TBCLSL),0) as SL from "GP_SZZF_O"."A_TCCSLTJ"  group by JQMC
     </select>
 
     <select id="queryWlptzb" resultType="java.util.Map" >
