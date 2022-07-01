@@ -74,4 +74,17 @@ public class TripServiceImpl implements TripService {
     public List<Map<String, Object>> getGis() {
         return tripMapper.queryGis();
     }
+
+    @Override
+    public List<Map<String, Object>> getWlptzb() {
+        return tripMapper.queryWlptzb();
+    }
+
+    @Override
+    public Map<String, Object> getWwbh() {
+        Map<String,Object> res = new HashMap<>();
+        res.put("count",tripMapper.queryWwbhCount());
+        res.put("data",tripMapper.queryWwbh());
+        return res;
+    }
 }

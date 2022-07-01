@@ -27,4 +27,10 @@ public interface TripMapper {
     List<Map<String, Object>> queryCwCount();
 
     List<Map<String, Object>> queryGis();
+
+    List<Map<String, Object>> queryWlptzb();
+
+    List<Map<String, Object>> queryWwbhCount();
+
+    List<Map<String, Object>> queryWwbh();
 }

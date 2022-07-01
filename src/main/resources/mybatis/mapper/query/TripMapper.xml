@@ -5,18 +5,16 @@
         select JQMC,sum(JDRSWRC) as JDRSWRC,sum(LJJDRSWRC) as LJJDRSWRC from "GP_SZZF_O"."JC_QSJQJDQKYBB" where to_char(TBSJ,'yyyy-mm') = #{date} group by JQMC
     </select>
     <select id="queryReport" resultType="java.util.Map" parameterType="java.lang.String">
-        select 'jdrs' as name,ifnull(sum(cast(JDRSWRC as Integer)),0) as count
-        from "GP_SZZF_O"."JC_QSJQJDQKYBB" where year(TBSJ) = #{date}
-        union
-        select 'zsr' as name,ifnull(sum(cast(ZHSRWY as Integer)),0) as count
-        from "GP_SZZF_O"."JC_QSJQJDQKYBB" where year(TBSJ) = #{date}
-        union
-        select 'mpsr' as name,ifnull(sum(cast(MPSRWY_BQ as Integer)),0) as count
-        from "GP_SZZF_O"."JC_JQJDQKYBB" where year(CREATE_TIME) = #{date}
+        select
+        ifnull(sum(LJJDRSWRC),0) as jdrs,
+        ifnull(sum(LJZHSRWY),0) as zsr,
+        (select ifnull(sum(MPZSR),0) from "GP_SZZF_O"."A_QSJQJDQKYBB" where year(TBSJ) = #{date}) as mpsr
+         from "GP_SZZF_O"."A_QSJQJDQKYBB" where TBSJ =
+        (select max(TBSJ) from "GP_SZZF_O"."A_QSJQJDQKYBB" where year(TBSJ) = #{date})
     </select>
     <select id="queryRank" resultType="java.util.Map">
-        select JQMC,ifnull(sum(cast(ZHSRWY as Integer)),0) as count,'万元' as unit
-        from "GP_SZZF_O"."JC_QSJQJDQKYBB" group by JQMC
+        select JQMC,ifnull(LJJDRSWRC,0) as jdrs from "GP_SZZF_O"."A_QSJQJDQKYBB"
+        where TBSJ =(select max(TBSJ) from "GP_SZZF_O"."A_QSJQJDQKYBB") order by LJJDRSWRC desc
     </select>
     <select id="queryRsqs" resultType="java.util.Map" parameterType="java.lang.String">
         select aa.JQMC,
@@ -34,29 +32,29 @@
                sum(case aa.mon when '12' then aa.JDRSWRC else 0 end) as twelve
         from
             (
-                select JQMC,JDRSWRC,month(TBSJ) as mon from "GP_SZZF_O"."JC_QSJQJDQKYBB" where year(TBSJ) = #{date}
+                select JQMC,JDRSWRC,month(TBSJ) as mon from "GP_SZZF_O"."A_QSJQJDQKYBB" where year(TBSJ) = #{date}
             )aa
         group by aa.JQMC
     </select>
     <select id="queryMpMonth" resultType="java.util.Map" parameterType="java.lang.String">
-        select aa.JQDMC,
-               sum(case aa.mon when '1' then aa.MPSRWY_BQ else 0 end) as one,
-               sum(case aa.mon when '2' then aa.MPSRWY_BQ else 0 end) as two,
-               sum(case aa.mon when '3' then aa.MPSRWY_BQ else 0 end) as three,
-               sum(case aa.mon when '4' then aa.MPSRWY_BQ else 0 end) as four,
-               sum(case aa.mon when '5' then aa.MPSRWY_BQ else 0 end) as five,
-               sum(case aa.mon when '6' then aa.MPSRWY_BQ else 0 end) as six,
-               sum(case aa.mon when '7' then aa.MPSRWY_BQ else 0 end) as seven,
-               sum(case aa.mon when '8' then aa.MPSRWY_BQ else 0 end) as eight,
-               sum(case aa.mon when '9' then aa.MPSRWY_BQ else 0 end) as nine,
-               sum(case aa.mon when '10' then aa.MPSRWY_BQ else 0 end) as ten ,
-               sum(case aa.mon when '11' then aa.MPSRWY_BQ else 0 end) as eleven,
-               sum(case aa.mon when '12' then aa.MPSRWY_BQ else 0 end) as twelve
+        select aa.JQMC,
+               sum(case aa.mon when '1' then aa.ZHSRWY else 0 end) as one,
+               sum(case aa.mon when '2' then aa.ZHSRWY else 0 end) as two,
+               sum(case aa.mon when '3' then aa.ZHSRWY else 0 end) as three,
+               sum(case aa.mon when '4' then aa.ZHSRWY else 0 end) as four,
+               sum(case aa.mon when '5' then aa.ZHSRWY else 0 end) as five,
+               sum(case aa.mon when '6' then aa.ZHSRWY else 0 end) as six,
+               sum(case aa.mon when '7' then aa.ZHSRWY else 0 end) as seven,
+               sum(case aa.mon when '8' then aa.ZHSRWY else 0 end) as eight,
+               sum(case aa.mon when '9' then aa.ZHSRWY else 0 end) as nine,
+               sum(case aa.mon when '10' then aa.ZHSRWY else 0 end) as ten ,
+               sum(case aa.mon when '11' then aa.ZHSRWY else 0 end) as eleven,
+               sum(case aa.mon when '12' then aa.ZHSRWY else 0 end) as twelve
         from
             (
-                select JQDMC,MPSRWY_BQ,month(TBSJ) as mon from "GP_SZZF_O"."JC_JQJDQKYBB" where year(TBSJ) = #{date}
+                select JQMC,ZHSRWY,month(TBSJ) as mon from "GP_SZZF_O"."A_QSJQJDQKYBB" where year(TBSJ) = 2021
             )aa
-        group by aa.JQDMC
+        group by aa.JQMC
     </select>
     <select id="queryRjrsMonth" resultType="java.util.Map" parameterType="java.lang.String">
         select
@@ -90,8 +88,25 @@
         from "GP_SZZF_O"."JC_NDTBBSFQ" where ND = #{date};
     </select>
     <select id="queryCwCount" resultType="java.util.Map" >
-        select "JQMC","SL"
-        from "GP_SZZF_O"."GTCCCWZBFX";
+        select JQMC,ifnull(sum(TBCLSL),0) SL as from "GP_SZZF_O"."A_TCCSLTJ"  group by JQMC
+    </select>
+
+    <select id="queryWlptzb" resultType="java.util.Map" >
+        select '注册导游数量' as name,count(*) as sl from "GP_SZZF_O"."A_DYXX"
+        union all
+        select '互联网上网服务营业场所' as name,count(*) as sl from "GP_SZZF_O"."A_YYCS"
+        union all
+        select '旅行社数量' as name,count(*) as sl from "GP_SZZF_O"."A_LYSXX"
+        union all
+        select '其他娱乐场数量' as name,count(*) as sl from "GP_SZZF_O"."A_YLCSDJXX"
+    </select>
+
+    <select id="queryWwbhCount" resultType="java.util.Map" >
+        select JB,count(*) as SL from "GP_SZZF_O"."A_WWBHDW" group by JB
+    </select>
+
+    <select id="queryWwbh" resultType="java.util.Map" >
+        select JB,WWMC,SD from "GP_SZZF_O"."A_WWBHDW"
     </select>
 
     <select id="queryGis" resultType="java.util.Map" >

@@ -28,4 +28,8 @@ public interface TripService {
     List<Map<String,Object>> getCwCount();
 
     List<Map<String,Object>> getGis();
+
+    List<Map<String,Object>> getWlptzb();
+
+    Map<String,Object> getWwbh();
 }
