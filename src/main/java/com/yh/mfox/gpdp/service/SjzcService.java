@@ -1,5 +1,6 @@
 package com.yh.mfox.gpdp.service;
 
+import java.util.List;
 import java.util.Map;
 
 public interface SjzcService {
@@ -13,5 +14,10 @@ public interface SjzcService {
 
     Map<String,Object> getSjzl();
 
-    Map<String,Object> getXlpm();
+    List<Map<String, Object>> getXlpm();
+
+    Map<String,Object> getZtzy();
+
+    List<Map<String, Object>> getBmsx();
+
 }
