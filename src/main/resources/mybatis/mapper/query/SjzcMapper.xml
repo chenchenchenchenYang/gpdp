@@ -66,6 +66,7 @@
     <select id="queryExchange" resultType="java.util.Map">
         select "day_exchange_num","month_exchange_num","into_organization","into_city","into_resource",
                "into_resource_api","into_resource_data","into_resource_file","share_api","share_data","share_file"
+        from "GP_SZZF_R"."WKYPT_EXCHANGE_SHARED"
         where "sync_date" =  (
             select max("sync_date") from "GP_SZZF_R"."WKYPT_EXCHANGE_SHARED"
         )
