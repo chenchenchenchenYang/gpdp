@@ -16,7 +16,7 @@ public interface SjzcService {
 
     List<Map<String, Object>> getXlpm();
 
-    Map<String,Object> getZtzy();
+    List<Map<String, Object>> getZtzy();
 
     List<Map<String, Object>> getBmsx();
 

@@ -64,8 +64,8 @@ public class SjzcServiceImpl implements SjzcService {
     }
 
     @Override
-    public Map<String, Object> getZtzy() {
-        return sjzcMapper.queryZtzy().get(0);
+    public List<Map<String, Object>> getZtzy() {
+        return sjzcMapper.queryZtzy();
     }
 
     @Override
