@@ -55,9 +55,9 @@ public class TripController {
      * @Description:排行榜 20220630修改版
      */
     @PostMapping("/rank")
-    public Map<String, Object> getRank() {
+    public Map<String, Object> getRank(@RequestParam("date") String date) {
         try {
-            return R.ok(200, "成功", tripService.getRank());
+            return R.ok(200, "成功", tripService.getRank(date));
         } catch (Exception e) {
             return R.error(400, "失败");
         }
@@ -172,9 +172,9 @@ public class TripController {
      * @Description: 文物保护单位
      */
     @PostMapping("/wwbh")
-    public Map<String, Object> getWwbh() {
+    public Map<String, Object> getWwbh(@RequestParam("jb") String jb) {
         try {
-            return R.ok(200, "成功", tripService.getWwbh());
+            return R.ok(200, "成功", tripService.getWwbh(jb));
         } catch (Exception e) {
             return R.error(400, "失败");
         }

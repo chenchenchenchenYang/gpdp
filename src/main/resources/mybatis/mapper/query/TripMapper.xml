@@ -14,7 +14,7 @@
     </select>
     <select id="queryRank" resultType="java.util.Map">
         select JQMC,ifnull(LJJDRSWRC,0) as jdrs from "GP_SZZF_O"."A_QSJQJDQKYBB"
-        where TBSJ =(select max(TBSJ) from "GP_SZZF_O"."A_QSJQJDQKYBB") order by LJJDRSWRC desc
+        where TBSJ =(select max(TBSJ) from "GP_SZZF_O"."A_QSJQJDQKYBB" where year(TBSJ) = #{date}) order by LJJDRSWRC desc
     </select>
     <select id="queryRsqs" resultType="java.util.Map" parameterType="java.lang.String">
         select aa.JQMC,
@@ -107,6 +107,14 @@
 
     <select id="queryWwbh" resultType="java.util.Map" >
         select JB,WWMC,SD from "GP_SZZF_O"."A_WWBHDW"
+        <where>
+            <if test="jb != null and jb != ''">
+                AND JB = #{jb}
+            </if>
+            <if test="jb == null ">
+                AND JB = "国家级"
+            </if>
+        </where>
     </select>
 
     <select id="queryGis" resultType="java.util.Map" >

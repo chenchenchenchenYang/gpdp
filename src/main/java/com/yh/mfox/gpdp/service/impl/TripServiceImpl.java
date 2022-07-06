@@ -32,8 +32,8 @@ public class TripServiceImpl implements TripService {
     }
 
     @Override
-    public List<Map<String, Object>> getRank() {
-        return tripMapper.queryRank();
+    public List<Map<String, Object>> getRank(String date) {
+        return tripMapper.queryRank(date);
     }
 
     @Override
@@ -81,10 +81,10 @@ public class TripServiceImpl implements TripService {
     }
 
     @Override
-    public Map<String, Object> getWwbh() {
+    public Map<String, Object> getWwbh(String jb) {
         Map<String,Object> res = new HashMap<>();
         res.put("count",tripMapper.queryWwbhCount());
-        res.put("data",tripMapper.queryWwbh());
+        res.put("data",tripMapper.queryWwbh(jb));
         return res;
     }
 }

@@ -13,7 +13,7 @@ public interface TripService {
 
     Map<String,Object> getReport(String date);
 
-    List<Map<String,Object>> getRank();
+    List<Map<String,Object>> getRank(String date);
 
     List<Map<String,Object>> getRsqs( String date);
 
@@ -31,5 +31,5 @@ public interface TripService {
 
     List<Map<String,Object>> getWlptzb();
 
-    Map<String,Object> getWwbh();
+    Map<String,Object> getWwbh(String jb);
 }

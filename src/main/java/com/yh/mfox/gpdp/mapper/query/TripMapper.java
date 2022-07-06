@@ -12,7 +12,7 @@ public interface TripMapper {
 
     List<Map<String, Object>> queryReport(@Param("date") String date);
 
-    List<Map<String, Object>> queryRank();
+    List<Map<String, Object>> queryRank(@Param("date") String date);
 
     List<Map<String, Object>> queryRsqs(@Param("date") String date);
 
@@ -32,5 +32,5 @@ public interface TripMapper {
 
     List<Map<String, Object>> queryWwbhCount();
 
-    List<Map<String, Object>> queryWwbh();
+    List<Map<String, Object>> queryWwbh(@Param("jb") String jb);
 }
