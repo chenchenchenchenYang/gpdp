@@ -79,11 +79,11 @@
         )
     </select>
     <select id="queryXlpmLx" resultType="java.util.Map">
-        select "GXL","RKL","YWL","name"
+        select "name","GXL","RKL","YWL"
         from "GP_SZZF_R"."WKYPT_SJL_TOTAL"
         where "sync_date" =  (
             select max("sync_date") from "GP_SZZF_R"."WKYPT_SJL_TOTAL"
-        )
+        ) order by "GXL"+"RKL"+"YWL" desc limit 10
     </select>
     <!-- 暂不用 -->
     <select id="queryXlpmSs" resultType="java.util.Map">
@@ -117,7 +117,7 @@
         select "name","ZCL","CSL","LBL"
         from "GP_SZZF_R"."WKYPT_SX_TOTAL" where "sync_date" =  (
             select max("sync_date") from "GP_SZZF_R"."WKYPT_SX_TOTAL"
-        )
+        ) order by "ZCL" desc limit 10
     </select>
 
 </mapper>
