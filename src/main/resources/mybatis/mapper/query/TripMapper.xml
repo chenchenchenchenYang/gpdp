@@ -52,7 +52,7 @@
                sum(case aa.mon when '12' then aa.ZHSRWY else 0 end) as twelve
         from
             (
-                select JQMC,ZHSRWY,month(TBSJ) as mon from "GP_SZZF_O"."A_QSJQJDQKYBB" where year(TBSJ) = 2021
+                select JQMC,ZHSRWY,month(TBSJ) as mon from "GP_SZZF_O"."A_QSJQJDQKYBB" where year(TBSJ) = #{date}
             )aa
         group by aa.JQMC
     </select>
