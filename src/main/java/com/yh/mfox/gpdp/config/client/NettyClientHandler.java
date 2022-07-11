@@ -40,8 +40,9 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
             JSONObject node;
             // log.info("客户端收到消息: {}", res);
             JSONObject result = JSONObject.parseObject(res);
-            node = JSONObject.parseObject((String)result.get("node"));
-            if (res.contains("cmuLogin") || res.contains("cmuHeartBeat") || res.contains("cmuLogout") || res.contains("cmuReportPuStatus")) return;
+            if (res.contains("cmuLogin") || res.contains("cmuHeartBeat") ||
+                    res.contains("cmuLogout") || res.contains("cmuReportPuStatus") || null ==result.get("node")) return;
+            node = JSONObject.parseObject(result.get("node") + "");
             if (node != null && "cmuInitResData".equals(result.get("action"))) {
                 redisUtil.set("root", node);
             } else if (node != null && "cmuQueryResData".equals(result.get("action"))) {
