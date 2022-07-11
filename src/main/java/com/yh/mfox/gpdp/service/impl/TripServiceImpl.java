@@ -87,4 +87,9 @@ public class TripServiceImpl implements TripService {
         res.put("data",tripMapper.queryWwbh(jb));
         return res;
     }
+
+    @Override
+    public List<Map<String, Object>> getYlts() {
+        return tripMapper.queryYlts();
+    }
 }

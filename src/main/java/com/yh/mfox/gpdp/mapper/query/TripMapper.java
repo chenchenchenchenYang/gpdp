@@ -33,4 +33,6 @@ public interface TripMapper {
     List<Map<String, Object>> queryWwbhCount();
 
     List<Map<String, Object>> queryWwbh(@Param("jb") String jb);
+
+    List<Map<String, Object>> queryYlts();
 }

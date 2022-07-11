@@ -193,4 +193,18 @@ public class TripController {
             return R.error(400, "失败");
         }
     }
+
+    /**
+     * @Author: Wangcheny
+     * @Date: 2022年07月11日 上午 10:34:11
+     * @Description: 优良天数
+     */
+    @PostMapping("/ylts")
+    public Map<String, Object> getYlts() {
+        try {
+            return R.ok(200, "成功", tripService.getYlts());
+        } catch (Exception e) {
+            return R.error(400, "失败");
+        }
+    }
 }

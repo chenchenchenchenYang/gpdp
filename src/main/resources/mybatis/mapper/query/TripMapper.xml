@@ -118,7 +118,13 @@
     </select>
 
     <select id="queryGis" resultType="java.util.Map" >
-        select "JQMC","JQDJ","FZR","LXDH","XZQY","YB","XXDZ","JD","WD","GW","JQJS","TP","SP","TB"
-        from "GP_SZZF_O"."ZYQJ";
+        select "MC","DJ","JQZYLX","YYDWMC","YYDWXZ","FR","JD","WD","XZQY","JQJS","ZXDH","IMG_URL"
+        from "GP_SZZF_O"."A_LYJQ";
     </select>
+
+    <select id="queryYlts" resultType="java.util.Map" >
+        select YLT,CBTS
+        from "GP_SZZF_O"."A_YLTS" order by "UPDATE_TIME" desc limit 1
+    </select>
+
 </mapper>

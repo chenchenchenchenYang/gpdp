@@ -32,4 +32,7 @@ public interface TripService {
     List<Map<String,Object>> getWlptzb();
 
     Map<String,Object> getWwbh(String jb);
+
+    List<Map<String,Object>> getYlts();
+
 }
