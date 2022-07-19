@@ -2,8 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yh.mfox.gpdp.mapper.query.ZhlyMapper">
     <select id="queryCount" resultType="java.util.Map">
-        select MJ,LCSL
-        from "GP_SZZF_K"."LYZYTJ" order by update_time desc limit 1
+        select count(LCMC)  as LCSL,sum( cast(MJ as decimal(10,2))) AS MJ  from "GP_SZZF_K"."LCJBTJ"
     </select>
 
     <select id="queryHxdjzb" resultType="java.util.Map">
@@ -53,7 +52,7 @@
     </select>
 
     <select id="queryJbxx" resultType="java.util.Map" parameterType="java.lang.String">
-        select "LCMC","DZ" as LCDZ,"SLHXDJ" as LCHXDJ,"MJ" as MJM,"QSDD","HLYSL","FZRXM","RZRDH"
+        select "LCMC","DZ" as LCDZ,"SLHXDJ" as LCHXDJ,"MJ" as MJM,"QSDD","HLYSL","FZRXM","RZRDH","JD","WD"
         from "GP_SZZF_K"."LCJBTJ"
         <where>
             <if test="lcmc != null and lcmc != ''">
