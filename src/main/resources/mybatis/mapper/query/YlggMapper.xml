@@ -118,7 +118,7 @@
             IFNULL(SUM(JCLS),0) as JCLS,
             IFNULL(SUM(ZYSSLS),0) as ZYSSLS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            WEEK(SJ) = WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-6)) GROUP BY year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-6))
+            WEEK(SJ) = WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-6))
         union all
         select
             year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-5)) as year,
@@ -126,7 +126,7 @@
             IFNULL(SUM(JCLS),0) as JCLS,
             IFNULL(SUM(ZYSSLS),0) as ZYSSLS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            WEEK(SJ) =  WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-5)) GROUP BY year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-5))
+            WEEK(SJ) =  WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-5))
         union all
         select
             year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-4)) as year,
@@ -134,7 +134,7 @@
             IFNULL(SUM(JCLS),0) as JCLS,
             IFNULL(SUM(ZYSSLS),0) as ZYSSLS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            WEEK(SJ) =  WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-4)) GROUP BY year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-4))
+            WEEK(SJ) =  WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-4))
         union all
         select
             year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-3)) as year,
@@ -142,7 +142,7 @@
             IFNULL(SUM(JCLS),0) as JCLS,
             IFNULL(SUM(ZYSSLS),0) as ZYSSLS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            WEEK(SJ) =  WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-3)) GROUP BY year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-3))
+            WEEK(SJ) =  WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-3))
         union all
         select
             year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-2)) as year,
@@ -150,7 +150,7 @@
             IFNULL(SUM(JCLS),0) as ZYSSLS,
             IFNULL(SUM(ZYSSLS),0) as ZYSSLS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            WEEK(SJ) = WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-2)) GROUP BY year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-2))
+            WEEK(SJ) = WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-2))
         union all
         select
             year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-1)) as year,
@@ -158,7 +158,7 @@
             IFNULL(SUM(JCLS),0) as ZYSSLS,
             IFNULL(SUM(ZYSSLS),0) as ZYSSLS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            WEEK(SJ) =  WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-1)) GROUP BY year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-1))
+            WEEK(SJ) =  WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-1))
         union all
         select
             year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),0)) as year,
@@ -166,7 +166,7 @@
             IFNULL(SUM(JCLS),0) as ZYSSLS,
             IFNULL(SUM(ZYSSLS),0) as ZYSSLS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            WEEK(SJ) =  WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),0)) GROUP BY year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),0))
+            WEEK(SJ) =  WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),0))
     </select>
     <select id="querySsjcMonth" resultType="java.util.Map">
         select
@@ -175,7 +175,7 @@
             IFNULL(SUM(JCLS),0) as JCLS,
             IFNULL(SUM(ZYSSLS),0) as ZYSSLS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            MONTH(SJ) = MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-6)) GROUP BY MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-6))
+            MONTH(SJ) = MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-6))
         union all
         select
             year(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-5)) as year,
@@ -183,7 +183,7 @@
             IFNULL(SUM(JCLS),0) as JCLS,
             IFNULL(SUM(ZYSSLS),0) as ZYSSLS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            MONTH(SJ) =  MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-5)) GROUP BY MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-5))
+            MONTH(SJ) =  MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-5))
         union all
         select
             year(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-4)) as year,
@@ -191,7 +191,7 @@
             IFNULL(SUM(JCLS),0) as JCLS,
             IFNULL(SUM(ZYSSLS),0) as ZYSSLS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            MONTH(SJ) =  MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-4)) GROUP BY MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-4))
+            MONTH(SJ) =  MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-4))
         union all
         select
             year(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-3)) as year,
@@ -199,7 +199,7 @@
             IFNULL(SUM(JCLS),0) as JCLS,
             IFNULL(SUM(ZYSSLS),0) as ZYSSLS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            MONTH(SJ) =  MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-3)) GROUP BY MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-3))
+            MONTH(SJ) =  MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-3))
         union all
         select
             year(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-2)) as year,
@@ -207,7 +207,7 @@
             IFNULL(SUM(JCLS),0) as JCLS,
             IFNULL(SUM(ZYSSLS),0) as ZYSSLS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            MONTH(SJ) = MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-2)) GROUP BY MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-2))
+            MONTH(SJ) = MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-2))
         union all
         select
             year(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-1)) as year,
@@ -215,7 +215,7 @@
             IFNULL(SUM(JCLS),0) as JCLS,
             IFNULL(SUM(ZYSSLS),0) as ZYSSLS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            MONTH(SJ) =  MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-1)) GROUP BY MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-1))
+            MONTH(SJ) =  MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-1))
         union all
         select
             year(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),0)) as year,
@@ -223,7 +223,7 @@
             IFNULL(SUM(JCLS),0) as JCLS,
             IFNULL(SUM(ZYSSLS),0) as ZYSSLS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            MONTH(SJ) =  MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),0)) GROUP BY MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),0))
+            MONTH(SJ) =  MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),0))
     </select>
     <select id="querySsjcYear" resultType="java.util.Map">
         select
@@ -231,49 +231,49 @@
             IFNULL(SUM(JCLS),0) as JCLS,
             IFNULL(SUM(ZYSSLS),0) as ZYSSLS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 6 )  group by (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 6 )
+            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 6 )
         union all
         select
             (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 5 ) as year,
             IFNULL(SUM(JCLS),0) as JCLS,
             IFNULL(SUM(ZYSSLS),0) as ZYSSLS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 5 )  group by (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 5 )
+            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 5 )
         union all
         select
             (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 4 ) as year,
             IFNULL(SUM(JCLS),0) as JCLS,
             IFNULL(SUM(ZYSSLS),0) as ZYSSLS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 4 )  group by (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 4 )
+            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 4 )
         union all
         select
             (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 3 ) as year,
             IFNULL(SUM(JCLS),0) as JCLS,
             IFNULL(SUM(ZYSSLS),0) as ZYSSLS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 3 )  group by (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 3 )
+            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 3 )
         union all
         select
             (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 2 ) as year,
             IFNULL(SUM(JCLS),0) as JCLS,
             IFNULL(SUM(ZYSSLS),0) as ZYSSLS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 2 )  group by (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 2 )
+            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 2 )
         union all
         select
             (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 1 ) as year,
             IFNULL(SUM(JCLS),0) as JCLS,
             IFNULL(SUM(ZYSSLS),0) as ZYSSLS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 1 )  group by (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 1 )
+            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 1 )
         union all
         select
             (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 0 ) as year,
             IFNULL(SUM(JCLS),0) as JCLS,
             IFNULL(SUM(ZYSSLS),0) as ZYSSLS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 0 )  group by (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 0 )
+            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 0 )
     </select>
 
     <select id="queryRyrsDay" resultType="java.util.Map">
@@ -342,7 +342,7 @@
             IFNULL(SUM(RYLS),0) as RYLS,
             IFNULL(SUM(ZYRS),0) as ZYRS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            WEEK(SJ) = WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-6)) GROUP BY year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-6))
+            WEEK(SJ) = WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-6))
         union all
         select
             year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-5)) as year,
@@ -351,7 +351,7 @@
             IFNULL(SUM(RYLS),0) as RYLS,
             IFNULL(SUM(ZYRS),0) as ZYRS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            WEEK(SJ) =  WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-5)) GROUP BY year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-5))
+            WEEK(SJ) =  WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-5))
         union all
         select
             year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-4)) as year,
@@ -360,7 +360,7 @@
             IFNULL(SUM(RYLS),0) as RYLS,
             IFNULL(SUM(ZYRS),0) as ZYRS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            WEEK(SJ) =  WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-4)) GROUP BY year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-4))
+            WEEK(SJ) =  WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-4))
         union all
         select
             year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-3)) as year,
@@ -369,7 +369,7 @@
             IFNULL(SUM(RYLS),0) as RYLS,
             IFNULL(SUM(ZYRS),0) as ZYRS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            WEEK(SJ) =  WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-3)) GROUP BY year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-3))
+            WEEK(SJ) =  WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-3))
         union all
         select
             year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-2)) as year,
@@ -378,7 +378,7 @@
             IFNULL(SUM(RYLS),0) as RYLS,
             IFNULL(SUM(ZYRS),0) as ZYRS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            WEEK(SJ) = WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-2)) GROUP BY year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-2))
+            WEEK(SJ) = WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-2))
         union all
         select
             year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-1)) as year,
@@ -387,7 +387,7 @@
             IFNULL(SUM(RYLS),0) as RYLS,
             IFNULL(SUM(ZYRS),0) as ZYRS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            WEEK(SJ) =  WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-1)) GROUP BY year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-1))
+            WEEK(SJ) =  WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-1))
         union all
         select
             year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),0)) as year,
@@ -396,7 +396,7 @@
             IFNULL(SUM(RYLS),0) as RYLS,
             IFNULL(SUM(ZYRS),0) as ZYRS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            WEEK(SJ) =  WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),0)) GROUP BY year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),0))
+            WEEK(SJ) =  WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),0))
     </select>
 
     <select id="queryRyrsMonth" resultType="java.util.Map">
@@ -407,7 +407,7 @@
             IFNULL(SUM(RYLS),0) as RYLS,
             IFNULL(SUM(ZYRS),0) as ZYRS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            MONTH(SJ) = MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-6)) GROUP BY MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-6))
+            MONTH(SJ) = MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-6))
         union all
         select
             year(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-5)) as year,
@@ -416,7 +416,7 @@
             IFNULL(SUM(RYLS),0) as RYLS,
             IFNULL(SUM(ZYRS),0) as ZYRS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            MONTH(SJ) =  MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-5)) GROUP BY MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-5))
+            MONTH(SJ) =  MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-5))
         union all
         select
             year(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-4)) as year,
@@ -425,7 +425,7 @@
             IFNULL(SUM(RYLS),0) as RYLS,
             IFNULL(SUM(ZYRS),0) as ZYRS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            MONTH(SJ) =  MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-4)) GROUP BY MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-4))
+            MONTH(SJ) =  MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-4))
         union all
         select
             year(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-3)) as year,
@@ -434,7 +434,7 @@
             IFNULL(SUM(RYLS),0) as RYLS,
             IFNULL(SUM(ZYRS),0) as ZYRS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            MONTH(SJ) =  MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-3)) GROUP BY MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-3))
+            MONTH(SJ) =  MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-3))
         union all
         select
             year(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-2)) as year,
@@ -443,7 +443,7 @@
             IFNULL(SUM(RYLS),0) as RYLS,
             IFNULL(SUM(ZYRS),0) as ZYRS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            MONTH(SJ) = MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-2)) GROUP BY MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-2))
+            MONTH(SJ) = MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-2))
         union all
         select
             year(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-1)) as year,
@@ -452,7 +452,7 @@
             IFNULL(SUM(RYLS),0) as RYLS,
             IFNULL(SUM(ZYRS),0) as ZYRS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            MONTH(SJ) =  MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-1)) GROUP BY MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-1))
+            MONTH(SJ) =  MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-1))
         union all
         select
             year(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),0)) as year,
@@ -461,7 +461,7 @@
             IFNULL(SUM(RYLS),0) as RYLS,
             IFNULL(SUM(ZYRS),0) as ZYRS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            MONTH(SJ) =  MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),0)) GROUP BY MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),0))
+            MONTH(SJ) =  MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),0))
     </select>
 
     <select id="queryRyrsYear" resultType="java.util.Map">
@@ -471,7 +471,7 @@
             IFNULL(SUM(RYLS),0) as RYLS,
             IFNULL(SUM(ZYRS),0) as ZYRS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 6 )  group by (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 6 )
+            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 6 )
         union all
         select
             (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 5 ) as year,
@@ -479,7 +479,7 @@
             IFNULL(SUM(RYLS),0) as RYLS,
             IFNULL(SUM(ZYRS),0) as ZYRS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 5 )  group by (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 5 )
+            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 5 )
         union all
         select
             (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 4 ) as year,
@@ -487,7 +487,7 @@
             IFNULL(SUM(RYLS),0) as RYLS,
             IFNULL(SUM(ZYRS),0) as ZYRS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 4 )  group by (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 4 )
+            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 4 )
         union all
         select
             (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 3 ) as year,
@@ -495,7 +495,7 @@
             IFNULL(SUM(RYLS),0) as RYLS,
             IFNULL(SUM(ZYRS),0) as ZYRS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 3 )  group by (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 3 )
+            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 3 )
         union all
         select
             (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 2 ) as year,
@@ -503,7 +503,7 @@
             IFNULL(SUM(RYLS),0) as RYLS,
             IFNULL(SUM(ZYRS),0) as ZYRS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 2 )  group by (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 2 )
+            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 2 )
         union all
         select
             (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 1 ) as year,
@@ -511,7 +511,7 @@
             IFNULL(SUM(RYLS),0) as RYLS,
             IFNULL(SUM(ZYRS),0) as ZYRS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 1 )  group by (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 1 )
+            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 1 )
         union all
         select
             (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 0 ) as year,
@@ -519,7 +519,7 @@
             IFNULL(SUM(RYLS),0) as RYLS,
             IFNULL(SUM(ZYRS),0) as ZYRS
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 0 )  group by (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 0 )
+            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 0 )
     </select>
 
     <select id="queryJcfDay" resultType="java.util.Map">
@@ -588,7 +588,7 @@
             IFNULL(SUM(MZCJFY),0) as MZCJFY,
             IFNULL(SUM(MCRFY),0) as MCRFY
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            WEEK(SJ) = WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-6)) GROUP BY year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-6))
+            WEEK(SJ) = WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-6))
         union all
         select
             year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-5)) as year,
@@ -597,7 +597,7 @@
             IFNULL(SUM(MZCJFY),0) as MZCJFY,
             IFNULL(SUM(MCRFY),0) as MCRFY
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            WEEK(SJ) =  WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-5)) GROUP BY year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-5))
+            WEEK(SJ) =  WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-5))
         union all
         select
             year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-4)) as year,
@@ -606,7 +606,7 @@
             IFNULL(SUM(MZCJFY),0) as MZCJFY,
             IFNULL(SUM(MCRFY),0) as MCRFY
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            WEEK(SJ) =  WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-4)) GROUP BY year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-4))
+            WEEK(SJ) =  WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-4))
         union all
         select
             year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-3)) as year,
@@ -615,7 +615,7 @@
             IFNULL(SUM(MZCJFY),0) as MZCJFY,
             IFNULL(SUM(MCRFY),0) as MCRFY
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            WEEK(SJ) =  WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-3)) GROUP BY year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-3))
+            WEEK(SJ) =  WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-3))
         union all
         select
             year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-2)) as year,
@@ -624,7 +624,7 @@
             IFNULL(SUM(MZCJFY),0) as MZCJFY,
             IFNULL(SUM(MCRFY),0) as MCRFY
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            WEEK(SJ) = WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-2)) GROUP BY year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-2))
+            WEEK(SJ) = WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-2))
         union all
         select
             year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-1)) as year,
@@ -633,7 +633,7 @@
             IFNULL(SUM(MZCJFY),0) as MZCJFY,
             IFNULL(SUM(MCRFY),0) as MCRFY
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            WEEK(SJ) =  WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-1)) GROUP BY year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-1))
+            WEEK(SJ) =  WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-1))
         union all
         select
             year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),0)) as year,
@@ -642,7 +642,7 @@
             IFNULL(SUM(MZCJFY),0) as MZCJFY,
             IFNULL(SUM(MCRFY),0) as MCRFY
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            WEEK(SJ) =  WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),0)) GROUP BY year(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),0))
+            WEEK(SJ) =  WEEK(ADD_WEEKS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),0))
     </select>
 
     <select id="queryJcfMonth" resultType="java.util.Map">
@@ -653,7 +653,7 @@
             IFNULL(SUM(MZCJFY),0) as MZCJFY,
             IFNULL(SUM(MCRFY),0) as MCRFY
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            MONTH(SJ) = MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-6)) GROUP BY MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-6))
+            MONTH(SJ) = MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-6))
         union all
         select
             year(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-5)) as year,
@@ -662,7 +662,7 @@
             IFNULL(SUM(MZCJFY),0) as MZCJFY,
             IFNULL(SUM(MCRFY),0) as MCRFY
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            MONTH(SJ) =  MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-5)) GROUP BY MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-5))
+            MONTH(SJ) =  MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-5))
         union all
         select
             year(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-4)) as year,
@@ -671,7 +671,7 @@
             IFNULL(SUM(MZCJFY),0) as MZCJFY,
             IFNULL(SUM(MCRFY),0) as MCRFY
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            MONTH(SJ) =  MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-4)) GROUP BY MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-4))
+            MONTH(SJ) =  MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-4))
         union all
         select
             year(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-3)) as year,
@@ -680,7 +680,7 @@
             IFNULL(SUM(MZCJFY),0) as MZCJFY,
             IFNULL(SUM(MCRFY),0) as MCRFY
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            MONTH(SJ) =  MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-3)) GROUP BY MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-3))
+            MONTH(SJ) =  MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-3))
         union all
         select
             year(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-2)) as year,
@@ -689,7 +689,7 @@
             IFNULL(SUM(MZCJFY),0) as MZCJFY,
             IFNULL(SUM(MCRFY),0) as MCRFY
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            MONTH(SJ) = MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-2)) GROUP BY MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-2))
+            MONTH(SJ) = MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-2))
         union all
         select
             year(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-1)) as year,
@@ -698,7 +698,7 @@
             IFNULL(SUM(MZCJFY),0) as MZCJFY,
             IFNULL(SUM(MCRFY),0) as MCRFY
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            MONTH(SJ) =  MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-1)) GROUP BY MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-1))
+            MONTH(SJ) =  MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),-1))
         union all
         select
             year(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),0)) as year,
@@ -707,7 +707,7 @@
             IFNULL(SUM(MZCJFY),0) as MZCJFY,
             IFNULL(SUM(MCRFY),0) as MCRFY
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            MONTH(SJ) =  MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),0)) GROUP BY MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),0))
+            MONTH(SJ) =  MONTH(ADD_MONTHS(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd'),0))
     </select>
 
     <select id="queryJcfYear" resultType="java.util.Map">
@@ -717,7 +717,7 @@
             IFNULL(SUM(MZCJFY),0) as MZCJFY,
             IFNULL(SUM(MCRFY),0) as MCRFY
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 6 )  group by (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 6 )
+            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 6 )
         union all
         select
             (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 5 ) as year,
@@ -725,7 +725,7 @@
             IFNULL(SUM(MZCJFY),0) as MZCJFY,
             IFNULL(SUM(MCRFY),0) as MCRFY
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 5 )  group by (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 5 )
+            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 5 )
         union all
         select
             (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 4 ) as year,
@@ -733,7 +733,7 @@
             IFNULL(SUM(MZCJFY),0) as MZCJFY,
             IFNULL(SUM(MCRFY),0) as MCRFY
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 4 )  group by (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 4 )
+            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 4 )
         union all
         select
             (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 3 ) as year,
@@ -741,7 +741,7 @@
             IFNULL(SUM(MZCJFY),0) as MZCJFY,
             IFNULL(SUM(MCRFY),0) as MCRFY
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 3 )  group by (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 3 )
+            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 3 )
         union all
         select
             (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 2 ) as year,
@@ -749,7 +749,7 @@
             IFNULL(SUM(MZCJFY),0) as MZCJFY,
             IFNULL(SUM(MCRFY),0) as MCRFY
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 2 )  group by (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 2 )
+            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 2 )
         union all
         select
             (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 1 ) as year,
@@ -757,7 +757,7 @@
             IFNULL(SUM(MZCJFY),0) as MZCJFY,
             IFNULL(SUM(MCRFY),0) as MCRFY
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 1 )  group by (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 1 )
+            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 1 )
         union all
         select
             (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 0 ) as year,
@@ -765,7 +765,7 @@
             IFNULL(SUM(MZCJFY),0) as MZCJFY,
             IFNULL(SUM(MCRFY),0) as MCRFY
         from "GP_SZZF_I"."GP_YZJSC" WHERE
-            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 0 )  group by (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 0 )
+            year(SJ) = (year(to_char((select max(SJ) from "GP_SZZF_I"."GP_YZJSC"),'yyyy-MM-dd')) - 0 )
     </select>
 
     <select id="queryXl" resultType="java.util.Map">
